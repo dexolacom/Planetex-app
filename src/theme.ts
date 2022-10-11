@@ -30,3 +30,11 @@ export const OutlineButton = styled.button<{padding?: string}>`
 export const ConnectButton = styled(OutlineButton)`
   padding: 13px 25px;
 `
+
+export const Line = styled.div`
+  background-color: #423B49;
+  height: 1px;
+  margin-left: 45px;
+  width: calc(100% - 90px);
+  margin-bottom: 65px;
+`
