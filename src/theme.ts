@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FlexRow = styled.div<{justify?: string, align?: string, gap?: string, margin?: string}>`
   display: flex;
-  justify-content: ${({justify}) => justify ?? 'center'};
+  //justify-content: ${({justify}) => justify ?? 'center'};
   align-items: ${({align}) => align ?? 'center'};
   gap: ${({gap}) => gap ?? 'auto'};
   margin: ${({margin}) => margin ?? '0'};
@@ -37,4 +37,10 @@ export const Line = styled.div`
   margin-left: 45px;
   width: calc(100% - 90px);
   margin-bottom: 65px;
+`
+
+export const Content = styled.div`
+  max-width: 970px;
+  margin-left: 190px;
+  margin-top: 70px;
 `

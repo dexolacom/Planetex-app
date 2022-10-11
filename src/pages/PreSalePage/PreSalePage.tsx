@@ -3,6 +3,7 @@ import HeroSection from '../../components/HeroSection/HeroSection';
 import { heroInfo } from '../../constants/constants'
 import { FlexRow, OutlineButton } from '../../theme';
 import { ButtonsContainer } from './styles';
+import SaleSection from '../../components/SaleSection/SaleSection';
 
 const PreSalePage = () => {
   const { presale } = heroInfo
@@ -15,6 +16,7 @@ const PreSalePage = () => {
         <OutlineButton>Ethereum Network</OutlineButton>
         <OutlineButton>BSC Network</OutlineButton>
       </ButtonsContainer>
+      <SaleSection/>
     </>
   );
 };

@@ -28,3 +28,7 @@ export const Text = styled.p`
   max-width: 700px;
   color: #D4E5FF;
 `
+
+export const Img = styled.img`
+  margin-top: -20px;
+`
