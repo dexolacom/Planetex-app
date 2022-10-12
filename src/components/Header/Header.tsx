@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content, Wrapper, Navigation, Links, RouterLink, Logo } from './styles';
+import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link } from './styles';
 import { ConnectButton } from '../../theme';
 
 
@@ -10,10 +10,11 @@ const Header = () => {
         <Logo/>
         <Navigation>
           <Links>
+            {/*@ts-ignore*/}
             <RouterLink to='/presale'>Pre-Sale</RouterLink>
-            <RouterLink to='/'>NFT Sale</RouterLink>
-            <RouterLink to='/'>Main Sale</RouterLink>
-            <RouterLink to='/'>Private Sale</RouterLink>
+            <Link href='#'>NFT Sale</Link>
+            <Link href='#'>Main Sale</Link>
+            <Link href='#'>Private Sale</Link>
           </Links>
           <ConnectButton>Connect Wallet</ConnectButton>
         </Navigation>
