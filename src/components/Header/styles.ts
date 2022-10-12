@@ -39,9 +39,24 @@ export const RouterLink = styled(NavLink)`
   text-decoration: none;
   color: #D4E5FF;
   
+  &.active {
+    color: #9E40B5;
+  }
+  
   &:hover,
-  &:active,
   &:focus {
+    color: #9E40B5;
+  }
+`
+
+export const Link = styled.a`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  color: #D4E5FF;
+
+  &:hover {
     color: #9E40B5;
   }
 `

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import PreSalePage from './pages/PreSalePage/PreSalePage';
 import { Line, Content } from './theme';
@@ -12,11 +12,12 @@ function App() {
       <Header/>
       <Content>
         <Routes>
+          <Route path="/" element={<Navigate replace to="/presale" />} />
           <Route path='/presale' element={<PreSalePage/>}/>
         </Routes>
       </Content>
-      {/*<Line/>*/}
-      {/*<Footer/>*/}
+      <Line/>
+      <Footer/>
     </>
   );
 }
