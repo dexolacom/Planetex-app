@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { SolidButton } from '../../../theme';
+import arrow from '../../../assets/icons/selector.svg'
 
 export const Wrapper = styled.div`
   padding: 75px 120px 80px 120px;
@@ -46,7 +47,7 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input`
-  background: #06080C;
+  background-color: #06080C;
   border: 1px solid #372458;
   border-radius: 66px;
   color: #BDCCEA;
@@ -54,10 +55,21 @@ export const Input = styled.input`
 `
 
 export const Select = styled.select`
-  background: #06080C;
+  background-color: #06080C;
   border: 1px solid #372458;
   border-radius: 66px;
-  padding: 13px 24px;
+  padding: 13px 45px 13px 22px;
   color: #762ACE;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: url(${arrow});
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: 1.1em auto, 100%;
 `
 export const Button = styled(SolidButton)``

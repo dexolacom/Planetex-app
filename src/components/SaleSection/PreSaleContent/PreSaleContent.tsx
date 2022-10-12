@@ -12,7 +12,10 @@ const PreSaleContent = () => {
       <Text>Stake your SEAN up to 35 days to earn extra SEAN.</Text>
       <Form>
         <Input/>
-        <Select/>
+        <Select>
+          <option>ETH</option>
+          <option>USDT</option>
+        </Select>
       </Form>
       <Button>
         Buy Token
