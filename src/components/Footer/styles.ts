@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   margin: 0 auto;
   width: 75%;
+  padding-bottom: 50px;
 `
 
 export const Column = styled.div`

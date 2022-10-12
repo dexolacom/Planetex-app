@@ -15,8 +15,8 @@ function App() {
           <Route path='/presale' element={<PreSalePage/>}/>
         </Routes>
       </Content>
-      {/*<Line/>*/}
-      {/*<Footer/>*/}
+      <Line/>
+      <Footer/>
     </>
   );
 }

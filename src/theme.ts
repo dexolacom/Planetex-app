@@ -8,6 +8,17 @@ export const FlexRow = styled.div<{justify?: string, align?: string, gap?: strin
   margin: ${({margin}) => margin ?? '0'};
 `
 
+export const SolidButton = styled.button<{padding?: string}>`
+  padding: 18px 50px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #D4E5FF;
+  background-color: #933DF6;
+  border-radius: 60px;
+  cursor: pointer;
+`
+
 
 export const OutlineButton = styled.button<{padding?: string}>`
   padding: 15px 45px;
@@ -41,6 +52,5 @@ export const Line = styled.div`
 
 export const Content = styled.div`
   max-width: 970px;
-  margin-left: 190px;
-  margin-top: 70px;
+  margin: 70px 45px 170px 190px;
 `

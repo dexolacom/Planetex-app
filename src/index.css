@@ -10,7 +10,9 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000204;
+  background-color: #000204;
+  background-image: url('assets/images/background.png');
+  background-size: cover;
 }
 
 /* Указываем box sizing */
