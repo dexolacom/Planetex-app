@@ -1,13 +1,11 @@
 import React from 'react';
-import { Wrapper } from './styles';
 import PreSaleContent from './PreSaleContent/PreSaleContent';
-
 
 const SaleSection = () => {
   return (
-    <Wrapper>
+    <div>
       <PreSaleContent/>
-    </Wrapper>
+    </div>
   );
 };
 

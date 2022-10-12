@@ -10,7 +10,6 @@ const Header = () => {
         <Logo/>
         <Navigation>
           <Links>
-            {/*@ts-ignore*/}
             <RouterLink to='/presale'>Pre-Sale</RouterLink>
             <Link href='#'>NFT Sale</Link>
             <Link href='#'>Main Sale</Link>

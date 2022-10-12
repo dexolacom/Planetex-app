@@ -3,6 +3,18 @@ import { SolidButton } from '../../../theme';
 import arrow from '../../../assets/icons/selector.svg'
 
 export const Wrapper = styled.div`
+  //clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+  border: 1px solid #372458;
+`
+
+export const Content = styled.div`
+  background: linear-gradient(
+          98.66deg, rgba(31, 53, 255, 0.29) 2.6%,
+          rgba(31, 53, 255, 0) 26.21%,
+          rgba(31, 53, 255, 0.0116456) 73.39%,
+          rgba(31, 53, 255, 0.24) 100%
+  );
+  backdrop-filter: blur(3.5px);
   padding: 75px 120px 80px 120px;
 `
 
