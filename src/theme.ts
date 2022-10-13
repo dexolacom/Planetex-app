@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const FlexRow = styled.div<{justify?: string, align?: string, gap?: string, margin?: string}>`
-  display: flex;
-  //justify-content: ${({justify}) => justify ?? 'center'};
-  align-items: ${({align}) => align ?? 'center'};
-  gap: ${({gap}) => gap ?? 'auto'};
-  margin: ${({margin}) => margin ?? '0'};
-`
-
 export const SolidButton = styled.button<{padding?: string}>`
   padding: 18px 50px;
   font-weight: 700;

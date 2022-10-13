@@ -6,6 +6,7 @@ import arrow from '../../../assets/icons/selector.svg'
 export const Wrapper = styled.div`
   clip-path: polygon(8% 0,100% 0,100% 100%,0 100%,0 12%);
   border: 1px solid #372458;
+  
   //position: relative;
   //color: white;
   //background-repeat: no-repeat;
@@ -27,21 +28,25 @@ export const Wrapper = styled.div`
   //  background-size: 2px 100%, 2px 100%, 100% 2px, 100% 2px, 25px 25px, 100% 100%, 100% 100%;
   //  background-position: 0% 0%, 100% 25px, -25px 0%, 0px 100%, 100% 0%, -25px 0%, 100% 25px;
   //}
-  
 `
 
 export const Content = styled.div`
   padding: 75px 120px 80px 120px;
-  background: linear-gradient(
-          98.66deg, rgba(31, 53, 255, 0.29) 2.6%,
-          rgba(31, 53, 255, 0) 26.21%,
-          rgba(31, 53, 255, 0.0116456) 73.39%,
-          rgba(31, 53, 255, 0.24) 100%
-  );
+  background: linear-gradient(98.66deg, rgba(31, 53, 255, 0.29) 2.6%, rgba(31, 53, 255, 0) 26.21%, rgba(31, 53, 255, 0.0116456) 73.39%, rgba(31, 53, 255, 0.24) 100%);
   backdrop-filter: blur(3.5px);
 
   @media screen and (max-width: 880px) {
     padding: 45px 45px 55px 95px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    padding: 45px 55px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 576px) {
+    padding: 23px 40px;
   }
 `
 
@@ -53,6 +58,12 @@ export const TitleContainer = styled.div`
   
   @media screen and (max-width: 880px) {
     gap: 70px;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 `
 
@@ -92,6 +103,10 @@ export const Tag = styled.div`
     line-height: 17px;
     padding: 9px;
   }
+
+  @media screen and (max-width: 576px) {
+    font-size: 12px;
+  }
 `
 
 export const Text = styled.p`
@@ -105,13 +120,22 @@ export const Text = styled.p`
     font-size: 16px;
     line-height: 20px;
   }
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
 `
 
-export const Form = styled.form`
+export const InputContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
   margin-bottom: 30px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `
 
 export const Input = styled.input`
@@ -125,7 +149,6 @@ export const Input = styled.input`
 `
 
 export const Select = styled.select`
-  background-color: #06080C;
   border: 1px solid #372458;
   border-radius: 66px;
   padding: 13px 45px 13px 22px;
@@ -142,5 +165,6 @@ export const Select = styled.select`
   background-repeat: no-repeat, repeat;
   background-position: right .7em top 50%, 0 0;
   background-size: 1.1em auto, 100%;
+  background-color: #06080C;
 `
 export const Button = styled(SolidButton)``

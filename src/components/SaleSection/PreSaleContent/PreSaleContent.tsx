@@ -5,7 +5,7 @@ import {
   Text,
   Tag,
   TitleContainer,
-  Form,
+  InputContainer,
   Input,
   Select,
   Button,
@@ -22,16 +22,14 @@ const PreSaleContent = () => {
           <Tag>Limited purchase restrictions 10-1000$</Tag>
         </TitleContainer>
         <Text>Stake your SEAN up to 35 days to earn extra SEAN.</Text>
-        <Form>
+        <InputContainer>
           <Input/>
           <Select>
             <option>ETH</option>
             <option>USDT</option>
           </Select>
-        </Form>
-        <Button>
-          Buy Token
-        </Button>
+        </InputContainer>
+        <Button>Buy Token</Button>
       </Content>
     </Wrapper>
   );
