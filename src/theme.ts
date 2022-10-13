@@ -17,6 +17,8 @@ export const SolidButton = styled.button<{padding?: string}>`
   background-color: #933DF6;
   border-radius: 60px;
   cursor: pointer;
+  outline: none;
+  border: none;
 `
 
 
