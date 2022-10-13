@@ -87,6 +87,8 @@ export const Input = styled.input`
   border-radius: 66px;
   color: #BDCCEA;
   padding: 13px 24px;
+  outline: none;
+  flex: 0.7;
 `
 
 export const Select = styled.select`
@@ -98,6 +100,7 @@ export const Select = styled.select`
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
+  outline: none;
 
   -moz-appearance: none;
   -webkit-appearance: none;
