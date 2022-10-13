@@ -1,6 +1,6 @@
 import React from 'react';
-import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link } from './styles';
-import { ConnectButton } from '../../theme';
+import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link, BurgerTabletIcon, ConnectButton } from './styles';
+import AccountContainer from '../AccountContainer/AccountContainer';
 
 
 const Header = () => {
@@ -15,7 +15,9 @@ const Header = () => {
             <Link href='#'>Main Sale</Link>
             <Link href='#'>Private Sale</Link>
           </Links>
+          {/*<AccountContainer/>*/}
           <ConnectButton>Connect Wallet</ConnectButton>
+          <BurgerTabletIcon/>
         </Navigation>
       </Content>
     </Wrapper>

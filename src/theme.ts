@@ -38,10 +38,11 @@ export const OutlineButton = styled.button<{padding?: string}>`
     color: #D4E5FF;
     border: 2px solid transparent;
   }
-`
 
-export const ConnectButton = styled(OutlineButton)`
-  padding: 13px 25px;
+  @media (max-width: 880px) {
+    font-size: 16px;
+    padding: 12px 23px;
+  }
 `
 
 export const Line = styled.div`
