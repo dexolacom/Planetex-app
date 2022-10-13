@@ -9,14 +9,12 @@ const PreSalePage = () => {
   const { presale } = heroInfo
   return (
     <>
-      <FlexRow margin='0 0 45px 0'>
-        <HeroSection title={presale?.title} text={presale?.text} img={presale?.img}/>
-      </FlexRow>
+      <HeroSection title={presale?.title} text={presale?.text} img={presale?.img}/>
       <ButtonsContainer>
         <OutlineButton>Ethereum Network</OutlineButton>
         <OutlineButton>BSC Network</OutlineButton>
       </ButtonsContainer>
-      <SaleSection/>
+      {/*<SaleSection/>*/}
     </>
   );
 };

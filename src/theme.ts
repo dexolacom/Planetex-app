@@ -43,6 +43,11 @@ export const OutlineButton = styled.button<{padding?: string}>`
     font-size: 16px;
     padding: 12px 23px;
   }
+  
+  @media screen and (max-width: 576px) {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
 `
 
 export const Line = styled.div`
@@ -63,5 +68,9 @@ export const Content = styled.div`
 
   @media screen and (max-width: 880px) {
     margin: 70px 40px;
+  }
+
+  @media screen and (max-width: 576px) {
+    margin: 40px 20px;
   }
 `

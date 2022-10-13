@@ -21,7 +21,7 @@ export const ColumnContainer = styled.div`
   display: flex;
   gap: 160px;
 
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 992px) {
     gap: 85px;
   }
 
@@ -49,7 +49,7 @@ export const List = styled.ul`
     margin-bottom: 23px;
   }
 
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 992px) {
     font-size: 16px;
   }
 `
@@ -63,7 +63,7 @@ export const Title = styled.h4`
   line-height: 38px;
   color: #D4E5FF;
 
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 992px) {
     font-size: 20px;
   }
 `

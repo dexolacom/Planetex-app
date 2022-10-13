@@ -16,6 +16,18 @@ body {
   background-size: cover;
 }
 
+@media screen and (max-width: 880px) {
+  body {
+    background-image: url('assets/images/tabletBackground.png');
+  }
+}
+
+@media screen and (max-width: 576px) {
+  body {
+    background-image: url('assets/images/mobileBackground.png');
+  }
+}
+
 /* Указываем box sizing */
 *,
 *::before,

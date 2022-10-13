@@ -67,7 +67,7 @@ export const Title = styled.h1`
     line-height: 35px;
   }
 
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 992px) {
     font-size: 30px;
   }
 `
@@ -87,7 +87,7 @@ export const Tag = styled.div`
     padding: 10px 15px;
   }
   
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 992px) {
     font-size: 14px;
     line-height: 17px;
     padding: 9px;

@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div``
+export const Wrapper = styled.div`
+  margin: 0 0 45px 0;
+
+  @media screen and (max-width: 576px) {
+    display: flex;
+    justify-content: center;
+  }
+`
 
 export const Content = styled.div`
   display: flex;
@@ -40,4 +47,8 @@ export const Text = styled.p`
 
 export const Img = styled.img`
   margin-top: -20px;
+
+  @media screen and (max-width: 500px) {
+    position: absolute;
+  }
 `

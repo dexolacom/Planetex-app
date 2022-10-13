@@ -12,6 +12,11 @@ export const Content = styled.div`
   padding: 10px 12px 10px 14px;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 576px) {
+    font-size: 12px;
+    padding: 8px 9px 8px 12px;
+  }
 `
 
 export const WalletContainer = styled.div`
@@ -23,9 +28,19 @@ export const WalletContainer = styled.div`
   @media screen and (max-width: 880px) {
     font-size: 14px;
   }
+
+  @media screen and (max-width: 576px) {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
 `
 
 export const ArrowIcon = styled(Arrow)`
   margin-right: 10px;
   cursor: pointer;
+
+  @media screen and (max-width: 576px) {
+    margin-right: 6px;
+    width: 21px;
+  }
 `

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as LogoIcon } from '../../assets/icons/logo.svg'
 import { ReactComponent as BurgerTablet } from '../../assets/icons/burgerTablet.svg'
+import { ReactComponent as MobileLogoIcon} from '../../assets/icons/mobileLogo.svg';
 import { OutlineButton } from '../../theme';
 
 export const Wrapper = styled.div`
@@ -17,13 +18,21 @@ export const Content = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  @media screen and (max-width: 971px) {
+  @media screen and (max-width: 992px) {
     padding: 0 40px;
+  }
+
+  @media screen and (max-width: 576px) {
+    padding: 0 20px;
   }
 `
 
 export const Logo = styled(LogoIcon)`
   margin-bottom: 6px;
+`
+
+export const MobileLogo = styled(MobileLogoIcon)`
+  display: inline-block;
 `
 
 export const BurgerTabletIcon = styled(BurgerTablet)`
@@ -34,6 +43,11 @@ export const BurgerTabletIcon = styled(BurgerTablet)`
   @media screen and (max-width: 880px) {
     display: block;
   }
+  
+  @media screen and (max-width: 576px) {
+    width: 33px;
+    height: 20px;
+  }
 `
 
 export const Navigation = styled.nav`
@@ -41,7 +55,7 @@ export const Navigation = styled.nav`
   align-items: center;
   gap: 40px;
 
-  @media screen and (max-width: 971px) {
+  @media screen and (max-width: 992px) {
     gap: 20px;
   }
 
@@ -58,7 +72,7 @@ export const Links = styled.div`
     gap: 20px;
   }
 
-  @media screen and (max-width: 920px) {
+  @media screen and (max-width: 992px) {
     gap: 15px;
   }
   
@@ -95,7 +109,7 @@ export const Link = styled.a`
     color: #9E40B5;
   }
 
-  @media screen and (max-width: 920px) {
+  @media screen and (max-width: 992px) {
     font-size: 16px;
   }
 `

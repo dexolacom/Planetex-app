@@ -1,13 +1,19 @@
 import React from 'react';
-import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link, BurgerTabletIcon, ConnectButton } from './styles';
+import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link, BurgerTabletIcon, ConnectButton, MobileLogo } from './styles';
 import AccountContainer from '../AccountContainer/AccountContainer';
+import useCheckIsMobile from '../../hooks/useCheckIsMobile';
 
 
 const Header = () => {
+  const { isMobile } = useCheckIsMobile()
+
   return (
     <Wrapper>
       <Content>
-        <Logo/>
+        {isMobile
+          ? <MobileLogo/>
+          : <Logo/>
+        }
         <Navigation>
           <Links>
             <RouterLink to='/presale'>Pre-Sale</RouterLink>
