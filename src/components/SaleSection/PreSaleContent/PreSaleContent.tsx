@@ -1,5 +1,16 @@
 import React from 'react';
-import {Title, Wrapper, Text, Tag, TitleContainer, Form, Input, Select, Button, Content} from './styles';
+import {
+  Title,
+  Wrapper,
+  Text,
+  Tag,
+  TitleContainer,
+  Form,
+  Input,
+  Select,
+  Button,
+  Content
+} from './styles';
 
 
 const PreSaleContent = () => {

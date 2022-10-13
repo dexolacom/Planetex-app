@@ -18,6 +18,11 @@ export const WalletContainer = styled.div`
   background: #D4E5FF;
   border-radius: 10px;
   padding: 8px 12px;
+  font-family: 'IBM Plex Sans', sans-serif;
+
+  @media screen and (max-width: 880px) {
+    font-size: 14px;
+  }
 `
 
 export const ArrowIcon = styled(Arrow)`

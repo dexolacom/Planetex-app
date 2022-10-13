@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { SolidButton } from '../../../theme';
 import arrow from '../../../assets/icons/selector.svg'
 
+
 export const Wrapper = styled.div`
   clip-path: polygon(8% 0,100% 0,100% 100%,0 100%,0 12%);
   border: 1px solid #372458;
@@ -31,7 +32,6 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   padding: 75px 120px 80px 120px;
-  
   background: linear-gradient(
           98.66deg, rgba(31, 53, 255, 0.29) 2.6%,
           rgba(31, 53, 255, 0) 26.21%,
@@ -39,6 +39,10 @@ export const Content = styled.div`
           rgba(31, 53, 255, 0.24) 100%
   );
   backdrop-filter: blur(3.5px);
+
+  @media screen and (max-width: 880px) {
+    padding: 45px 45px 55px 95px;
+  }
 `
 
 export const TitleContainer = styled.div`
@@ -46,6 +50,10 @@ export const TitleContainer = styled.div`
   align-items: center;
   gap: 90px;
   margin-bottom: 35px;
+  
+  @media screen and (max-width: 880px) {
+    gap: 70px;
+  }
 `
 
 export const Title = styled.h1`
@@ -53,6 +61,15 @@ export const Title = styled.h1`
   font-size: 48px;
   line-height: 59px;
   color: #D4E5FF;
+
+  @media screen and (max-width: 1100px) {
+    font-size: 35px;
+    line-height: 35px;
+  }
+
+  @media screen and (max-width: 980px) {
+    font-size: 30px;
+  }
 `
 
 export const Tag = styled.div`
@@ -64,6 +81,17 @@ export const Tag = styled.div`
   line-height: 22px;
   color: #D4E5FF;
   padding: 10px 27px;
+
+  @media screen and (max-width: 1100px) {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+  
+  @media screen and (max-width: 980px) {
+    font-size: 14px;
+    line-height: 17px;
+    padding: 9px;
+  }
 `
 
 export const Text = styled.p`
@@ -72,6 +100,11 @@ export const Text = styled.p`
   line-height: 24px;
   color: #BDCCEA;
   margin-bottom: 50px;
+  
+  @media screen and (max-width: 880px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 `
 
 export const Form = styled.form`

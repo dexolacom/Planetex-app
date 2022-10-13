@@ -17,8 +17,8 @@ export const Content = styled.div`
   width: 100%;
   justify-content: space-between;
 
-  @media (max-width: 971px) {
-    padding: 0 30px;
+  @media screen and (max-width: 971px) {
+    padding: 0 40px;
   }
 `
 
@@ -31,7 +31,7 @@ export const BurgerTabletIcon = styled(BurgerTablet)`
   cursor: pointer;
   margin-left: 25px;
 
-  @media (max-width: 880px) {
+  @media screen and (max-width: 880px) {
     display: block;
   }
 `
@@ -41,11 +41,11 @@ export const Navigation = styled.nav`
   align-items: center;
   gap: 40px;
 
-  @media (max-width: 971px) {
+  @media screen and (max-width: 971px) {
     gap: 20px;
   }
 
-  @media (max-width: 880px) {
+  @media screen and (max-width: 880px) {
     gap: 0;
   }
 `
@@ -54,11 +54,15 @@ export const Links = styled.div`
   display: flex;
   gap: 35px;
   
-  @media (max-width: 971px) {
+  @media screen and (max-width: 1005px) {
     gap: 20px;
   }
+
+  @media screen and (max-width: 920px) {
+    gap: 15px;
+  }
   
-  @media (max-width: 880px) {
+  @media screen and (max-width: 880px) {
     display: none;
   }
 `
@@ -90,12 +94,16 @@ export const Link = styled.a`
   &:hover {
     color: #9E40B5;
   }
+
+  @media screen and (max-width: 920px) {
+    font-size: 16px;
+  }
 `
 
 export const ConnectButton = styled(OutlineButton)`
   padding: 13px 25px;
 
-  @media (max-width: 880px) {
-    padding: 12px 23px;
+  @media screen and (max-width: 880px) {
+    display: none;
   }
 `

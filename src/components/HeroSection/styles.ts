@@ -5,6 +5,10 @@ export const Wrapper = styled.div``
 export const Content = styled.div`
   display: flex;
   gap: 25px;
+
+  @media screen and (max-width: 880px) {
+    width: 80%;
+  }
 `
 
 export const TextContainer = styled.div`
@@ -27,6 +31,11 @@ export const Text = styled.p`
   line-height: 23px;
   max-width: 700px;
   color: #D4E5FF;
+
+  @media screen and (max-width: 880px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
 `
 
 export const Img = styled.img`

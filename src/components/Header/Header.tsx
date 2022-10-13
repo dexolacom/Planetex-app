@@ -15,8 +15,8 @@ const Header = () => {
             <Link href='#'>Main Sale</Link>
             <Link href='#'>Private Sale</Link>
           </Links>
-          {/*<AccountContainer/>*/}
-          <ConnectButton>Connect Wallet</ConnectButton>
+          <AccountContainer/>
+          {/*<ConnectButton>Connect Wallet</ConnectButton>*/}
           <BurgerTabletIcon/>
         </Navigation>
       </Content>
