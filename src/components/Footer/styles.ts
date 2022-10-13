@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   width: 75%;
   padding-bottom: 50px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 
 export const Column = styled.div`
@@ -16,6 +20,14 @@ export const Column = styled.div`
 export const ColumnContainer = styled.div`
   display: flex;
   gap: 160px;
+
+  @media screen and (max-width: 992px) {
+    gap: 85px;
+  }
+
+  @media screen and (max-width: 750px) {
+    gap: 35px;
+  }
 `
 
 export const List = styled.ul`
@@ -36,6 +48,10 @@ export const List = styled.ul`
   span {
     margin-bottom: 23px;
   }
+
+  @media screen and (max-width: 992px) {
+    font-size: 16px;
+  }
 `
 
 export const Title = styled.h4`
@@ -46,4 +62,8 @@ export const Title = styled.h4`
   font-size: 32px;
   line-height: 38px;
   color: #D4E5FF;
+
+  @media screen and (max-width: 992px) {
+    font-size: 20px;
+  }
 `

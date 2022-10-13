@@ -1,13 +1,19 @@
 import React from 'react';
-import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link } from './styles';
-import { ConnectButton } from '../../theme';
+import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link, BurgerTabletIcon, ConnectButton, MobileLogo } from './styles';
+import AccountContainer from '../AccountContainer/AccountContainer';
+import useCheckIsMobile from '../../hooks/useCheckIsMobile';
 
 
 const Header = () => {
+  const { isMobile } = useCheckIsMobile()
+
   return (
     <Wrapper>
       <Content>
-        <Logo/>
+        {isMobile
+          ? <MobileLogo/>
+          : <Logo/>
+        }
         <Navigation>
           <Links>
             <RouterLink to='/presale'>Pre-Sale</RouterLink>
@@ -15,7 +21,9 @@ const Header = () => {
             <Link href='#'>Main Sale</Link>
             <Link href='#'>Private Sale</Link>
           </Links>
-          <ConnectButton>Connect Wallet</ConnectButton>
+          <AccountContainer/>
+          {/*<ConnectButton>Connect Wallet</ConnectButton>*/}
+          <BurgerTabletIcon/>
         </Navigation>
       </Content>
     </Wrapper>
