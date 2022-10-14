@@ -1,4 +1,5 @@
 import React from 'react';
+import { SolidButton } from '../../../theme';
 import {
   Title,
   Wrapper,
@@ -8,12 +9,14 @@ import {
   InputContainer,
   Input,
   Select,
-  Button,
-  Content
+  Content,
 } from './styles';
+import { useWeb3React } from '@web3-react/core';
 
 
 const PreSaleContent = () => {
+  const { chainId } = useWeb3React()
+
   return (
     <Wrapper>
       <Content>
@@ -25,11 +28,20 @@ const PreSaleContent = () => {
         <InputContainer>
           <Input/>
           <Select>
-            <option>ETH</option>
-            <option>USDT</option>
+            {chainId === 97
+              ? <>
+                <option>BNB</option>
+                <option>BUSD</option>
+              </>
+              : <>
+                <option>ETH</option>
+                <option>USDT</option>
+              </>
+            }
+
           </Select>
         </InputContainer>
-        <Button>Buy Token</Button>
+        <SolidButton>Buy Token</SolidButton>
       </Content>
     </Wrapper>
   );

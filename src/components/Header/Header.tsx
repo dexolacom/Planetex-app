@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link, BurgerTabletIcon, ConnectButton, MobileLogo, BurgerTabletCrossIcon } from './styles';
 import AccountContainer from './AccountContainer/AccountContainer';
 import useCheckIsMobile from '../../hooks/useCheckIsMobile';
+import { useWeb3React } from '@web3-react/core';
+import { connectors } from '../../constants/connectors';
+import { connectWallet, connectWalletOnPageLoad } from '../../utils/utils';
+import { HeaderProps } from '../../constants/types';
 
 
-const Header = ({isBurgerMenu, setIsBurgerMenu}:{isBurgerMenu: boolean, setIsBurgerMenu: (b: boolean) => void}) => {
-  const { isMobile } = useCheckIsMobile()
+const Header = ({ isBurgerMenu, setIsBurgerMenu }:HeaderProps) => {
+  const { isMobile } = useCheckIsMobile();
+  const { account, activate } = useWeb3React();
+
+  useEffect(() => {
+    connectWalletOnPageLoad(activate)
+    // @ts-ignore
+    // check for metamask lock
+    window.ethereum.on('accountsChanged', (accounts) => {
+      if (!accounts[0]) localStorage.removeItem('provider')
+    });
+  }, []);
 
   return (
     <Wrapper>
       <Content>
-        {isMobile
-          ? <MobileLogo/>
-          : <Logo/>
-        }
+        {isMobile ? <MobileLogo/> : <Logo/>}
         <Navigation>
           <Links>
             <RouterLink to='/presale'>Pre-Sale</RouterLink>
@@ -21,8 +32,12 @@ const Header = ({isBurgerMenu, setIsBurgerMenu}:{isBurgerMenu: boolean, setIsBur
             <Link href='#'>Main Sale</Link>
             <Link href='#'>Private Sale</Link>
           </Links>
-          <AccountContainer/>
-          {/*<ConnectButton>Connect Wallet</ConnectButton>*/}
+          {account
+            ? <AccountContainer/>
+            : <ConnectButton onClick={() => connectWallet(activate, connectors.injected, 'injected')}>
+               Connect Wallet
+              </ConnectButton>
+          }
           {isBurgerMenu
             ? <BurgerTabletCrossIcon onClick={() => setIsBurgerMenu(false)}/>
             : <BurgerTabletIcon onClick={() => setIsBurgerMenu(true)}/>

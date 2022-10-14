@@ -24,6 +24,7 @@ export const WalletContainer = styled.div`
   border-radius: 10px;
   padding: 8px 12px;
   font-family: 'IBM Plex Sans', sans-serif;
+  flex: 1;
 
   @media screen and (max-width: 880px) {
     font-size: 14px;
