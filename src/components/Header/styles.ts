@@ -11,6 +11,11 @@ export const Wrapper = styled.div`
   align-items: center;
   height: 120px;
 
+  @media screen and (max-width: 880px) {
+    height: 100px;
+  }
+
+
   @media screen and (max-width: 576px) {
     height: 75px;
   }
