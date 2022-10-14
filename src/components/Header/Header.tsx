@@ -16,9 +16,12 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }:HeaderProps) => {
     connectWalletOnPageLoad(activate)
     // @ts-ignore
     // check for metamask lock
-    window.ethereum.on('accountsChanged', (accounts) => {
-      if (!accounts[0]) localStorage.removeItem('provider')
-    });
+    if (window.ethereum) {
+      // @ts-ignore
+      window.ethereum.on('accountsChanged', (accounts) => {
+        if (!accounts[0]) localStorage.removeItem('provider')
+      });
+    }
   }, []);
 
   return (
