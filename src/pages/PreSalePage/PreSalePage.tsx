@@ -9,11 +9,11 @@ const PreSalePage = () => {
   const { presale } = heroInfo
   return (
     <>
-      {/*<HeroSection title={presale?.title} text={presale?.text} img={presale?.img}/>*/}
-      {/*<ButtonsContainer>*/}
-      {/*  <OutlineButton>Ethereum Network</OutlineButton>*/}
-      {/*  <OutlineButton>BSC Network</OutlineButton>*/}
-      {/*</ButtonsContainer>*/}
+      <HeroSection title={presale?.title} text={presale?.text} img={presale?.img}/>
+      <ButtonsContainer>
+        <OutlineButton>Ethereum Network</OutlineButton>
+        <OutlineButton>BSC Network</OutlineButton>
+      </ButtonsContainer>
       <SaleSection/>
     </>
   );

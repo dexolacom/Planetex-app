@@ -1,14 +1,17 @@
 import React from 'react';
 import { Content, Wrapper, WalletContainer, ArrowIcon } from './styles';
-import { stringTrim } from '../../../utils/utils';
+import { disconnectWallet, stringTrim } from '../../../utils/utils';
+import { useWeb3React } from '@web3-react/core';
 
 const AccountContainer = () => {
+  const { account, deactivate } = useWeb3React()
+  
   return (
     <Wrapper>
       <Content>
-        <ArrowIcon/>
+        <ArrowIcon onClick={() => disconnectWallet(deactivate)}/>
         <WalletContainer>
-          <span>{stringTrim('0x7ff7DAb2f9538613E68ddeAAb823DF55CEB56c42', 14)}</span>
+          <span>{stringTrim(account, 14)}</span>
         </WalletContainer>
       </Content>
     </Wrapper>
