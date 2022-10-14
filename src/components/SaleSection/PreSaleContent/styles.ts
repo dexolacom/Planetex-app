@@ -155,7 +155,7 @@ export const InputContainer = styled.div`
 export const Input = styled.input`
   background-color: #06080C;
   border: 1px solid #372458;
-  border-radius: 66px;
+  border-radius: 10px;
   color: #BDCCEA;
   padding: 13px 24px;
   outline: none;
@@ -172,7 +172,7 @@ export const Input = styled.input`
 
 export const Select = styled.select`
   border: 1px solid #372458;
-  border-radius: 66px;
+  border-radius: 10px;
   padding: 13px 45px 13px 22px;
   color: #762ACE;
   font-weight: 600;
@@ -193,4 +193,3 @@ export const Select = styled.select`
     border: 1px solid #AF76FD;
   }
 `
-export const Button = styled(SolidButton)``

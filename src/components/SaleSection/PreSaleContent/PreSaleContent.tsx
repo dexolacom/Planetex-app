@@ -1,4 +1,5 @@
 import React from 'react';
+import { SolidButton } from '../../../theme';
 import {
   Title,
   Wrapper,
@@ -8,8 +9,7 @@ import {
   InputContainer,
   Input,
   Select,
-  Button,
-  Content
+  Content,
 } from './styles';
 
 
@@ -29,7 +29,7 @@ const PreSaleContent = () => {
             <option>USDT</option>
           </Select>
         </InputContainer>
-        <Button>Buy Token</Button>
+        <SolidButton>Buy Token</SolidButton>
       </Content>
     </Wrapper>
   );
