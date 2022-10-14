@@ -136,6 +136,20 @@ export const InputContainer = styled.div`
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+    align-items: flex-end;
+    
+
+    > * {
+      &:first-child {
+        order: 2
+      }
+    }
+  }
 `
 
 export const Input = styled.input`
@@ -146,6 +160,14 @@ export const Input = styled.input`
   padding: 13px 24px;
   outline: none;
   flex: 0.7;
+
+  &:focus {
+    border: 1px solid #AF76FD;
+  }
+  
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
 `
 
 export const Select = styled.select`
@@ -166,5 +188,9 @@ export const Select = styled.select`
   background-position: right .7em top 50%, 0 0;
   background-size: 1.1em auto, 100%;
   background-color: #06080C;
+
+  &:focus {
+    border: 1px solid #AF76FD;
+  }
 `
 export const Button = styled(SolidButton)``

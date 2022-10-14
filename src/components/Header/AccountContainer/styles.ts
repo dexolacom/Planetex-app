@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as Arrow } from '../../assets/icons/walletArrow.svg';
+import { ReactComponent as Arrow } from '../../../assets/icons/walletArrow.svg';
 
 
 export const Wrapper = styled.div`
