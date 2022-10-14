@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { OutlineButton } from '../../../theme';
 
 export const Wrapper = styled.nav`
   background: rgba(1, 2, 4, 0.79);
@@ -36,4 +37,12 @@ export const RouterLink = styled(NavLink)`
   text-decoration: none;
   color: #D4E5FF;
   font-size: 24px;
+`
+
+export const ConnectButton = styled(OutlineButton)`
+  padding: 13px 62px;
+  
+  @media screen and (max-width: 880px) {
+    font-size: 18px;
+  }
 `
