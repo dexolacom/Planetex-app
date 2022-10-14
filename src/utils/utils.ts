@@ -1,5 +1,6 @@
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { connectors } from '../constants/connectors';
+import { networks } from '../constants/networks';
 
 export const stringTrim = (string: string | null | undefined, maxLength: number) => {
   if (!string) return string;
@@ -40,3 +41,32 @@ export const disconnectWallet = (deactivate: any) => {
   localStorage.removeItem('provider');
   deactivate();
 };
+
+export const changeNetwork = async(networkName: string) => {
+  try {
+    // @ts-ignore
+    if (!window.ethereum) throw new Error('No crypto wallet found')
+
+    if (networkName === 'goerli') {
+      // @ts-ignore
+      return await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [
+          {chainId: `0x${Number(5).toString(16)}`}
+        ]
+      })
+    }
+    // @ts-ignore
+    await window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [
+        {
+          // @ts-ignore
+          ...networks[networkName]
+        }
+      ]
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}
