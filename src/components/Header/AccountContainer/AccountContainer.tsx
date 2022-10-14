@@ -1,6 +1,6 @@
 import React from 'react';
 import { Content, Wrapper, WalletContainer, ArrowIcon } from './styles';
-import { stringTrim } from '../../utils/utils';
+import { stringTrim } from '../../../utils/utils';
 
 const AccountContainer = () => {
   return (

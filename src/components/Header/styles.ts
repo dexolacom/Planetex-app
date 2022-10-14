@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as LogoIcon } from '../../assets/icons/logo.svg'
 import { ReactComponent as BurgerTablet } from '../../assets/icons/burgerTablet.svg'
+import { ReactComponent as BurgerTabletCross } from '../../assets/icons/burgerTabletCross.svg'
 import { ReactComponent as MobileLogoIcon} from '../../assets/icons/mobileLogo.svg';
 import { OutlineButton } from '../../theme';
 
@@ -9,6 +10,10 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   height: 120px;
+
+  @media screen and (max-width: 576px) {
+    height: 75px;
+  }
 `
 
 export const Content = styled.div`
@@ -39,11 +44,28 @@ export const BurgerTabletIcon = styled(BurgerTablet)`
   display: none;
   cursor: pointer;
   margin-left: 25px;
+  width: 55px;
 
   @media screen and (max-width: 880px) {
     display: block;
   }
   
+  @media screen and (max-width: 576px) {
+    width: 33px;
+    height: 20px;
+  }
+`
+
+export const BurgerTabletCrossIcon = styled(BurgerTabletCross)`
+  display: none;
+  cursor: pointer;
+  margin-left: 25px;
+  width: 55px;
+
+  @media screen and (max-width: 880px) {
+    display: block;
+  }
+
   @media screen and (max-width: 576px) {
     width: 33px;
     height: 20px;

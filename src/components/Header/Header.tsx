@@ -1,10 +1,10 @@
 import React from 'react';
-import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link, BurgerTabletIcon, ConnectButton, MobileLogo } from './styles';
-import AccountContainer from '../AccountContainer/AccountContainer';
+import { Content, Wrapper, Navigation, Links, RouterLink, Logo, Link, BurgerTabletIcon, ConnectButton, MobileLogo, BurgerTabletCrossIcon } from './styles';
+import AccountContainer from './AccountContainer/AccountContainer';
 import useCheckIsMobile from '../../hooks/useCheckIsMobile';
 
 
-const Header = () => {
+const Header = ({isBurgerMenu, setIsBurgerMenu}:{isBurgerMenu: boolean, setIsBurgerMenu: (b: boolean) => void}) => {
   const { isMobile } = useCheckIsMobile()
 
   return (
@@ -23,7 +23,10 @@ const Header = () => {
           </Links>
           <AccountContainer/>
           {/*<ConnectButton>Connect Wallet</ConnectButton>*/}
-          <BurgerTabletIcon/>
+          {isBurgerMenu
+            ? <BurgerTabletCrossIcon onClick={() => setIsBurgerMenu(false)}/>
+            : <BurgerTabletIcon onClick={() => setIsBurgerMenu(true)}/>
+          }
         </Navigation>
       </Content>
     </Wrapper>
