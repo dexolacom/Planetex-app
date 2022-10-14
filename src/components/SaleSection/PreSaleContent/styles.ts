@@ -136,6 +136,20 @@ export const InputContainer = styled.div`
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+    align-items: flex-end;
+    
+
+    > * {
+      &:first-child {
+        order: 2
+      }
+    }
+  }
 `
 
 export const Input = styled.input`
@@ -146,6 +160,10 @@ export const Input = styled.input`
   padding: 13px 24px;
   outline: none;
   flex: 0.7;
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
 `
 
 export const Select = styled.select`
