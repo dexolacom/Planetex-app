@@ -14,9 +14,8 @@ import {
 import { useWeb3React } from '@web3-react/core';
 import { buyToken } from '../../../utils/buyToken';
 
-
 const PreSaleContent = () => {
-  const { chainId } = useWeb3React()
+  const { chainId } = useWeb3React();
 
   return (
     <Wrapper>
@@ -27,19 +26,19 @@ const PreSaleContent = () => {
         </TitleContainer>
         <Text>Stake your SEAN up to 35 days to earn extra SEAN.</Text>
         <InputContainer>
-          <Input/>
+          <Input />
           <Select>
-            {chainId === 97
-              ? <>
+            {chainId === 97 ? (
+              <>
                 <option>BNB</option>
                 <option>BUSD</option>
               </>
-              : <>
+            ) : (
+              <>
                 <option>ETH</option>
                 <option>USDT</option>
               </>
-            }
-
+            )}
           </Select>
         </InputContainer>
         <SolidButton onClick={() => buyToken(chainId)}>Buy Token</SolidButton>
