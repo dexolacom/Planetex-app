@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import styled from 'styled-components';
-import arrow from '../../../assets/icons/selector.svg';
+// import arrow from '../../../assets/icons/selector.svg';
 
 export const Wrapper = styled.div`
   clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
