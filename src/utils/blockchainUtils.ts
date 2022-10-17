@@ -1,9 +1,9 @@
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { connectors } from '../constants/connectors';
 import { networks } from '../constants/networks';
-import { web3 } from '../constants/constants';
-import { AbiItem } from 'web3-utils';
-import buyTokenAbi from '../constants/abis/buyTokenAbi.json'
+import { getTokenContract, getTokenContractAddress } from './contracts';
+import { buyToken } from './buyToken';
+import { maxApproveAmount } from '../constants/constants';
 
 export const connectWallet = async (activate: any, connector: AbstractConnector, type: string) => {
   try {
@@ -60,17 +60,32 @@ export const changeNetwork = async(networkName: string) => {
   }
 }
 
-export const getContractAddress = (chainId: number | undefined) => {
-  const addresses = {
-    1: '',
-    5: '',
-    56: '',
-    97: '0xe68bdD7302E8A9b8e1B51BC2949E89Eec4Da9568',
+export const checkAllowance = async (account: string | null | undefined, contract: any, spender: string) => {
+  return await contract.methods.allowance(account, spender).call()
+}
+
+export const checkApprove = async (chainId: number | undefined, account: string | null | undefined, tokenAmount: string) => {
+  const tokenContract = getTokenContract(chainId)
+  const tokenAddress = getTokenContractAddress(chainId)
+
+  const allowance = await checkAllowance(account, tokenContract, tokenAddress)
+
+  if (allowance === '0') {
+    await approve(tokenContract, account).then(() => buyToken(chainId, tokenAmount))
   }
 
-  return addresses[chainId as keyof typeof addresses] ?? console.error('chainId is undefined')
-};
+  return await buyToken(chainId, tokenAmount)
+}
 
-export const getContract = (chainId: number | undefined) => {
-  return new web3.eth.Contract(buyTokenAbi as AbiItem[], getContractAddress(chainId))
-};
+export const approve = async (contract: any, account: string | null | undefined) => {
+  return await contract.methods
+    .approve(account, maxApproveAmount)
+    .send({ from: account })
+    // .on('transactionHash', function(hash) {})
+    // .on('receipt', function(receipt) {
+    //   setIsApprovePending(false)
+    // })
+    // .on('error', function(error, receipt) {
+    //   setIsApprovePending(false)
+    // })
+}

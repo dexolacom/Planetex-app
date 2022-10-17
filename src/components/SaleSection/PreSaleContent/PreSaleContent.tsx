@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SolidButton } from '../../../theme';
 import {
   Title,
@@ -12,11 +12,21 @@ import {
   Content,
 } from './styles';
 import { useWeb3React } from '@web3-react/core';
-import { buyToken } from '../../../utils/buyToken';
+import { checkApprove } from '../../../utils/blockchainUtils';
 
 
 const PreSaleContent = () => {
-  const { chainId } = useWeb3React()
+  const { chainId, account } = useWeb3React()
+  const [tokenAmount, setTokenAmount] = useState('')
+  const [tokenName, setTokenName] = useState('')
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value
+
+    if (input.match(/^[0-9]*[.,]?[0-9]*$/)) {
+      return setTokenAmount(input)
+    }
+  };
 
   return (
     <Wrapper>
@@ -27,8 +37,8 @@ const PreSaleContent = () => {
         </TitleContainer>
         <Text>Stake your SEAN up to 35 days to earn extra SEAN.</Text>
         <InputContainer>
-          <Input/>
-          <Select>
+          <Input value={tokenAmount} onChange={e => handleInputChange(e)} placeholder={'0.0'} inputMode="decimal" maxLength={10}/>
+          <Select onChange={e => console.log(e.target.value)}>
             {chainId === 97
               ? <>
                 <option>BNB</option>
@@ -39,10 +49,9 @@ const PreSaleContent = () => {
                 <option>USDT</option>
               </>
             }
-
           </Select>
         </InputContainer>
-        <SolidButton onClick={() => buyToken(chainId)}>Buy Token</SolidButton>
+        <SolidButton onClick={() => checkApprove(chainId, account, tokenAmount)}>Buy Token</SolidButton>
       </Content>
     </Wrapper>
   );
