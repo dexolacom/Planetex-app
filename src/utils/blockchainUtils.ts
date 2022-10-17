@@ -71,10 +71,10 @@ export const checkApprove = async (chainId: number | undefined, account: string 
   const allowance = await checkAllowance(account, tokenContract, spender)
 
   if (allowance === '0') {
-    await approve(tokenContract, account, spender).then(() => buyToken(chainId, tokenAmount))
+    await approve(tokenContract, account, spender).then(() => buyToken(chainId, tokenAmount, account))
   }
 
-  return await buyToken(chainId, tokenAmount)
+  return await buyToken(chainId, tokenAmount, account)
 }
 
 export const approve = async (contract: any, account: string | null | undefined, spender: string) => {
