@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { SolidButton } from '../../../theme';
 import {
   Title,
@@ -7,11 +8,10 @@ import {
   // Select,
   Content,
 } from './styles';
-import { useWeb3React } from '@web3-react/core';
-import { buyToken } from '../../../utils/buyToken';
+// import { useWeb3React } from '@web3-react/core';
 
 const NftSaleContent = () => {
-  const { chainId } = useWeb3React();
+  // const { chainId } = useWeb3React();
 
   // return <div>nft</div>;
 
@@ -27,7 +27,8 @@ const NftSaleContent = () => {
           35 days extra SEAN.ur SEAN up to 35 days to earn extra SEays to earn
           extra SEto earn extra SEAN.ur SEA
         </Text>
-        {/* <SolidButton onClick={() => buyToken(chainId)}>Mint</SolidButton> */}
+
+        <SolidButton onClick={() => console.log('=> Mint')}>Mint</SolidButton>
       </Content>
     </Wrapper>
   );

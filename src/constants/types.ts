@@ -6,6 +6,10 @@ export interface HeroProps {
 
 export interface HeroSectionStyleProps {
   marginTop?: string;
+  paddingRight?: string;
+  marginRight?: string;
+  width?: string;
+  height?: string;
 }
 
 export interface SaleSectionProps {
