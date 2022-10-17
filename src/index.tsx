@@ -4,11 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import { Web3ReactProvider } from '@web3-react/core';
-import { ExternalProvider, JsonRpcFetchFunc, Web3Provider } from '@ethersproject/providers';
+import Web3 from 'web3';
+import { provider } from 'web3-core';
 
-function getLibrary(provider: ExternalProvider | JsonRpcFetchFunc) {
-  return new Web3Provider(provider);
-}
+
+const getLibrary = (provider: provider) => {
+  return new Web3(provider)
+};
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
