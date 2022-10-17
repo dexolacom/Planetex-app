@@ -1,5 +1,3 @@
-/* eslint-disable jsx-quotes */
-/* eslint-disable max-lines-per-function */
 import React, { useEffect } from 'react';
 import {
   Content,
