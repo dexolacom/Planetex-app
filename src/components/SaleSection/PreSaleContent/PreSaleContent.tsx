@@ -12,6 +12,7 @@ import {
   Content,
 } from './styles';
 import { useWeb3React } from '@web3-react/core';
+import { buyToken } from '../../../utils/buyToken';
 
 
 const PreSaleContent = () => {
@@ -41,7 +42,7 @@ const PreSaleContent = () => {
 
           </Select>
         </InputContainer>
-        <SolidButton>Buy Token</SolidButton>
+        <SolidButton onClick={() => buyToken(chainId)}>Buy Token</SolidButton>
       </Content>
     </Wrapper>
   );

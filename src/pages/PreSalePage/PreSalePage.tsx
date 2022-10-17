@@ -4,7 +4,7 @@ import { heroInfo } from '../../constants/constants'
 import { OutlineButton } from '../../theme';
 import { ButtonsContainer } from './styles';
 import SaleSection from '../../components/SaleSection/SaleSection';
-import { changeNetwork } from '../../utils/utils';
+import { changeNetwork } from '../../utils/blockchainUtils';
 
 const PreSalePage = () => {
   const { presale } = heroInfo
