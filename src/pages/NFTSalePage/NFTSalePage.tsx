@@ -2,7 +2,7 @@ import HeroSection from '../../components/HeroSection/HeroSection';
 import { heroInfo } from '../../constants/constants';
 import SaleSection from '../../components/SaleSection/SaleSection';
 
-const PreSalePage = () => {
+const NFTSalePage = () => {
   const { nftSale } = heroInfo;
 
   return (
@@ -17,4 +17,4 @@ const PreSalePage = () => {
   );
 };
 
-export default PreSalePage;
+export default NFTSalePage;
