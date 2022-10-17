@@ -1,7 +1,7 @@
 import { getTokenSaleContract } from './contracts';
 
 
-export const buyToken = async (chainId: number | undefined, tokenAmount: string) => {
+export const buyToken = async (chainId: number | undefined, tokenAmount: string, account: any) => {
   const contract = await getTokenSaleContract(chainId)
   const isRoundStarted = await contract.methods.isRoundStared(0).call()
 
@@ -9,9 +9,10 @@ export const buyToken = async (chainId: number | undefined, tokenAmount: string)
 
   try {
     if (chainId === 5 || chainId === 97) {
-      console.log(1);
+      const formattedAmount = (+tokenAmount * 10 ** 18).toString()
       return await contract.methods
-        .buyForErc20(0, tokenAmount).call()
+        .buyForErc20(0, formattedAmount)
+        .send({from: account})
         // .on('transactionHash', function(hash: string) {
         //
         // })
@@ -35,7 +36,7 @@ export const buyToken = async (chainId: number | undefined, tokenAmount: string)
     //
     //   })
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 
 };
