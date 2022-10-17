@@ -1,7 +1,7 @@
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { connectors } from '../constants/connectors';
 import { networks } from '../constants/networks';
-import { getTokenContract, getTokenContractAddress } from './contracts';
+import { getTokenContract, getTokenSaleContractAddress } from './contracts';
 import { buyToken } from './buyToken';
 import { maxApproveAmount } from '../constants/constants';
 
@@ -66,20 +66,20 @@ export const checkAllowance = async (account: string | null | undefined, contrac
 
 export const checkApprove = async (chainId: number | undefined, account: string | null | undefined, tokenAmount: string) => {
   const tokenContract = getTokenContract(chainId)
-  const tokenAddress = getTokenContractAddress(chainId)
+  const spender = getTokenSaleContractAddress(chainId)
 
-  const allowance = await checkAllowance(account, tokenContract, tokenAddress)
+  const allowance = await checkAllowance(account, tokenContract, spender)
 
   if (allowance === '0') {
-    await approve(tokenContract, account).then(() => buyToken(chainId, tokenAmount))
+    await approve(tokenContract, account, spender).then(() => buyToken(chainId, tokenAmount))
   }
 
   return await buyToken(chainId, tokenAmount)
 }
 
-export const approve = async (contract: any, account: string | null | undefined) => {
+export const approve = async (contract: any, account: string | null | undefined, spender: string) => {
   return await contract.methods
-    .approve(account, maxApproveAmount)
+    .approve(spender, maxApproveAmount)
     .send({ from: account })
     // .on('transactionHash', function(hash) {})
     // .on('receipt', function(receipt) {
