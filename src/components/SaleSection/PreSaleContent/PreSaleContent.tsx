@@ -14,17 +14,16 @@ import {
 import { useWeb3React } from '@web3-react/core';
 import { checkApprove } from '../../../utils/blockchainUtils';
 
-
 const PreSaleContent = () => {
-  const { chainId, account } = useWeb3React()
-  const [tokenAmount, setTokenAmount] = useState('')
-  const [tokenName, setTokenName] = useState('')
+  const { chainId, account } = useWeb3React();
+  const [tokenAmount, setTokenAmount] = useState('');
+  const [tokenName, setTokenName] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.target.value
+    const input = e.target.value;
 
     if (input.match(/^[0-9]*[.,]?[0-9]*$/)) {
-      return setTokenAmount(input)
+      return setTokenAmount(input);
     }
   };
 
@@ -62,7 +61,7 @@ const PreSaleContent = () => {
                 <option value='ETH'>ETH</option>
                 <option value='USDT'>USDT</option>
               </>
-            }
+            )}
           </Select>
         </InputContainer>
         <SolidButton disabled={!tokenAmount} onClick={() => checkApprove(chainId, account, tokenAmount, tokenName)}>
