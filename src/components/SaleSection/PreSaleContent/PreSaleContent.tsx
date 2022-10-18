@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable jsx-quotes */
+/* eslint-disable max-lines-per-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { SolidButton } from '../../../theme';
 import {
