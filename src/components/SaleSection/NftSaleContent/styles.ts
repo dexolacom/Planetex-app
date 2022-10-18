@@ -35,6 +35,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
+  position: relative;
   padding: 50px 70px 60px 80px;
   background-image: url(${NFTSaleBg});
   background-repeat: no-repeat;
@@ -48,6 +49,73 @@ export const Content = styled.div`
   @media screen and (max-width: 576px) {
     padding: 30px 20px 40px;
     text-align: center;
+  }
+`;
+
+export const HeroGroupImg = styled.img`
+  position: absolute;
+  width: 170px;
+  top: 20px;
+  left: 310px;
+
+  @media screen and (max-width: 880px) {
+    width: 115px;
+    top: 20px;
+    left: 195px;
+  }
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+`;
+
+export const PriceContainer = styled.div`
+  position: absolute;
+  width: 78px;
+  height: 78px;
+  top: 25px;
+  right: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #811fff;
+  border-radius: 1px;
+
+  @media screen and (max-width: 880px) {
+    top: 20px;
+    right: 25px;
+    width: 59px;
+    height: 59px;
+    border: 2px solid #811fff;
+    border-radius: 1px;
+  }
+
+  @media screen and (max-width: 576px) {
+    top: 17px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
+    border: 1.12821px solid #811fff;
+    border-radius: 0.564103px;
+  }
+`;
+
+export const PriceText = styled.span`
+  color: red;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: 0.015em;
+  color: #d4e5ff;
+
+  @media screen and (max-width: 880px) {
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 18px;
+    line-height: 22px;
   }
 `;
 

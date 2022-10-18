@@ -5,9 +5,13 @@ import NFTSaleDamage from '../../../assets/icons/NFTSaleDamage.svg';
 import NFTSaleSpeed from '../../../assets/icons/NFTSaleSpeed.svg';
 import NFTSaleHealth from '../../../assets/icons/NFTSaleHealth.svg';
 import NFTSaleArmor from '../../../assets/icons/NFTSaleArmor.svg';
+import NFTSaleHeroGroup from '../../../assets/images/NFTSaleHeroGroup.svg';
 import {
   Wrapper,
   Content,
+  HeroGroupImg,
+  PriceContainer,
+  PriceText,
   MainContentWrap,
   Title,
   Text,
@@ -31,6 +35,10 @@ const NftSaleContent = () => {
   return (
     <Wrapper>
       <Content>
+        <HeroGroupImg src={NFTSaleHeroGroup} />
+        <PriceContainer>
+          <PriceText>49$</PriceText>
+        </PriceContainer>
         <MainContentWrap>
           <TextContainer>
             <Title>NFT-Sale</Title>
