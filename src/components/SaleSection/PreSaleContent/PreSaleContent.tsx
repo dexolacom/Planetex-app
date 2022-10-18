@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SolidButton } from '../../../theme';
 import {
   Title,
@@ -27,6 +27,12 @@ const PreSaleContent = () => {
     }
   };
 
+  useEffect(() => {
+    // get initial tokenName
+    if (chainId === 97 || chainId === 56 ) setTokenName('BNB')
+    if (chainId === 5 || chainId === 1) setTokenName('ETH')
+  }, [chainId]);
+
   return (
     <Wrapper>
       <Content>
@@ -43,23 +49,22 @@ const PreSaleContent = () => {
             inputMode="decimal"
             maxLength={10}
           />
-          <Select onChange={(e) => console.log(e.target.value)}>
-            {chainId === 97 ? (
+          <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
+            {(chainId === 97 || chainId === 56 ) &&
               <>
-                <option>BNB</option>
-                <option>BUSD</option>
+                <option value='BNB'>BNB</option>
+                <option value='BUSD'>BUSD</option>
               </>
-            ) : (
+            }
+            {(chainId === 5 || chainId === 1) &&
               <>
-                <option>ETH</option>
-                <option>USDT</option>
+                <option value='ETH'>ETH</option>
+                <option value='USDT'>USDT</option>
               </>
             )}
           </Select>
         </InputContainer>
-        <SolidButton
-          onClick={() => checkApprove(chainId, account, tokenAmount)}
-        >
+        <SolidButton disabled={!tokenAmount} onClick={() => checkApprove(chainId, account, tokenAmount, tokenName)}>
           Buy Token
         </SolidButton>
       </Content>
