@@ -8,7 +8,7 @@ export const getTokenSaleContractAddress = (chainId: number | undefined) => {
     1: '',
     5: '0xe3553b423aF5137F24910133b6D0543246A3741d',
     56: '',
-    97: '0xe68bdD7302E8A9b8e1B51BC2949E89Eec4Da9568',
+    97: '0xe60376b612528ABbAd3dBE9BC511c9f5969b992A',
   }
   return addresses[chainId as keyof typeof addresses] ?? console.error('chainId is undefined')
 };
