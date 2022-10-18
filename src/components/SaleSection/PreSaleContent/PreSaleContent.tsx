@@ -50,18 +50,16 @@ const PreSaleContent = () => {
             maxLength={10}
           />
           <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
-            {(chainId === 97 || chainId === 56 ) &&
-              <>
+            {(chainId === 97 || chainId === 56 )
+              ? <>
                 <option value='BNB'>BNB</option>
                 <option value='BUSD'>BUSD</option>
               </>
-            }
-            {(chainId === 5 || chainId === 1) &&
-              <>
+              : <>
                 <option value='ETH'>ETH</option>
                 <option value='USDT'>USDT</option>
               </>
-            )}
+            }
           </Select>
         </InputContainer>
         <SolidButton disabled={!tokenAmount} onClick={() => checkApprove(chainId, account, tokenAmount, tokenName)}>

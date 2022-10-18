@@ -16,3 +16,8 @@ export interface HeaderProps {
   isBurgerMenu: boolean;
   setIsBurgerMenu: (b: boolean) => void;
 }
+
+export interface BackdropProps {
+  setIsModalOpen: (b: boolean) => void;
+  children: JSX.Element
+}
