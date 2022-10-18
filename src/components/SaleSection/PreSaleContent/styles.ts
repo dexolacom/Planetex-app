@@ -125,3 +125,11 @@ export const Text = styled.p`
     text-align: center;
   }
 `
+
+export const InputError = styled.span`
+  color: #582424;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  bottom: 144px;
+`

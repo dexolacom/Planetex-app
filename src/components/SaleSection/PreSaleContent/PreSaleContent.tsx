@@ -7,6 +7,7 @@ import {
   Tag,
   TitleContainer,
   Content,
+  InputError
 } from './styles';
 import { useWeb3React } from '@web3-react/core';
 import { checkApprove } from '../../../utils/blockchainUtils';
@@ -22,6 +23,7 @@ const PreSaleContent = () => {
   const [isTransErrorModal, setIsTransErrorModal] = useState(false)
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
   const [isTransLoading, setIsTransLoading] = useState(false)
+  const [isInputAmountError, setIsInputAmountError] = useState(false)
 
   return (
     <>
@@ -32,16 +34,26 @@ const PreSaleContent = () => {
             <Tag>Limited purchase restrictions 10-1000$</Tag>
           </TitleContainer>
           <Text>Stake your SEAN up to 35 days to earn extra SEAN.</Text>
-          {/*@ts-ignore*/}
-          <InputContainer tokenAmount={tokenAmount} tokenName={tokenName} setTokenAmount={setTokenAmount} setTokenName={setTokenName}/>
-          <SolidButton disabled={!tokenAmount || isTransLoading} onClick={
+          <InputContainer
+            tokenAmount={tokenAmount}
+            tokenName={tokenName}
+            isInputAmountError={isInputAmountError}
+            // @ts-ignore
+            setTokenAmount={setTokenAmount}
+            setTokenName={setTokenName}
+            setIsInputAmountError={setIsInputAmountError}
+          />
+          {isInputAmountError && <InputError>Please, enter an amount from 10$ to 1000$</InputError>}
+          <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError} onClick={
             () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)}
           >
             {isTransLoading
-              ? <><Loader stroke='#D4E5FF' size='20px' style={{marginRight: '10px'}}/>Pending</>
+              ? <>
+                <Loader stroke='#D4E5FF' size='20px' style={{marginRight: '10px'}}/>
+                Pending
+              </>
               : 'Buy Token'
             }
-
           </SolidButton>
         </Content>
       </Wrapper>

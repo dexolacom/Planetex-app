@@ -1,17 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { InputContainerProps } from '../../../../constants/types';
 import { Input, Select, Wrapper } from './styles';
 
 
-const InputContainer = ({tokenAmount, tokenName, setTokenAmount, setTokenName}:InputContainerProps) => {
+const InputContainer = ({
+  tokenAmount,
+  tokenName,
+  isInputAmountError,
+  setTokenAmount,
+  setTokenName,
+  setIsInputAmountError
+}:InputContainerProps) => {
   const { chainId } = useWeb3React()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.target.value;
+    const value = e.target.value;
 
-    if (input.match(/^[0-9]*[.,]?[0-9]*$/)) {
-      return setTokenAmount(input);
+    if (value.match(/^[0-9]*[.,]?[0-9]*$/)) {
+      if ((+value >= 10 && +value <= 1000) || +value === 0) {
+        setIsInputAmountError(false)
+        return setTokenAmount(value);
+      }
+      setIsInputAmountError(true)
+      return setTokenAmount(value);
     }
   };
 
@@ -29,6 +41,8 @@ const InputContainer = ({tokenAmount, tokenName, setTokenAmount, setTokenName}:I
         placeholder={'0.0'}
         inputMode="decimal"
         maxLength={10}
+        // @ts-ignore
+        border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'}
       />
       <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
         {(chainId === 97 || chainId === 56 )

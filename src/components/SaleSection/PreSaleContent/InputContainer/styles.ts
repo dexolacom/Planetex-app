@@ -27,9 +27,9 @@ export const Wrapper = styled.div`
   }
 `
 
-export const Input = styled.input`
+export const Input = styled.input<{border?: string}>`
   background-color: #06080C;
-  border: 1px solid #372458;
+  border: ${({border}) => border ?? '1px solid #372458'};  
   border-radius: 10px;
   color: #BDCCEA;
   padding: 13px 24px;
