@@ -24,7 +24,6 @@ const PreSaleContent = () => {
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
   const [isTransLoading, setIsTransLoading] = useState(false)
   const [isInputAmountError, setIsInputAmountError] = useState(false)
-  console.log(tokenAmount);
 
   return (
     <>
