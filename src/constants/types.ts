@@ -19,6 +19,10 @@ export interface NFTSaleProps {
   height?: string;
 }
 
+export interface MyNFTProps {
+  url: string;
+}
+
 export interface SaleSectionProps {
   title: string;
 }
@@ -30,19 +34,19 @@ export interface HeaderProps {
 
 export interface BackdropProps {
   setIsModalOpen: (b: boolean) => void;
-  children: JSX.Element
+  children: JSX.Element;
 }
 
 export interface StatusModalProps {
   setIsModalOpen: (b: boolean) => void;
-  isError?: boolean
+  isError?: boolean;
 }
 
 export interface InputContainerProps {
-  tokenAmount: number | string
-  tokenName: string
-  isInputAmountError: boolean
-  setTokenAmount: (n: number | string) => void
-  setTokenName: (s: string) => void
-  setIsInputAmountError: (b: boolean) => void
+  tokenAmount: number | string;
+  tokenName: string;
+  isInputAmountError: boolean;
+  setTokenAmount: (n: number | string) => void;
+  setTokenName: (s: string) => void;
+  setIsInputAmountError: (b: boolean) => void;
 }
