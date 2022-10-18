@@ -24,6 +24,7 @@ const PreSaleContent = () => {
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
   const [isTransLoading, setIsTransLoading] = useState(false)
   const [isInputAmountError, setIsInputAmountError] = useState(false)
+  console.log(tokenAmount);
 
   return (
     <>
@@ -44,7 +45,7 @@ const PreSaleContent = () => {
             setIsInputAmountError={setIsInputAmountError}
           />
           {isInputAmountError && <InputError>Please, enter an amount from 10$ to 1000$</InputError>}
-          <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError} onClick={
+          <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0} onClick={
             () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)}
           >
             {isTransLoading
