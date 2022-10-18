@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SolidButton } from '../../../theme';
 import {
   Title,
@@ -28,6 +28,12 @@ const PreSaleContent = () => {
     }
   };
 
+  useEffect(() => {
+    // get initial tokenName
+    if (chainId === 97 || chainId === 56 ) setTokenName('BNB')
+    if (chainId === 5 || chainId === 1) setTokenName('ETH')
+  }, [chainId]);
+
   return (
     <Wrapper>
       <Content>
@@ -37,21 +43,31 @@ const PreSaleContent = () => {
         </TitleContainer>
         <Text>Stake your SEAN up to 35 days to earn extra SEAN.</Text>
         <InputContainer>
-          <Input value={tokenAmount} onChange={e => handleInputChange(e)} placeholder={'0.0'} inputMode="decimal" maxLength={10}/>
-          <Select onChange={e => console.log(e.target.value)}>
-            {chainId === 97
-              ? <>
-                <option>BNB</option>
-                <option>BUSD</option>
+          <Input
+            value={tokenAmount}
+            onChange={(e) => handleInputChange(e)}
+            placeholder={'0.0'}
+            inputMode="decimal"
+            maxLength={10}
+          />
+          <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
+            {(chainId === 97 || chainId === 56 ) &&
+              <>
+                <option value='BNB'>BNB</option>
+                <option value='BUSD'>BUSD</option>
               </>
-              : <>
-                <option>ETH</option>
-                <option>USDT</option>
+            }
+            {(chainId === 5 || chainId === 1) &&
+              <>
+                <option value='ETH'>ETH</option>
+                <option value='USDT'>USDT</option>
               </>
             }
           </Select>
         </InputContainer>
-        <SolidButton onClick={() => checkApprove(chainId, account, tokenAmount)}>Buy Token</SolidButton>
+        <SolidButton disabled={!tokenAmount} onClick={() => checkApprove(chainId, account, tokenAmount, tokenName)}>
+          Buy Token
+        </SolidButton>
       </Content>
     </Wrapper>
   );
