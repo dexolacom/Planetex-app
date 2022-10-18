@@ -12,6 +12,13 @@ export interface HeroSectionStyleProps {
   height?: string;
 }
 
+export interface NFTSaleProps {
+  paddingRight?: string;
+  marginRight?: string;
+  width?: string;
+  height?: string;
+}
+
 export interface SaleSectionProps {
   title: string;
 }
