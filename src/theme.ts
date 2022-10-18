@@ -11,6 +11,15 @@ export const SolidButton = styled.button<{padding?: string}>`
   cursor: pointer;
   outline: none;
   border: none;
+  
+  &:hover {
+    background: #AF6AFF;
+  }
+  
+  &:disabled {
+    background: #8558B9;
+    cursor: auto;
+  }
 `
 
 
