@@ -67,10 +67,11 @@ export const checkAllowance = async (account: string | null | undefined, contrac
 export const checkApprove = async (
   chainId: number | undefined,
   account: string | null | undefined,
-  tokenAmount: string,
+  tokenAmount: number | string,
   tokenName:string,
   setIsTransSuccessModal: (b: boolean) => void,
-  setIsTransErrorModal: (b: boolean) => void
+  setIsTransErrorModal: (b: boolean) => void,
+  setIsTransLoading: (b: boolean) => void
 ) => {
   const tokenContract = getTokenContract(chainId)
   const spender = getTokenSaleContractAddress(chainId)
@@ -79,10 +80,10 @@ export const checkApprove = async (
 
   if (allowance === '0') {
     await approve(tokenContract, account, spender)
-      .then(() => buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal))
+      .then(() => buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading))
   }
 
-  return await buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal)
+  return await buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)
 }
 
 export const approve = async (contract: any, account: string | null | undefined, spender: string) => {

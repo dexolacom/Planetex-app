@@ -26,3 +26,10 @@ export interface StatusModalProps {
   setIsModalOpen: (b: boolean) => void;
   isError?: boolean
 }
+
+export interface InputContainerProps {
+  tokenAmount: number | string
+  tokenName: string
+  setTokenAmount: (n: number | string) => void
+  setTokenName: (s: string) => void
+}
