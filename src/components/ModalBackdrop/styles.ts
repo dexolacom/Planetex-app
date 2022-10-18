@@ -9,5 +9,5 @@ export const Wrapper = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #000000e1;
+  background-color: rgba(0, 0, 0, 0.5);
 `
