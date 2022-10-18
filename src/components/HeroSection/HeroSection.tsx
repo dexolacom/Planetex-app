@@ -21,13 +21,23 @@ const HeroSection = ({ title, text, img }: HeroProps) => {
         <MobileContent>
           <Title>{title}</Title>
           <MobileContainer>
-            <Img src={img} />
+            <Img
+              width={'140px'}
+              marginRight={'25px'}
+              paddingRight={title === 'Pre-Sale' ? '35px' : '0'}
+              src={img}
+            />
             <Text>{text}</Text>
           </MobileContainer>
         </MobileContent>
       ) : (
         <Content>
-          <Img marginTop={title === 'Pre-Sale' ? '-20px' : '0px'} src={img} />
+          <Img
+            width={'140px'}
+            paddingRight={title === 'Pre-Sale' ? '35px' : '0'}
+            marginTop={title === 'Pre-Sale' ? '-20px' : '0'}
+            src={img}
+          />
           <TextContainer>
             <Title>{title}</Title>
             <Text>{text}</Text>
