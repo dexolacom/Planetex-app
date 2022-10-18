@@ -14,17 +14,15 @@ export const buyToken = async (
   const isRoundStarted = await contract.methods.isRoundStared(0).call()
 
   if (!isRoundStarted) return console.log('Round not started')
-  const formattedAmount = (+tokenAmount * 10 ** 18).toString()
+
   setIsTransLoading(true)
 
   try {
-      if (tokenName === 'BUSD' || tokenName === 'USDT') {
-        return await contract.methods
-          .buyForErc20(0, formattedAmount)
-          .send({from: account})
-        // .on('transactionHash', function(hash: string) {
-        //
-        // })
+    if (tokenName === 'BUSD' || tokenName === 'USDT') {
+      const formattedAmount = (+tokenAmount * 10 ** 6).toString()
+      return await contract.methods
+        .buyForErc20(0, formattedAmount)
+        .send({from: account})
         .on('receipt', function(receipt: any) {
           setIsTransSuccessModal(true)
           setIsTransLoading(false)
@@ -34,12 +32,11 @@ export const buyToken = async (
           setIsTransLoading(false)
         })
       }
+
+    const formattedAmount = (+tokenAmount * 10 ** 18).toString()
     return await contract.methods
       .buyForEth(0)
-      .send({from: account, value: tokenAmount })
-      // .on('transactionHash', function(hash: string) {
-      //
-      // })
+      .send({from: account, value: formattedAmount })
       .on('receipt', function(receipt: any) {
         setIsTransSuccessModal(true)
         setIsTransLoading(false)
@@ -51,5 +48,4 @@ export const buyToken = async (
   } catch (e) {
     console.error(e)
   }
-
 };

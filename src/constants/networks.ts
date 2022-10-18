@@ -2,9 +2,9 @@
 export const networks = {
   bscT: {
     chainId: `0x${Number(97).toString(16)}`,
-    chainName: 'Binance Testnet',
+    chainName: 'Binance Smart Chain Testnet',
     nativeCurrency: {
-      name: 'Binance Testnet',
+      name: 'Binance Chain Native Token',
       symbol: 'tBNB',
       decimals: 18
     },
