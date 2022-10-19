@@ -35,7 +35,6 @@ const NftSaleContent = () => {
 
   return (
     <FullScreenTheme>
-      {/* <NFTSaleContentTheme2> */}
       <Wrapper>
         <Content>
           <HeroGroupImg src={NFTSaleHeroGroup} />
@@ -106,7 +105,6 @@ const NftSaleContent = () => {
           </ActionContainer>
         </Content>
       </Wrapper>
-      {/* </NFTSaleContentTheme2> */}
     </FullScreenTheme>
   );
 };

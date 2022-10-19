@@ -2,14 +2,13 @@
 /* eslint-disable max-len */
 import styled from 'styled-components';
 import { MyNFTProps } from '../../../constants/types';
-// import NFT_1 from '../../../assets/NFT_624/1.jpg';
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 60px 0 0 0;
+  padding: 60px 0 125px 0;
   width: 100%;
   // height: 500px;
-  background-color: pink;
+  // background-color: pink;
 
   @media screen and (max-width: 880px) {
     padding: 50px 0 0 0;
@@ -24,8 +23,34 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const MobileContent = styled.div`
+  // background-color: blue;
+  padding: 0 0 35px;
+`;
+
+export const MobileTitle = styled.h2`
+  padding: 50px 0;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+  color: #d4e5ff;
+`;
+
+export const SlideContainer = styled.div`
+  clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 22%);
+  padding: 0 15px 0 15px;
+  width: 281px;
+  min-widht: 281px;
+  max-widht: 281px;
+  height: 361px;
+  display: flex;
+  justify-content: center;
+  // background-color: green;
+`;
+
 export const Content = styled.div`
-  background-color: skyblue;
+  // background-color: skyblue;
 `;
 
 export const Title = styled.h2`
@@ -35,23 +60,24 @@ export const Title = styled.h2`
   line-height: 44px;
   font-weight: 700;
   color: #d4e5ff;
-  background-color: yellow;
+  // background-color: yellow;
 
   @media screen and (max-width: 880px) {
     padding-left: 0;
     margin-bottom: 50px;
     text-align: center;
   }
-
-  @media screen and (max-width: 576px) {
-  }
 `;
 
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  background-color: green;
+  // justify-content: center;
+  // background-color: green;
+
+  @media screen and (max-width: 880px) {
+    justify-content: center;
+  }
 
   @media screen and (max-width: 576px) {
     display: block;
@@ -60,20 +86,27 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 16%);
-  border: 1px solid #d0a5d7;
+  margin: 0 15.5px 44px;
   width: 281px;
-  height: 361px;
+  height: 362px;
   background-color: blue;
+  border: 1px solid #d0a5d7;
+  border-radius: 0 0 4px 4px;
+
+  @media screen and (max-width: 880px) {
+    margin: 0 19px 44px;
+  }
 
   @media screen and (max-width: 576px) {
     display: block;
     margin: 0 auto;
+    // height: 362px;
   }
 `;
 
 export const NFTContainer = styled.div`
   position: relative;
-  background-color: yellow;
+  // background-color: yellow;
 `;
 
 export const Thumb = styled.div<MyNFTProps>`
@@ -82,19 +115,22 @@ export const Thumb = styled.div<MyNFTProps>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: black;
+  // background-color: black;
 `;
 
 export const SkillsWrapper = styled.div`
   display: flex;
-  // justify-content: center;
   justify-content: space-between;
   align-items: center;
   padding: 0 45px;
   height: 50px;
   background-color: #1d1429;
-  border: 1px solid #fbe4ff;
-  border-radius: 4px;
+  border: 1px solid #811fff;
+  border-radius: 0 0 4px 4px;
+
+  @media screen and (max-width: 576px) {
+    padding: 0 13%;
+  }
 `;
 
 export const Skill = styled.div`
@@ -104,16 +140,16 @@ export const Skill = styled.div`
   height: 34px;
   border-radius: 21px;
   border: 2px solid #d0a5d7;
-  background-color: red;
+  // background-color: red;
 `;
 
 export const SkillContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  // align-items: center;
+  align-items: center;
   padding: 0 10px;
   width: 100%;
-  background-color: green;
+  // background-color: green;
 `;
 
 export const SkillImg = styled.img`
@@ -122,8 +158,8 @@ export const SkillImg = styled.img`
 `;
 
 export const SkillArrow = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 19px;
 `;
 
 export const InfoWrapper = styled.div`
@@ -133,9 +169,8 @@ export const InfoWrapper = styled.div`
   width: 100%;
   height: 60px;
   color: #ffffff;
-  font-weight: 500;
   border: 1px solid #fbe4ff;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   background: rgba(106, 100, 143, 0.41);
 `;
 
@@ -143,30 +178,15 @@ export const Name = styled.span`
   display: inline-block;
   padding: 0 13px;
   margin-bottom: 2px;
+  font-weight: 700;
   height: 28px;
   border: 1px solid #ffffff;
   border-radius: 23.9167px;
 `;
 export const Role = styled.span`
   display: block;
-  padding: 0 13px;
+  padding: 0 15px;
+  font-weight: 500;
   font-size: 16px;
   line-height: 20px;
 `;
-
-// export const Wrapper = styled.div`
-//   width: 500px;
-//   height: 500px;
-//   clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
-//   border: 1px solid #372458;
-
-//   @media screen and (max-width: 880px) {
-//     margin: 0 auto;
-//     max-width: 640px;
-//   }
-
-//   @media screen and (max-width: 576px) {
-//     margin: 0 auto;
-//     max-width: 350px;
-//   }
-// `;
