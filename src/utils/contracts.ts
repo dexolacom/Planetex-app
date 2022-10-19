@@ -6,9 +6,9 @@ import { AbiItem } from 'web3-utils';
 export const getTokenSaleContractAddress = (chainId: number | undefined) => {
   const addresses = {
     1: '',
-    5: '0xe3553b423aF5137F24910133b6D0543246A3741d',
+    5: '0x20f5072712D12C4d3c0f796c34dceCd1f1C59d4B',
     56: '',
-    97: '0xe60376b612528ABbAd3dBE9BC511c9f5969b992A',
+    97: '0x42D2278483A4794200F207251d4204879A3412dd',
   }
   return addresses[chainId as keyof typeof addresses] ?? console.error('chainId is undefined')
 };

@@ -6,11 +6,8 @@ import NftSaleContent from './NftSaleContent/NftSaleContent';
 const SaleSection = ({ title }: SaleSectionProps) => {
   return (
     <div>
-      {title === 'Pre-Sale' ? (
-        <PreSaleContent />
-      ) : (
-        title === 'NFT-Sale' && <NftSaleContent />
-      )}
+      {title === 'Pre-Sale' && <PreSaleContent/>}
+      {title === 'NFT-Sale' && <NftSaleContent/>}
     </div>
   );
 };
