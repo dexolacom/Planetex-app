@@ -105,6 +105,11 @@ export const convertToUSD = async (chainId: number | undefined, tokenAmount: num
   return await contract.methods.convertToStable(formattedAmount, 0).call()
 };
 
+export const getUserAvailableAmount = async (chainId: number | undefined, account: any) => {
+  const contract = await getTokenSaleContract(chainId)
+  return await contract.methods.getUserAvailableAmount(account, 0).call()
+}
+
 export const formatToHuman = (chainId: number | undefined, amount: string) => {
   if (chainId === 56 || chainId === 97) return (+amount / 10 ** 18).toFixed(2)
   return (+amount / 10 ** 6).toFixed(2)

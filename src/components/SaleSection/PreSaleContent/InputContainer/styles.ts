@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
   }
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 707px) {
     flex-direction: column;
     gap: 12px;
     margin-bottom: 36px;
@@ -32,7 +32,6 @@ export const InputBlock = styled.div<{border?: string}>`
   border: ${({border}) => border ?? '1px solid #372458'};
   border-radius: 10px;
   outline: none;
-  flex: 0.7;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,7 +40,7 @@ export const InputBlock = styled.div<{border?: string}>`
     border: 1px solid #AF76FD;
   }
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 707px) {
     width: 100%;
   }
 `
