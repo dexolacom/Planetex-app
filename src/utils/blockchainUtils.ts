@@ -106,6 +106,6 @@ export const convertToUSD = async (chainId: number | undefined, tokenAmount: num
 };
 
 export const formatToHuman = (chainId: number | undefined, amount: string) => {
-  if (chainId === 56 || chainId === 97) return +amount / 10 ** 18
-  return +amount / 10 ** 6
+  if (chainId === 56 || chainId === 97) return (+amount / 10 ** 18).toFixed(2)
+  return (+amount / 10 ** 6).toFixed(2)
 };

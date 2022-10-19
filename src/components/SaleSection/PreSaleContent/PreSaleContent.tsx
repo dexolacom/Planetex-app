@@ -25,13 +25,14 @@ const PreSaleContent = () => {
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
   const [isTransLoading, setIsTransLoading] = useState(false)
   const [isInputAmountError, setIsInputAmountError] = useState(false)
-  const [convertedToUSD, setConvertedToUSD] = useState(0)
+  const [convertedToUSDAmount, setConvertedToUSDAmount] = useState(0)
   const debouncedValue = useDebounce<string>(tokenAmount, 500)
 
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
       convertToUSD(chainId, tokenAmount)
-        .then(res => setConvertedToUSD(formatToHuman(chainId, res?.usdtAmount)))
+        // @ts-ignore
+        .then(res => setConvertedToUSDAmount(formatToHuman(chainId, res?.usdtAmount)))
     }
   }, [debouncedValue])
 
@@ -47,6 +48,7 @@ const PreSaleContent = () => {
           <InputContainer
             tokenAmount={tokenAmount}
             tokenName={tokenName}
+            convertedToUSDAmount={convertedToUSDAmount}
             isInputAmountError={isInputAmountError}
             // @ts-ignore
             setTokenAmount={setTokenAmount}
