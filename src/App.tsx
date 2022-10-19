@@ -15,13 +15,27 @@ function App() {
     <>
       <Header isBurgerMenu={isBurgerMenu} setIsBurgerMenu={setIsBurgerMenu} />
       {isBurgerMenu && <BurgerMenu />}
-      <Content>
-        <Routes>
-          <Route path="/" element={<Navigate replace to="/presale" />} />
-          <Route path="/presale" element={<PreSalePage />} />
-          <Route path="/nft-sale" element={<NFTSalePage />} />
-        </Routes>
-      </Content>
+      {/* <Content> */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Content>
+              <Navigate replace to="/presale" />
+            </Content>
+          }
+        />
+        <Route
+          path="/presale"
+          element={
+            <Content>
+              <PreSalePage />
+            </Content>
+          }
+        />
+        <Route path="/nft-sale" element={<NFTSalePage />} />
+      </Routes>
+      {/* </Content> */}
       <Line />
       <Footer />
     </>

@@ -22,6 +22,8 @@ const setSkillImgSize = (props) => {
 export const Wrapper = styled.div`
   clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
   border: 1px solid #372458;
+  width: 100%;
+  max-width: 970px;
 
   @media screen and (max-width: 880px) {
     margin: 0 auto;
@@ -29,6 +31,7 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 576px) {
+    clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
     margin: 0 auto;
     max-width: 350px;
   }

@@ -2,17 +2,23 @@ import styled from 'styled-components';
 import { HeroSectionStyleProps } from '../../constants/types';
 
 export const Wrapper = styled.div`
-  margin: 0 0 45px 0;
+  margin: 0 0 60px 0;
+
+  @media screen and (max-width: 880px) {
+    margin: 0 0 80px 0;
+  }
 
   @media screen and (max-width: 576px) {
     display: flex;
     justify-content: center;
+    margin: 0 0 70px 0;
   }
 `;
 
 export const Content = styled.div`
   display: flex;
   gap: 25px;
+  height: 120px;
 
   @media screen and (max-width: 880px) {
     margin 0 auto;
