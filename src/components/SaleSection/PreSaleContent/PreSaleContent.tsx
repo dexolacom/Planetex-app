@@ -65,7 +65,10 @@ const PreSaleContent = () => {
           />
           {isInputAmountError &&
             <InputError>
-              Please, enter an amount from 10$ to {userAvailableAmount.replace(/(\.0+|0+)$/, '')}$
+              {+userAvailableAmount < 10
+                ? <>You have reached the limit of buying tokens</>
+                : <>Please, enter an amount from 10$ to {userAvailableAmount.replace(/(\.0+|0+)$/, '')}$</>
+              }
             </InputError>
           }
           <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0} onClick={
