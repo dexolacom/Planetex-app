@@ -43,10 +43,11 @@ export interface StatusModalProps {
 }
 
 export interface InputContainerProps {
-  tokenAmount: number | string;
-  tokenName: string;
-  isInputAmountError: boolean;
-  setTokenAmount: (n: number | string) => void;
-  setTokenName: (s: string) => void;
-  setIsInputAmountError: (b: boolean) => void;
+  tokenAmount: number | string
+  tokenName: string
+  convertedToUSDAmount: number | string
+  isInputAmountError: boolean
+  setTokenAmount: (n: number | string) => void
+  setTokenName: (s: string) => void
+  setIsInputAmountError: (b: boolean) => void
 }

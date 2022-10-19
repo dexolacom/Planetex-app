@@ -1,8 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-quotes */
-/* eslint-disable max-lines-per-function */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { SolidButton } from '../../../theme';
 import {
   Title,
@@ -14,11 +11,12 @@ import {
   InputError
 } from './styles';
 import { useWeb3React } from '@web3-react/core';
-import { checkApprove } from '../../../utils/blockchainUtils';
+import { checkApprove, convertToUSD, formatToHuman, getUserAvailableAmount } from '../../../utils/blockchainUtils';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
 import StatusModal from '../../StatusModal/StatusModal';
 import InputContainer from './InputContainer/InputContainer';
 import Loader from '../../Loader/Loader';
+import useDebounce from '../../../hooks/useDebounce';
 
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
@@ -28,6 +26,23 @@ const PreSaleContent = () => {
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
   const [isTransLoading, setIsTransLoading] = useState(false)
   const [isInputAmountError, setIsInputAmountError] = useState(false)
+  const [userAvailableAmount, setUserAvailableAmount] = useState('')
+  const [convertedToUSDAmount, setConvertedToUSDAmount] = useState(0)
+  const debouncedValue = useDebounce<string>(tokenAmount, 500)
+
+  useEffect(() => {
+    if (tokenName === 'BNB' || tokenName === 'ETH') {
+      convertToUSD(chainId, tokenAmount)
+        // @ts-ignore
+        .then(res => setConvertedToUSDAmount(formatToHuman(chainId, res?.usdtAmount)))
+    }
+  }, [debouncedValue])
+
+  useEffect(() => {
+    if (chainId) getUserAvailableAmount(chainId, account)
+      .then(res => setUserAvailableAmount(formatToHuman(chainId, res?.usdtAmount)))
+  }, [chainId, isTransSuccessModal]);
+
 
   return (
     <>
@@ -41,13 +56,18 @@ const PreSaleContent = () => {
           <InputContainer
             tokenAmount={tokenAmount}
             tokenName={tokenName}
+            convertedToUSDAmount={convertedToUSDAmount}
             isInputAmountError={isInputAmountError}
             // @ts-ignore
             setTokenAmount={setTokenAmount}
             setTokenName={setTokenName}
             setIsInputAmountError={setIsInputAmountError}
           />
-          {isInputAmountError && <InputError>Please, enter an amount from 10$ to 1000$</InputError>}
+          {isInputAmountError &&
+            <InputError>
+              Please, enter an amount from 10$ to {userAvailableAmount.replace(/(\.0+|0+)$/, '')}$
+            </InputError>
+          }
           <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0} onClick={
             () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)}
           >

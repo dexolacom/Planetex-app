@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
   }
 
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 707px) {
     flex-direction: column;
     gap: 12px;
     margin-bottom: 36px;
@@ -27,22 +27,36 @@ export const Wrapper = styled.div`
   }
 `
 
-export const Input = styled.input<{border?: string}>`
+export const InputBlock = styled.div<{border?: string}>`
   background-color: #06080C;
-  border: ${({border}) => border ?? '1px solid #372458'};  
+  border: ${({border}) => border ?? '1px solid #372458'};
   border-radius: 10px;
-  color: #BDCCEA;
-  padding: 13px 24px;
   outline: none;
-  flex: 0.7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  &:focus {
+  &:focus-within {
     border: 1px solid #AF76FD;
   }
-  
-  @media screen and (max-width: 576px) {
+
+  @media screen and (max-width: 707px) {
     width: 100%;
   }
+`
+
+export const Input = styled.input`
+  color: #BDCCEA;
+  padding: 13px 24px;
+  background: transparent;
+  outline: none;
+  border: none;
+`
+
+export const InputInfo = styled.span`
+  border-left: 2px solid #5e626c;
+  color: #5e626c;
+  padding: 0 15px;
 `
 
 export const Select = styled.select`
