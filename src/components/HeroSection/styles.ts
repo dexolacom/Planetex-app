@@ -2,20 +2,27 @@ import styled from 'styled-components';
 import { HeroSectionStyleProps } from '../../constants/types';
 
 export const Wrapper = styled.div`
-  margin: 0 0 45px 0;
+  margin: 0 0 60px 0;
+
+  @media screen and (max-width: 880px) {
+    margin: 0 0 80px 0;
+  }
 
   @media screen and (max-width: 576px) {
     display: flex;
     justify-content: center;
+    margin: 0 0 70px 0;
   }
 `;
 
 export const Content = styled.div`
   display: flex;
   gap: 25px;
+  height: 120px;
 
   @media screen and (max-width: 880px) {
-    width: 80%;
+    margin 0 auto;
+    max-width: 550px;
   }
 `;
 
@@ -23,14 +30,12 @@ export const MobileContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  width: 100%;
 `;
 
 export const MobileContainer = styled.div`
   display: flex;
-  gap: 50px;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 `;
 
 export const TextContainer = styled.div`
@@ -44,6 +49,14 @@ export const Title = styled.h4`
   line-height: 29px;
   color: #d4e5ff;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 880px) {
+    margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 576px) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const Text = styled.p`
@@ -60,14 +73,14 @@ export const Text = styled.p`
   }
 
   @media screen and (max-width: 576px) {
-    max-width: 150px;
+    font-size: 18px;
+    max-width: 170px;
   }
 `;
 
 export const Img = styled.img<HeroSectionStyleProps>`
   margin-top: ${(props) => props.marginTop};
-
-  @media screen and (max-width: 576px) {
-    margin-top: 0;
-  }
+  margin-right: ${(props) => props.marginRight};
+  padding-right: ${(props) => props.paddingRight};
+  width: ${(props) => props.width};
 `;

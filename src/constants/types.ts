@@ -6,6 +6,21 @@ export interface HeroProps {
 
 export interface HeroSectionStyleProps {
   marginTop?: string;
+  paddingRight?: string;
+  marginRight?: string;
+  width?: string;
+  height?: string;
+}
+
+export interface NFTSaleProps {
+  paddingRight?: string;
+  marginRight?: string;
+  width?: string;
+  height?: string;
+}
+
+export interface MyNFTProps {
+  url: string;
 }
 
 export interface SaleSectionProps {
@@ -19,12 +34,12 @@ export interface HeaderProps {
 
 export interface BackdropProps {
   setIsModalOpen: (b: boolean) => void;
-  children: JSX.Element
+  children: JSX.Element;
 }
 
 export interface StatusModalProps {
   setIsModalOpen: (b: boolean) => void;
-  isError?: boolean
+  isError?: boolean;
 }
 
 export interface InputContainerProps {
