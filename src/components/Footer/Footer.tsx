@@ -1,5 +1,7 @@
-import React from 'react';
-import SocialContent from '../SaleSection/SocialContent/SocialContent';
+/* eslint-disable jsx-quotes */
+// @ts-nocheck
+/* eslint-disable max-lines-per-function */
+import Social from '../Social/Social';
 import {
   Wrapper,
   Content,
@@ -9,18 +11,14 @@ import {
   RouterLink,
   Link,
 } from '../Header/styles';
-import { FooterContainer, BackToTopButton, BackToTopImg } from './styles';
-// import ArrowToTop from '../../assets/icons/arrowToTop.svg';
+import { FooterContainer } from './styles';
+import BackToTopButton from '../BackToTopButton/BackToTopButton';
 
 const Footer = () => {
   return (
     <>
-      <SocialContent />
+      <Social />
       <FooterContainer>
-        {/* <BackToTopButton>
-          <BackToTopImg src={ArrowToTop} />
-        </BackToTopButton> */}
-
         {/* === Attention! Using Header styles === */}
         <Wrapper>
           <Content>
@@ -37,6 +35,7 @@ const Footer = () => {
         </Wrapper>
         {/* === Attention! Using Header styles === */}
       </FooterContainer>
+      <BackToTopButton />
     </>
   );
 };

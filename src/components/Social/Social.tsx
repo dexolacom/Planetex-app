@@ -1,14 +1,14 @@
 // @ts-nocheck
 /* eslint-disable no-console */
 /* eslint-disable max-lines-per-function */
-import { FullScreenTheme } from '../../../theme';
+import { FullScreenTheme } from '../../theme';
 import { Wrapper, Content, SocialList, SocialItem } from './styles';
-import facebook from '../../../assets/social/facebook.svg';
-import twitter from '../../../assets/social/twitter.svg';
-import instagram from '../../../assets/social/instagram.svg';
-import youtube from '../../../assets/social/youtube.svg';
-import telegram from '../../../assets/social/telegram.svg';
-import discord from '../../../assets/social/discord.svg';
+import facebook from '../../assets/social/facebook.svg';
+import twitter from '../../assets/social/twitter.svg';
+import instagram from '../../assets/social/instagram.svg';
+import youtube from '../../assets/social/youtube.svg';
+import telegram from '../../assets/social/telegram.svg';
+import discord from '../../assets/social/discord.svg';
 
 const links = [
   { id: 1, name: 'facebook', url: facebook },
