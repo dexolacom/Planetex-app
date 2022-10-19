@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SolidButton } from '../../../theme';
 import {
   Title,
@@ -10,11 +10,12 @@ import {
   InputError
 } from './styles';
 import { useWeb3React } from '@web3-react/core';
-import { checkApprove } from '../../../utils/blockchainUtils';
+import { checkApprove, convertToUSD, formatToHuman } from '../../../utils/blockchainUtils';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
 import StatusModal from '../../StatusModal/StatusModal';
 import InputContainer from './InputContainer/InputContainer';
 import Loader from '../../Loader/Loader';
+import useDebounce from '../../../hooks/useDebounce';
 
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
@@ -24,6 +25,15 @@ const PreSaleContent = () => {
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
   const [isTransLoading, setIsTransLoading] = useState(false)
   const [isInputAmountError, setIsInputAmountError] = useState(false)
+  const [convertedToUSD, setConvertedToUSD] = useState(0)
+  const debouncedValue = useDebounce<string>(tokenAmount, 500)
+
+  useEffect(() => {
+    if (tokenName === 'BNB' || tokenName === 'ETH') {
+      convertToUSD(chainId, tokenAmount)
+        .then(res => setConvertedToUSD(formatToHuman(chainId, res?.usdtAmount)))
+    }
+  }, [debouncedValue])
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { connectors } from '../constants/connectors';
 import { networks } from '../constants/networks';
-import { getTokenContract, getTokenSaleContractAddress } from './contracts';
+import { getTokenContract, getTokenSaleContract, getTokenSaleContractAddress } from './contracts';
 import { buyToken } from './buyToken';
 import { maxApproveAmount } from '../constants/constants';
 
@@ -98,3 +98,14 @@ export const approve = async (contract: any, account: string | null | undefined,
     //   setIsApprovePending(false)
     // })
 }
+
+export const convertToUSD = async (chainId: number | undefined, tokenAmount: number | string) => {
+  const contract = await getTokenSaleContract(chainId)
+  const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', { useGrouping: false })
+  return await contract.methods.convertToStable(formattedAmount, 0).call()
+};
+
+export const formatToHuman = (chainId: number | undefined, amount: string) => {
+  if (chainId === 56 || chainId === 97) return +amount / 10 ** 18
+  return +amount / 10 ** 6
+};

@@ -1,6 +1,6 @@
 import { web3 } from '../constants/constants';
-import buyTokenAbi from '../constants/abis/buyTokenAbi.json';
-import tokenAbi from '../constants/abis/tokenAbi.json'
+import buyTokenAbi from '../constants/abis/saleContractAbi.json';
+import tokenAbi from '../constants/abis/tokenContractAbi.json'
 import { AbiItem } from 'web3-utils';
 
 export const getTokenSaleContractAddress = (chainId: number | undefined) => {
