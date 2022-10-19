@@ -89,7 +89,6 @@ export const Item = styled.li`
   margin: 0 15.5px 44px;
   width: 281px;
   height: 362px;
-  background-color: blue;
   border: 1px solid #d0a5d7;
   border-radius: 0 0 4px 4px;
 
@@ -100,7 +99,6 @@ export const Item = styled.li`
   @media screen and (max-width: 576px) {
     display: block;
     margin: 0 auto;
-    // height: 362px;
   }
 `;
 
