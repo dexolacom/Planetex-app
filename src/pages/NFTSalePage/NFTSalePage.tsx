@@ -1,3 +1,5 @@
+import { FullScreenTheme, HeroSectionTheme } from '../../theme';
+// import { FullScreenTheme, NFTSaleContentTheme2 } from '../../../theme';
 import HeroSection from '../../components/HeroSection/HeroSection';
 import { heroInfo } from '../../constants/constants';
 import SaleSection from '../../components/SaleSection/SaleSection';
@@ -7,11 +9,15 @@ const NFTSalePage = () => {
 
   return (
     <>
-      <HeroSection
-        title={nftSale?.title}
-        text={nftSale?.text}
-        img={nftSale?.img}
-      />
+      <FullScreenTheme>
+        <HeroSectionTheme>
+          <HeroSection
+            title={nftSale?.title}
+            text={nftSale?.text}
+            img={nftSale?.img}
+          />
+        </HeroSectionTheme>
+      </FullScreenTheme>
       <SaleSection title={nftSale?.title} />
     </>
   );
