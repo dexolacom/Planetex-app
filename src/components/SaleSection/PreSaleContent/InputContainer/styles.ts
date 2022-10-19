@@ -51,12 +51,18 @@ export const Input = styled.input`
   background: transparent;
   outline: none;
   border: none;
+  min-width: 0
 `
 
 export const InputInfo = styled.span`
   border-left: 2px solid #5e626c;
   color: #5e626c;
   padding: 0 15px;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    max-width: 110px;
+  }
 `
 
 export const Select = styled.select`
@@ -80,5 +86,9 @@ export const Select = styled.select`
 
   &:focus {
     border: 1px solid #AF76FD;
+  }
+
+  @media screen and (max-width: 707px) {
+    width: 100%;
   }
 `
