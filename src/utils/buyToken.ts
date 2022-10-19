@@ -1,4 +1,5 @@
 import { getTokenSaleContract } from './contracts';
+import { getDecimals } from './utils';
 
 
 export const buyToken = async (
@@ -15,11 +16,11 @@ export const buyToken = async (
 
   if (!isRoundStarted) return console.log('Round not started')
 
+  const formattedAmount = (+tokenAmount * getDecimals(tokenName)).toString()
   setIsTransLoading(true)
 
   try {
     if (tokenName === 'BUSD' || tokenName === 'USDT') {
-      const formattedAmount = (+tokenAmount * 10 ** 6).toString()
       return await contract.methods
         .buyForErc20(0, formattedAmount)
         .send({from: account})
@@ -33,7 +34,6 @@ export const buyToken = async (
         })
       }
 
-    const formattedAmount = (+tokenAmount * 10 ** 18).toString()
     return await contract.methods
       .buyForEth(0)
       .send({from: account, value: formattedAmount })
