@@ -16,7 +16,7 @@ export const buyToken = async (
 
   if (!isRoundStarted) return console.log('Round not started')
 
-  const formattedAmount = (+tokenAmount * getDecimals(tokenName)).toString()
+  const formattedAmount = (+tokenAmount * getDecimals(tokenName)).toLocaleString('fullwide', { useGrouping: false })
   setIsTransLoading(true)
 
   try {

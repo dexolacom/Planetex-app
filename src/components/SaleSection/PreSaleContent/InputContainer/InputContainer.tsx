@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { InputContainerProps } from '../../../../constants/types';
 import { Input, Select, Wrapper } from './styles';
+import useDebounce from '../../../../hooks/useDebounce';
 
 
 const InputContainer = ({
@@ -13,6 +14,7 @@ const InputContainer = ({
   setIsInputAmountError
 }:InputContainerProps) => {
   const { chainId } = useWeb3React()
+  const debouncedValue = useDebounce<string>(tokenAmount, 500)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -33,6 +35,12 @@ const InputContainer = ({
     if (chainId === 5 || chainId === 1) setTokenName('ETH')
   }, [chainId]);
 
+  // Fetch API (optional)
+  useEffect(() => {
+    // Do fetch here...
+    // Triggers when "debouncedValue" changes
+  }, [debouncedValue])
+
   return (
     <Wrapper>
       <Input
@@ -44,6 +52,8 @@ const InputContainer = ({
         // @ts-ignore
         border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'}
       />
+      {/*@ts-ignore*/}
+      {/*<hr width="1" size="30" color={'red'}/>*/}
       <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
         {(chainId === 97 || chainId === 56 )
           ? <>
