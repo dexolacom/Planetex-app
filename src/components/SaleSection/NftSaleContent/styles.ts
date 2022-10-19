@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 576px) {
+    clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
     margin: 0 auto;
     max-width: 350px;
   }

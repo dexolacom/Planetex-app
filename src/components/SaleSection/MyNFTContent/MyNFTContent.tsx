@@ -10,6 +10,7 @@ import NFTSaleDamage from '../../../assets/icons/NFTSaleDamage.svg';
 import NFTSaleSpeed from '../../../assets/icons/NFTSaleSpeed.svg';
 import NFTSaleHealth from '../../../assets/icons/NFTSaleHealth.svg';
 import NFTSaleArmor from '../../../assets/icons/NFTSaleArmor.svg';
+import arrowTop from '../../../assets/icons/arrow-top.svg';
 import {
   Wrapper,
   Content,
@@ -55,13 +56,13 @@ const MyNFTContent = () => {
                       <Skill>
                         <SkillContainer>
                           <SkillImg src={NFTSaleHealth} />
-                          <SkillArrow />
+                          <SkillArrow src={arrowTop} />
                         </SkillContainer>
                       </Skill>
                       <Skill>
                         <SkillContainer>
                           <SkillImg src={NFTSaleDamage} />
-                          <SkillArrow />
+                          <SkillArrow src={arrowTop} />
                         </SkillContainer>
                       </Skill>
                     </SkillsWrapper>

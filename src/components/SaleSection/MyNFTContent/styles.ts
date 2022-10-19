@@ -59,6 +59,8 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 16%);
+  border: 1px solid #d0a5d7;
   width: 281px;
   height: 361px;
   background-color: blue;
@@ -70,6 +72,7 @@ export const Item = styled.li`
 `;
 
 export const NFTContainer = styled.div`
+  position: relative;
   background-color: yellow;
 `;
 
@@ -82,14 +85,74 @@ export const Thumb = styled.div<MyNFTProps>`
   background-color: black;
 `;
 
-export const SkillsWrapper = styled.div``;
-export const Skill = styled.div``;
-export const SkillContainer = styled.div``;
-export const SkillImg = styled.img``;
-export const SkillArrow = styled.img``;
-export const InfoWrapper = styled.div``;
-export const Name = styled.span``;
-export const Role = styled.span``;
+export const SkillsWrapper = styled.div`
+  display: flex;
+  // justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 45px;
+  height: 50px;
+  background-color: #1d1429;
+  border: 1px solid #fbe4ff;
+  border-radius: 4px;
+`;
+
+export const Skill = styled.div`
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 34px;
+  border-radius: 21px;
+  border: 2px solid #d0a5d7;
+  background-color: red;
+`;
+
+export const SkillContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  padding: 0 10px;
+  width: 100%;
+  background-color: green;
+`;
+
+export const SkillImg = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
+export const SkillArrow = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
+export const InfoWrapper = styled.div`
+  position: absolute;
+  bottom: 50px;
+  padding: 5px 10px 0;
+  width: 100%;
+  height: 60px;
+  color: #ffffff;
+  font-weight: 500;
+  border: 1px solid #fbe4ff;
+  border-radius: 4px;
+  background: rgba(106, 100, 143, 0.41);
+`;
+
+export const Name = styled.span`
+  display: inline-block;
+  padding: 0 13px;
+  margin-bottom: 2px;
+  height: 28px;
+  border: 1px solid #ffffff;
+  border-radius: 23.9167px;
+`;
+export const Role = styled.span`
+  display: block;
+  padding: 0 13px;
+  font-size: 16px;
+  line-height: 20px;
+`;
 
 // export const Wrapper = styled.div`
 //   width: 500px;
