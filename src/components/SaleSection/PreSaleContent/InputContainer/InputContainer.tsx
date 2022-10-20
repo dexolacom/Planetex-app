@@ -12,21 +12,13 @@ const InputContainer = ({
   setTokenName,
   setIsInputAmountError
 }:InputContainerProps) => {
+
   const { chainId } = useWeb3React()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
     if (value.match(/^[0-9]*[.,]?[0-9]*$/)) {
-
-      if (tokenName === 'BNB' || tokenName === 'ETH') {
-        console.log('input', convertedToUSDAmount);
-        if (+convertedToUSDAmount >= 10 && +convertedToUSDAmount <= 1000) {
-          setIsInputAmountError(false)
-          return setTokenAmount(value);
-        }
-      }
-
       if ((+value >= 10 && +value <= 1000) || +value === 0) {
         setIsInputAmountError(false)
         return setTokenAmount(value);
@@ -53,7 +45,7 @@ const InputContainer = ({
           inputMode="decimal"
           maxLength={10}
         />
-        <InputInfo>{convertedToUSDAmount} $</InputInfo>
+        <InputInfo>{convertedToUSDAmount || '0.00'} $</InputInfo>
       </InputBlock>
       <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
         {(chainId === 97 || chainId === 56 )
