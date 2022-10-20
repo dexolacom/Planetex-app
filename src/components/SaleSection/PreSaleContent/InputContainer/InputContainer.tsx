@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { InputContainerProps } from '../../../../constants/types';
 import { Input, InputBlock, InputInfo, Select, Wrapper } from './styles';
@@ -18,10 +18,20 @@ const InputContainer = ({
     const value = e.target.value;
 
     if (value.match(/^[0-9]*[.,]?[0-9]*$/)) {
+
+      if (tokenName === 'BNB' || tokenName === 'ETH') {
+        console.log('input', convertedToUSDAmount);
+        if (+convertedToUSDAmount >= 10 && +convertedToUSDAmount <= 1000) {
+          setIsInputAmountError(false)
+          return setTokenAmount(value);
+        }
+      }
+
       if ((+value >= 10 && +value <= 1000) || +value === 0) {
         setIsInputAmountError(false)
         return setTokenAmount(value);
       }
+
       setIsInputAmountError(true)
       return setTokenAmount(value);
     }
@@ -35,7 +45,6 @@ const InputContainer = ({
 
   return (
     <Wrapper>
-
       <InputBlock border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'}>
         <Input
           value={tokenAmount}
@@ -46,8 +55,6 @@ const InputContainer = ({
         />
         <InputInfo>{convertedToUSDAmount} $</InputInfo>
       </InputBlock>
-      {/*@ts-ignore*/}
-
       <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
         {(chainId === 97 || chainId === 56 )
           ? <>

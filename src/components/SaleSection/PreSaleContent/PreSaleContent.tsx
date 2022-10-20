@@ -28,7 +28,7 @@ const PreSaleContent = () => {
   const [isInputAmountError, setIsInputAmountError] = useState(false)
   const [userAvailableAmount, setUserAvailableAmount] = useState('')
   const [convertedToUSDAmount, setConvertedToUSDAmount] = useState(0)
-  const debouncedValue = useDebounce<string>(tokenAmount, 500)
+  const debouncedValue = useDebounce<string>(tokenAmount, 300)
 
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
@@ -42,7 +42,6 @@ const PreSaleContent = () => {
     if (chainId) getUserAvailableAmount(chainId, account)
       .then(res => setUserAvailableAmount(formatToHuman(chainId, res?.usdtAmount)))
   }, [chainId, isTransSuccessModal]);
-
 
   return (
     <>
@@ -71,7 +70,7 @@ const PreSaleContent = () => {
               }
             </InputError>
           }
-          <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0} onClick={
+          <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0 || +userAvailableAmount < 10} onClick={
             () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)}
           >
             {isTransLoading
