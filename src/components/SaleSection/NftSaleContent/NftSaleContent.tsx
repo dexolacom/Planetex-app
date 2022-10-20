@@ -56,25 +56,25 @@ const NftSaleContent = () => {
               <Skills>
                 <Skill>
                   <SkillContent>
-                    <SkillImg height={'22px'} src={NFTSaleDamage} />
+                    <SkillImg src={NFTSaleDamage} />
                     <SkillText>Damage</SkillText>
                   </SkillContent>
                 </Skill>
                 <Skill>
                   <SkillContent>
-                    <SkillImg height={'22px'} src={NFTSaleSpeed} />
+                    <SkillImg src={NFTSaleSpeed} />
                     <SkillText>Speed</SkillText>
                   </SkillContent>
                 </Skill>
                 <Skill>
                   <SkillContent>
-                    <SkillImg height={'18px'} src={NFTSaleHealth} />
+                    <SkillImg src={NFTSaleHealth} />
                     <SkillText>Health</SkillText>
                   </SkillContent>
                 </Skill>
                 <Skill>
                   <SkillContent>
-                    <SkillImg height={'20px'} src={NFTSaleArmor} />
+                    <SkillImg src={NFTSaleArmor} />
                     <SkillText>Armor</SkillText>
                   </SkillContent>
                 </Skill>
