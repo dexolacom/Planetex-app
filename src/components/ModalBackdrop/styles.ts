@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
   height: 100%;

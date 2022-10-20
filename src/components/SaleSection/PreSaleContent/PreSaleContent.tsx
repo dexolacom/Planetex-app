@@ -46,7 +46,7 @@ const PreSaleContent = () => {
       if (+convertedToUSDAmount === 0) {
         return setIsInputAmountError(false)
       }
-      if (+convertedToUSDAmount <= 1000 && +convertedToUSDAmount >= 10) {
+      if (+convertedToUSDAmount <= +userAvailableAmount && +convertedToUSDAmount >= 10) {
         setIsInputAmountError(false)
       }
     }
