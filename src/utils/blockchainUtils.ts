@@ -102,7 +102,8 @@ export const approve = async (contract: any, account: string | null | undefined,
 export const convertToUSD = async (chainId: number | undefined, tokenAmount: number | string) => {
   const contract = await getTokenSaleContract(chainId)
   const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', { useGrouping: false })
-  return await contract.methods.convertToStable(formattedAmount, 0).call()
+  const res = await contract.methods.convertToStable(formattedAmount, 0).call()
+  return res
 };
 
 export const getUserAvailableAmount = async (chainId: number | undefined, account: any) => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { InputContainerProps } from '../../../../constants/types';
 import { Input, InputBlock, InputInfo, Select, Wrapper } from './styles';
@@ -12,6 +12,7 @@ const InputContainer = ({
   setTokenName,
   setIsInputAmountError
 }:InputContainerProps) => {
+
   const { chainId } = useWeb3React()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +23,7 @@ const InputContainer = ({
         setIsInputAmountError(false)
         return setTokenAmount(value);
       }
+
       setIsInputAmountError(true)
       return setTokenAmount(value);
     }
@@ -35,7 +37,6 @@ const InputContainer = ({
 
   return (
     <Wrapper>
-
       <InputBlock border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'}>
         <Input
           value={tokenAmount}
@@ -44,10 +45,8 @@ const InputContainer = ({
           inputMode="decimal"
           maxLength={10}
         />
-        <InputInfo>{convertedToUSDAmount} $</InputInfo>
+        <InputInfo>{convertedToUSDAmount || '0.00'} $</InputInfo>
       </InputBlock>
-      {/*@ts-ignore*/}
-
       <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
         {(chainId === 97 || chainId === 56 )
           ? <>

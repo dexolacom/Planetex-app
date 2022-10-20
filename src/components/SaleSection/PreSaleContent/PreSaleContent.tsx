@@ -27,14 +27,12 @@ const PreSaleContent = () => {
   const [isTransLoading, setIsTransLoading] = useState(false)
   const [isInputAmountError, setIsInputAmountError] = useState(false)
   const [userAvailableAmount, setUserAvailableAmount] = useState('')
-  const [convertedToUSDAmount, setConvertedToUSDAmount] = useState(0)
-  const debouncedValue = useDebounce<string>(tokenAmount, 500)
+  const [convertedToUSDAmount, setConvertedToUSDAmount] = useState('')
+  const debouncedValue = useDebounce<string>(tokenAmount, 300)
 
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
-      convertToUSD(chainId, tokenAmount)
-        // @ts-ignore
-        .then(res => setConvertedToUSDAmount(formatToHuman(chainId, res?.usdtAmount)))
+      convertToUSD(chainId, tokenAmount).then(res => setConvertedToUSDAmount(formatToHuman(chainId, res?.usdtAmount)))
     }
   }, [debouncedValue])
 
@@ -43,6 +41,16 @@ const PreSaleContent = () => {
       .then(res => setUserAvailableAmount(formatToHuman(chainId, res?.usdtAmount)))
   }, [chainId, isTransSuccessModal]);
 
+  useEffect(() => {
+    if (tokenName === 'BNB' || tokenName === 'ETH') {
+      if (+convertedToUSDAmount === 0) {
+        return setIsInputAmountError(false)
+      }
+      if (+convertedToUSDAmount <= 1000 && +convertedToUSDAmount >= 10) {
+        setIsInputAmountError(false)
+      }
+    }
+  }, [convertedToUSDAmount]);
 
   return (
     <>
@@ -71,7 +79,7 @@ const PreSaleContent = () => {
               }
             </InputError>
           }
-          <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0} onClick={
+          <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0 || +userAvailableAmount < 10} onClick={
             () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)}
           >
             {isTransLoading
