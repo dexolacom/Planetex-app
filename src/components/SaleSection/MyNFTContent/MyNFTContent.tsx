@@ -25,6 +25,8 @@ import {
   MobileContent,
   MobileTitle,
   SlideContainer,
+  SlideContent,
+  SlideItem,
   Title,
   List,
   Item,
@@ -38,6 +40,7 @@ import {
   InfoWrapper,
   Name,
   Role,
+  SkillsContainer,
 } from './styles';
 
 const _NFT = [
@@ -74,27 +77,33 @@ const MyNFTContent = () => {
             {_NFT.map((nft) => {
               return (
                 <SlideContainer key={nft.id}>
-                  <NFTContainer>
-                    <Thumb url={nft.url} />
-                    <SkillsWrapper>
-                      <Skill>
-                        <SkillContainer>
-                          <SkillImg src={NFTSaleHealth} />
-                          <SkillArrow src={arrowTop} />
-                        </SkillContainer>
-                      </Skill>
-                      <Skill>
-                        <SkillContainer>
-                          <SkillImg src={NFTSaleDamage} />
-                          <SkillArrow src={arrowTop} />
-                        </SkillContainer>
-                      </Skill>
-                    </SkillsWrapper>
-                    <InfoWrapper>
-                      <Name>{nft.name}</Name>
-                      <Role>{nft.role}</Role>
-                    </InfoWrapper>
-                  </NFTContainer>
+                  <SlideContent>
+                    <SlideItem>
+                      <NFTContainer>
+                        <Thumb url={nft.url} />
+                        <SkillsWrapper>
+                          <SkillsContainer>
+                            <Skill>
+                              <SkillContainer>
+                                <SkillImg src={NFTSaleHealth} />
+                                <SkillArrow src={arrowTop} />
+                              </SkillContainer>
+                            </Skill>
+                            <Skill>
+                              <SkillContainer>
+                                <SkillImg src={NFTSaleDamage} />
+                                <SkillArrow src={arrowTop} />
+                              </SkillContainer>
+                            </Skill>
+                          </SkillsContainer>
+                        </SkillsWrapper>
+                        <InfoWrapper>
+                          <Name>{nft.name}</Name>
+                          <Role>{nft.role}</Role>
+                        </InfoWrapper>
+                      </NFTContainer>
+                    </SlideItem>
+                  </SlideContent>
                 </SlideContainer>
               );
             })}
@@ -112,18 +121,20 @@ const MyNFTContent = () => {
                       <NFTContainer>
                         <Thumb url={nft.url} />
                         <SkillsWrapper>
-                          <Skill>
-                            <SkillContainer>
-                              <SkillImg src={NFTSaleHealth} />
-                              <SkillArrow src={arrowTop} />
-                            </SkillContainer>
-                          </Skill>
-                          <Skill>
-                            <SkillContainer>
-                              <SkillImg src={NFTSaleDamage} />
-                              <SkillArrow src={arrowTop} />
-                            </SkillContainer>
-                          </Skill>
+                          <SkillsContainer>
+                            <Skill>
+                              <SkillContainer>
+                                <SkillImg src={NFTSaleHealth} />
+                                <SkillArrow src={arrowTop} />
+                              </SkillContainer>
+                            </Skill>
+                            <Skill>
+                              <SkillContainer>
+                                <SkillImg src={NFTSaleDamage} />
+                                <SkillArrow src={arrowTop} />
+                              </SkillContainer>
+                            </Skill>
+                          </SkillsContainer>
                         </SkillsWrapper>
                         <InfoWrapper>
                           <Name>Nitrine Spark</Name>

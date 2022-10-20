@@ -35,14 +35,23 @@ export const MobileTitle = styled.h2`
 `;
 
 export const SlideContainer = styled.div`
-  clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 22%);
-  padding: 0 15px 0 15px;
-  width: 281px;
-  min-widht: 281px;
-  max-widht: 281px;
-  height: 361px;
+  // background-color: pink;
+`;
+
+export const SlideContent = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const SlideItem = styled.li`
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 17.5%);
+  display: block;
+  // margin: 0 15px 44px;
+  padding: 1px 0 0 1px;
+  width: 270px;
+  height: 362px;
+  background: linear-gradient(180deg, #d0a5d7 40%, #811fff 60%);
+  border-radius: 0 0 4px 4px;
 `;
 
 export const Content = styled.div`
@@ -65,6 +74,7 @@ export const Title = styled.h2`
 `;
 
 export const List = styled.ul`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
 
@@ -78,11 +88,12 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 16%);
-  margin: 0 15.5px 44px;
-  width: 281px;
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 17.5%);
+  margin: 0 15px 44px;
+  padding: 1px 0 0 1px;
+  width: 282px;
   height: 362px;
-  border: 1px solid #d0a5d7;
+  background: linear-gradient(180deg, #d0a5d7 40%, #811fff 60%);
   border-radius: 0 0 4px 4px;
 
   @media screen and (max-width: 880px) {
@@ -97,9 +108,15 @@ export const Item = styled.li`
 
 export const NFTContainer = styled.div`
   position: relative;
+  width: 280px;
+
+  @media screen and (max-width: 576px) {
+    width: 268px;
+  }
 `;
 
 export const Thumb = styled.div<MyNFTProps>`
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 20.3%);
   height: 311px;
   background-image: url(${(props) => props.url});
   background-repeat: no-repeat;
@@ -108,27 +125,39 @@ export const Thumb = styled.div<MyNFTProps>`
 `;
 
 export const SkillsWrapper = styled.div`
+  padding: 0 1px 0 1px;
+  margin: 0 -1px;
+  height: 50px;
+  background: linear-gradient(180deg, #d0a5d7 40%, #811fff 60%);
+  border-radius: 0 0 4px 4px;
+
+  // @media screen and (max-width: 576px) {
+  //   padding: 0 13%;
+  // }
+`;
+
+export const SkillsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 45px;
-  height: 50px;
+  height: 49px;
   background-color: #1d1429;
-  border: 1px solid #811fff;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 3px 3px;
 
-  @media screen and (max-width: 576px) {
-    padding: 0 13%;
-  }
+  // @media screen and (max-width: 576px) {
+  //   padding: 0 13%;
+  // }
 `;
 
 export const Skill = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 80px;
   height: 34px;
+  background: linear-gradient(150deg, #d0a5d7 40%, #811fff 60%);
   border-radius: 21px;
-  border: 2px solid #d0a5d7;
 `;
 
 export const SkillContainer = styled.div`
@@ -136,7 +165,10 @@ export const SkillContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  width: 100%;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background-color: #1d1429;
+  border-radius: 21px;
 `;
 
 export const SkillImg = styled.img`
@@ -151,14 +183,20 @@ export const SkillArrow = styled.img`
 
 export const InfoWrapper = styled.div`
   position: absolute;
-  bottom: 50px;
+  bottom: 49px;
   padding: 5px 10px 0;
-  width: 100%;
+  width: 282px;
+  margin: 0 -1px;
   height: 60px;
   color: #ffffff;
-  border: 1px solid #fbe4ff;
-  border-radius: 4px 4px 0 0;
   background: rgba(106, 100, 143, 0.41);
+  border: 1px solid;
+  border-image-source: linear-gradient(#fbe4ff, #811fff);
+  border-image-slice: 1;
+
+  @media screen and (max-width: 576px) {
+    width: 270px;
+  }
 `;
 
 export const Name = styled.span`
@@ -170,6 +208,7 @@ export const Name = styled.span`
   border: 1px solid #ffffff;
   border-radius: 23.9167px;
 `;
+
 export const Role = styled.span`
   display: block;
   padding: 0 15px;
