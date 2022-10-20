@@ -5,14 +5,6 @@ export interface HeroProps {
   img: any;
 }
 
-export interface HeroSectionStyleProps {
-  marginTop?: string;
-  paddingRight?: string;
-  marginRight?: string;
-  width?: string;
-  height?: string;
-}
-
 export interface NFTSaleProps {
   paddingRight?: string;
   marginRight?: string;

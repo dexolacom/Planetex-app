@@ -78,22 +78,22 @@ export const Content = styled.div`
   }
 `;
 
-export const HeroSectionTheme = styled.div`
-  max-width: 970px;
-  margin: 70px 45px 0px 0px;
+// export const HeroSectionTheme = styled.div`
+//   max-width: 970px;
+//   margin: 70px 45px 0px 0px;
 
-  @media screen and (max-width: 1200px) {
-    margin: 70px 45px 0px 100px;
-  }
+//   @media screen and (max-width: 1200px) {
+//     margin: 70px 45px 0px 100px;
+//   }
 
-  @media screen and (max-width: 880px) {
-    margin: 70px 40px 0;
-  }
+//   @media screen and (max-width: 880px) {
+//     margin: 70px 40px 0;
+//   }
 
-  @media screen and (max-width: 576px) {
-    margin: 40px 20px 0;
-  }
-`;
+//   @media screen and (max-width: 576px) {
+//     margin: 40px 20px 0;
+//   }
+// `;
 
 export const FullScreenTheme = styled.div`
   display: flex;
