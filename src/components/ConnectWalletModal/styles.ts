@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { OutlineButton } from '../../theme';
 import { ReactComponent as Cross } from '../../assets/icons/cross.svg';
+import { ReactComponent as Metamask } from '../../assets/images/metamask.svg';
+import { ReactComponent as WalletConnect } from '../../assets/images/walletConnect.svg';
+import { ReactComponent as CoinBase } from '../../assets/images/coinbase.svg';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -21,6 +24,9 @@ export const Content = styled.div`
 
 export const WalletButton = styled(OutlineButton)`
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   
   @media screen and (max-width: 880px) {
     padding: 15px 45px;
@@ -39,4 +45,22 @@ export const CrossIcon = styled(Cross)`
   right: 10px;
   width: 20px;
   cursor: pointer;
+`
+
+export const MetamaskIcon = styled(Metamask)`
+  width: 25px;
+  margin-right: 15px;
+  height: 25px;
+`
+
+export const WalletConnectIcon = styled(WalletConnect)`
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+`
+
+export const CoinbaseIcon = styled(CoinBase)`
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
 `
