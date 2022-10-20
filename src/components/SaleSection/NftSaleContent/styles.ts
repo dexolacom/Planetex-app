@@ -5,39 +5,40 @@ import arrow from '../../../assets/icons/selector.svg';
 import NFTSaleBg from '../../../assets/images/NFTSaleBg.jpg';
 import { NFTSaleProps } from '../../../constants/types';
 
-const setSkillImgSize = (props) => {
-  let _height = '30px';
-
-  if (Object.keys(props).indexOf('height') !== -1) {
-    const img_ = props.src?.split('/')[3].split('.')[0].slice(7);
-    _height =
-      img_ === 'Health'
-        ? `${Number(props.height.slice(0, 2)) * 1.5}px`
-        : `${Number(props.height.slice(0, 2)) * 1.7}px`;
-  }
-
-  return _height;
-};
+// const setSkillImgSize = (props) => {
+//   let _height = '30px';
+//   if (Object.keys(props).indexOf('height') !== -1) {
+//     const img_ = props.src?.split('/')[3].split('.')[0].slice(7);
+//     _height =
+//       img_ === 'Health'
+//         ? `${Number(props.height.slice(0, 2)) * 1.5}px`
+//         : `${Number(props.height.slice(0, 2)) * 1.7}px`;
+//   }
+//   return _height;
+// };
 
 export const Wrapper = styled.div`
-  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
-  border: 1px solid #372458;
+  clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
+  padding: 1px;
   width: 100%;
   max-width: 970px;
+  background: linear-gradient(130deg, #e2b2ff 30%, #3c2188 70%);
 
   @media screen and (max-width: 880px) {
+    clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
     margin: 0 auto;
     max-width: 640px;
   }
 
   @media screen and (max-width: 576px) {
-    clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
+    clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 13%);
     margin: 0 auto;
     max-width: 350px;
   }
 `;
 
 export const Content = styled.div`
+  clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
   position: relative;
   padding: 50px 70px 60px 80px;
   background-image: url(${NFTSaleBg});
@@ -46,10 +47,12 @@ export const Content = styled.div`
   background-position: center;
 
   @media screen and (max-width: 880px) {
+    clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
     padding: 40px 50px 40px 60px;
   }
 
   @media screen and (max-width: 576px) {
+    clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 13%);
     padding: 30px 20px 40px;
     text-align: center;
   }
@@ -57,14 +60,14 @@ export const Content = styled.div`
 
 export const HeroGroupImg = styled.img`
   position: absolute;
-  width: 170px;
-  top: 20px;
+  top: 5px;
   left: 310px;
+  width: 170px;
 
   @media screen and (max-width: 880px) {
-    width: 115px;
-    top: 20px;
-    left: 195px;
+    width: 145px;
+    top: -10px;
+    left: 193px;
   }
 
   @media screen and (max-width: 576px) {
@@ -125,7 +128,6 @@ export const PriceText = styled.span`
 export const MainContentWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  // background-color: yellow;
 
   @media screen and (max-width: 576px) {
     display: block;
@@ -136,7 +138,6 @@ export const TextContainer = styled.div`
   margin-right: 20px;
   width: 100%;
   max-width: 282px;
-  // background-color: gray;
 
   @media screen and (max-width: 880px) {
     margin-right: 10px;
@@ -160,7 +161,7 @@ export const Title = styled.h1`
   @media screen and (max-width: 880px) {
     font-size: 28px;
     line-height: 34px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   @media screen and (max-width: 576px) {
@@ -190,7 +191,6 @@ export const Text = styled.p`
 export const SkillsContainer = styled.div`
   padding-top: 80px;
   width: 445px;
-  // background-color: palevioletred;
 
   @media screen and (max-width: 880px) {
     padding-top: 40px;
@@ -227,7 +227,6 @@ export const SkillTitle = styled.h1`
 export const Skills = styled.div`
   display: flex;
   flex-wrap: wrap;
-  // background-color: yellowgreen;
 
   @media screen and (max-width: 576px) {
     justify-content: center;
@@ -241,7 +240,6 @@ export const Skill = styled.div`
   height: 60px;
   font-size: 20px;
   color: #d4e5ff;
-  background: rgba(17, 7, 20, 0.86);
   border: 1px solid #fbe4ff;
   border-radius: 60px;
 
@@ -269,7 +267,7 @@ export const Skill = styled.div`
 export const SkillContent = styled.div`
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 20px 0 20px;
   width: 100%;
   // background-color: teal;
 
@@ -285,10 +283,12 @@ export const SkillContent = styled.div`
 `;
 
 export const SkillImg = styled.img<NFTSaleProps>`
-  height: ${(props) => setSkillImgSize(props)};
+  width: 38px;
+  height: 38px;
 
   @media screen and (max-width: 880px) {
-    height: ${(props) => (props.height !== undefined ? props.height : '20px')};
+    width: 22px;
+    height: 22px;
   }
 `;
 
@@ -312,7 +312,6 @@ export const SkillText = styled.span`
 export const ActionContainer = styled.div`
   display: flex;
   justify-content: end;
-  // background-color: green;
 
   @media screen and (max-width: 576px) {
     display: block;
@@ -324,7 +323,6 @@ export const Action = styled.div`
   justify-content: end;
   font-size: 20px;
   color: #d4e5ff;
-  // background-color: blue;
 
   > select {
     margin-right: 20px;

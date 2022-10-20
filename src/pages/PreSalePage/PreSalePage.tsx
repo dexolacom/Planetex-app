@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import HeroSection from '../../components/HeroSection/HeroSection';
 import { heroInfo } from '../../constants/constants';

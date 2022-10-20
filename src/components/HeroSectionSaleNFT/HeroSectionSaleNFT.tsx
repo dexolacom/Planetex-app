@@ -1,10 +1,10 @@
-import React from 'react';
 import {
   Content,
   Wrapper,
   TextContainer,
   Title,
   Text,
+  ImgWrapper,
   Img,
   MobileContent,
   MobileContainer,
@@ -12,7 +12,7 @@ import {
 import { HeroProps } from '../../constants/types';
 import useCheckIsMobile from '../../hooks/useCheckIsMobile';
 
-const HeroSection = ({ title, text, img }: HeroProps) => {
+const HeroSectionSaleNFT = ({ title, text, img }: HeroProps) => {
   const { isMobile } = useCheckIsMobile();
 
   return (
@@ -21,13 +21,17 @@ const HeroSection = ({ title, text, img }: HeroProps) => {
         <MobileContent>
           <Title>{title}</Title>
           <MobileContainer>
-            <Img src={img} />
+            <ImgWrapper>
+              <Img src={img} />
+            </ImgWrapper>
             <Text>{text}</Text>
           </MobileContainer>
         </MobileContent>
       ) : (
         <Content>
-          <Img src={img} />
+          <ImgWrapper>
+            <Img src={img} />
+          </ImgWrapper>
           <TextContainer>
             <Title>{title}</Title>
             <Text>{text}</Text>
@@ -38,4 +42,4 @@ const HeroSection = ({ title, text, img }: HeroProps) => {
   );
 };
 
-export default HeroSection;
+export default HeroSectionSaleNFT;
