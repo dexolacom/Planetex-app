@@ -241,7 +241,7 @@ export const Skill = styled.div`
   height: 60px;
   font-size: 20px;
   color: #d4e5ff;
-  background: rgba(17, 7, 20, 0.86);
+  // background: rgba(17, 7, 20, 0.86);
   border: 1px solid #fbe4ff;
   border-radius: 60px;
 
@@ -269,7 +269,7 @@ export const Skill = styled.div`
 export const SkillContent = styled.div`
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 20px 0 20px;
   width: 100%;
   // background-color: teal;
 

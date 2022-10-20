@@ -21,6 +21,7 @@ export interface NFTSaleProps {
 
 export interface MyNFTProps {
   url: string;
+  padding?: string;
 }
 
 export interface SaleSectionProps {
@@ -43,11 +44,11 @@ export interface StatusModalProps {
 }
 
 export interface InputContainerProps {
-  tokenAmount: number | string
-  tokenName: string
-  convertedToUSDAmount: number | string
-  isInputAmountError: boolean
-  setTokenAmount: (n: number | string) => void
-  setTokenName: (s: string) => void
-  setIsInputAmountError: (b: boolean) => void
+  tokenAmount: number | string;
+  tokenName: string;
+  convertedToUSDAmount: number | string;
+  isInputAmountError: boolean;
+  setTokenAmount: (n: number | string) => void;
+  setTokenName: (s: string) => void;
+  setIsInputAmountError: (b: boolean) => void;
 }

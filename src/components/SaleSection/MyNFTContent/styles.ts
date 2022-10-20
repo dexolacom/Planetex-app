@@ -46,9 +46,8 @@ export const SlideContent = styled.div`
 export const SlideItem = styled.li`
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%, 0 17.5%);
   display: block;
-  // margin: 0 15px 44px;
   padding: 1px 0 0 1px;
-  width: 270px;
+  width: 274px;
   height: 362px;
   background: linear-gradient(180deg, #d0a5d7 40%, #811fff 60%);
   border-radius: 0 0 4px 4px;
@@ -111,7 +110,7 @@ export const NFTContainer = styled.div`
   width: 280px;
 
   @media screen and (max-width: 576px) {
-    width: 268px;
+    width: 272px;
   }
 `;
 
@@ -124,23 +123,23 @@ export const Thumb = styled.div<MyNFTProps>`
   background-position: center;
 `;
 
-export const SkillsWrapper = styled.div`
+export const SkillsWrapper = styled.div<MyNFTProps>`
   padding: 0 1px 0 1px;
   margin: 0 -1px;
   height: 50px;
   background: linear-gradient(180deg, #d0a5d7 40%, #811fff 60%);
   border-radius: 0 0 4px 4px;
 
-  // @media screen and (max-width: 576px) {
-  //   padding: 0 13%;
-  // }
+  @media screen and (max-width: 576px) {
+    padding: 0 1px;
+  }
 `;
 
-export const SkillsContainer = styled.div`
+export const SkillsContainer = styled.div<MyNFTProps>`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 0 45px;
+  padding: ${(props) => props.padding};
   height: 49px;
   background-color: #1d1429;
   border-radius: 0 0 3px 3px;
@@ -164,7 +163,7 @@ export const SkillContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 12px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   background-color: #1d1429;
@@ -172,13 +171,13 @@ export const SkillContainer = styled.div`
 `;
 
 export const SkillImg = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 `;
 
 export const SkillArrow = styled.img`
   width: 20px;
-  height: 19px;
+  height: 20px;
 `;
 
 export const InfoWrapper = styled.div`
@@ -195,7 +194,7 @@ export const InfoWrapper = styled.div`
   border-image-slice: 1;
 
   @media screen and (max-width: 576px) {
-    width: 270px;
+    width: 274px;
   }
 `;
 
