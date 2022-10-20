@@ -20,24 +20,28 @@ const setSkillImgSize = (props) => {
 };
 
 export const Wrapper = styled.div`
-  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
-  border: 1px solid #372458;
+  clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
+  padding: 1px;
   width: 100%;
   max-width: 970px;
+  background: linear-gradient(130deg, #e2b2ff 30%, #3c2188 70%);
+  // border: 1px solid #372458;
 
   @media screen and (max-width: 880px) {
+    clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
     margin: 0 auto;
     max-width: 640px;
   }
 
   @media screen and (max-width: 576px) {
-    clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
+    clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 13%);
     margin: 0 auto;
     max-width: 350px;
   }
 `;
 
 export const Content = styled.div`
+  clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
   position: relative;
   padding: 50px 70px 60px 80px;
   background-image: url(${NFTSaleBg});
@@ -46,10 +50,12 @@ export const Content = styled.div`
   background-position: center;
 
   @media screen and (max-width: 880px) {
+    clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
     padding: 40px 50px 40px 60px;
   }
 
   @media screen and (max-width: 576px) {
+    clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 13%);
     padding: 30px 20px 40px;
     text-align: center;
   }

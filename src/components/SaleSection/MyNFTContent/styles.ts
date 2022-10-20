@@ -49,7 +49,7 @@ export const SlideItem = styled.li`
   padding: 1px 0 0 1px;
   width: 274px;
   height: 362px;
-  background: linear-gradient(180deg, #d0a5d7 40%, #811fff 60%);
+  background: linear-gradient(180deg, #fbe4ff 40%, #811fff 60%);
   border-radius: 0 0 4px 4px;
 `;
 
@@ -92,7 +92,7 @@ export const Item = styled.li`
   padding: 1px 0 0 1px;
   width: 282px;
   height: 362px;
-  background: linear-gradient(180deg, #d0a5d7 40%, #811fff 60%);
+  background: linear-gradient(180deg, #fbe4ff 40%, #811fff 60%);
   border-radius: 0 0 4px 4px;
 
   @media screen and (max-width: 880px) {
@@ -127,7 +127,7 @@ export const SkillsWrapper = styled.div<MyNFTProps>`
   padding: 0 1px 0 1px;
   margin: 0 -1px;
   height: 50px;
-  background: linear-gradient(180deg, #d0a5d7 40%, #811fff 60%);
+  background: linear-gradient(180deg, #fbe4ff 10%, #811fff 70%);
   border-radius: 0 0 4px 4px;
 
   @media screen and (max-width: 576px) {
