@@ -4,21 +4,21 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   padding: 60px 0 55px;
-  // background-color: pink;
+  // background-color: skyblue;
 
   @media screen and (max-width: 880px) {
+    padding: 95px 0 60px;
   }
 
   @media screen and (max-width: 576px) {
+    padding: 113px 0 47px;
   }
 `;
 
 export const Content = styled.div`
   display: flex;
   justify-content: center;
-  // width: 100%;
   height: 32px;
-  // background-color: skyblue;
 `;
 
 export const SocialList = styled.ul`
@@ -26,19 +26,12 @@ export const SocialList = styled.ul`
 `;
 
 export const SocialItem = styled.li`
-  // display: flex;
-  // justify-content: center;
   margin-right: 16px;
   width: 32px;
   height: 32px;
-  // background-color: pink;
   cursor: pointer;
 
   &:last-child {
     margin-right: 0;
-  }
-
-  &:hover img {
-    fill: #af6aff;
   }
 `;

@@ -1,42 +1,48 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.div`
-  position: relative;
-
   @media screen and (max-width: 880px) {
     display: none;
   }
 `;
 
-export const BackToTopButton = styled.div`
-  position: absolute;
-  bottom: 125px;
-  right: 34px;
+// export const BackToTopContainer = styled.div`
+//   position: relative;
+//   background-color: red;
+//   width: 100%;
+//   display: none;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+//   @media screen and (max-width: 880px) {
+//     display: block;
+//   }
+// `;
 
-  width: 81px;
-  height: 81px;
-  border: 2.07692px solid #933df6;
-  border-radius: 1.03846px;
+//   export const BackToTopButton = styled.div`
+//   position: absolute;
+//   top: -22px;
+//   right: 35px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 80px;
+//   height: 80px;
+//   border: 2.07692px solid #933df6;
+//   border-radius: 1.03846px;
 
-  // display: none;
+//   @media screen and (max-width: 880px) {
+//     // display: block;
+//   }
 
-  @media screen and (max-width: 880px) {
-    // display: block;
-  }
+//   @media screen and (max-width: 576px) {
+//     top: -15px;
+//     right: 30px;
+//   }
+// `;
 
-  @media screen and (max-width: 576px) {
-    // display: none;
-  }
-`;
-
-export const BackToTopImg = styled.img`
-  width: 52px;
-  height: 32px;
-`;
+// export const BackToTopImg = styled.img`
+//   width: 52px;
+//   height: 32px;
+// `;
 
 /*
 

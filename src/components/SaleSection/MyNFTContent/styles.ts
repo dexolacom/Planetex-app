@@ -5,10 +5,8 @@ import { MyNFTProps } from '../../../constants/types';
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 60px 0 125px 0;
+  padding: 60px 0 75px 0;
   width: 100%;
-  // height: 500px;
-  // background-color: pink;
 
   @media screen and (max-width: 880px) {
     padding: 50px 0 0 0;
@@ -24,7 +22,6 @@ export const Wrapper = styled.div`
 `;
 
 export const MobileContent = styled.div`
-  // background-color: blue;
   padding: 0 0 35px;
 `;
 
@@ -46,7 +43,6 @@ export const SlideContainer = styled.div`
   height: 361px;
   display: flex;
   justify-content: center;
-  // background-color: green;
 `;
 
 export const Content = styled.div`
@@ -60,7 +56,6 @@ export const Title = styled.h2`
   line-height: 44px;
   font-weight: 700;
   color: #d4e5ff;
-  // background-color: yellow;
 
   @media screen and (max-width: 880px) {
     padding-left: 0;
@@ -72,8 +67,6 @@ export const Title = styled.h2`
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
-  // background-color: green;
 
   @media screen and (max-width: 880px) {
     justify-content: center;
@@ -104,7 +97,6 @@ export const Item = styled.li`
 
 export const NFTContainer = styled.div`
   position: relative;
-  // background-color: yellow;
 `;
 
 export const Thumb = styled.div<MyNFTProps>`
@@ -113,7 +105,6 @@ export const Thumb = styled.div<MyNFTProps>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  // background-color: black;
 `;
 
 export const SkillsWrapper = styled.div`
@@ -138,7 +129,6 @@ export const Skill = styled.div`
   height: 34px;
   border-radius: 21px;
   border: 2px solid #d0a5d7;
-  // background-color: red;
 `;
 
 export const SkillContainer = styled.div`
@@ -147,7 +137,6 @@ export const SkillContainer = styled.div`
   align-items: center;
   padding: 0 10px;
   width: 100%;
-  // background-color: green;
 `;
 
 export const SkillImg = styled.img`
