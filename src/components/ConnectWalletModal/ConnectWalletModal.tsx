@@ -3,8 +3,6 @@ import { Wrapper, Content, WalletButton, CrossIcon, MetamaskIcon, CoinbaseIcon, 
 import { connectors } from '../../constants/connectors';
 import { connectWallet } from '../../utils/blockchainUtils';
 import { useWeb3React } from '@web3-react/core';
-// @ts-ignore
-import coinbase from '../../assets/images/coinbase.png';
 
 
 const ConnectWalletModal = ({ setIsModalOpen }: { setIsModalOpen: (b: boolean) => string }) => {
@@ -25,7 +23,7 @@ const ConnectWalletModal = ({ setIsModalOpen }: { setIsModalOpen: (b: boolean) =
         </WalletButton>
         <WalletButton onClick={() => connectWalletHandler('coinbaseWallet')}>
           <CoinbaseIcon />
-          CoinBase
+          Coinbase
         </WalletButton>
         <WalletButton onClick={() => connectWalletHandler('walletConnect')}>
           <WalletConnectIcon />
