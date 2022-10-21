@@ -25,21 +25,21 @@ export const SolidButton = styled.button<{ padding?: string }>`
   }
 `;
 
-export const OutlineButton = styled.button<{ padding?: string }>`
+export const OutlineButton = styled.button<{padding?: string, isActive?: boolean}>`
   padding: 15px 45px;
-  border: 2px solid #9e40b5;
+  border: ${({isActive}) => isActive ? '2px solid transparent' : '2px solid #9e40b5'}; 
   border-radius: 45px;
-  color: #9e40b5;
+  color: ${({isActive}) => isActive ? '#D4E5FF' : '#9e40b5'};
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
-  background-color: transparent;
+  background-color: ${({isActive}) => isActive ? '#9E40B5' : 'transparent'};
   cursor: pointer;
-
+  
   &:hover {
-    background-color: #9e40b5;
-    color: #d4e5ff;
-    border: 2px solid transparent;
+    background-color: ${({isActive}) => isActive ? '#9E40B5' : '#150A25'};
+    color: ${({isActive}) => isActive ? '#D4E5FF' : '#9E40B5'};
+    border:  2px solid #9E40B5;
   }
 
   @media screen and (max-width: 880px) {

@@ -41,6 +41,12 @@ export const RouterLink = styled(NavLink)`
 
 export const ConnectButton = styled(OutlineButton)`
   padding: 13px 62px;
+
+  &:hover {
+    background-color: #150A25;
+    color: #9E40B5;
+    border:  2px solid #9E40B5;
+  }
   
   @media screen and (max-width: 880px) {
     font-size: 18px;

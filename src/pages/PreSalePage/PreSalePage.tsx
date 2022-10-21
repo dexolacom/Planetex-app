@@ -5,8 +5,10 @@ import { OutlineButton } from '../../theme';
 import { ButtonsContainer } from './styles';
 import SaleSection from '../../components/SaleSection/SaleSection';
 import { changeNetwork } from '../../utils/blockchainUtils';
+import { useWeb3React } from '@web3-react/core';
 
 const PreSalePage = () => {
+  const { chainId } = useWeb3React()
   const { presale } = heroInfo;
 
   const handleNetworkSwitch = async (networkName: string) => {
@@ -21,10 +23,10 @@ const PreSalePage = () => {
         img={presale?.img}
       />
       <ButtonsContainer>
-        <OutlineButton onClick={() => handleNetworkSwitch('goerli')}>
+        <OutlineButton isActive={chainId === 5 || chainId === 1} onClick={() => handleNetworkSwitch('goerli')}>
           Ethereum Network
         </OutlineButton>
-        <OutlineButton onClick={() => handleNetworkSwitch('bscT')}>
+        <OutlineButton isActive={chainId === 97 || chainId === 56} onClick={() => handleNetworkSwitch('bscT')}>
           BSC Network
         </OutlineButton>
       </ButtonsContainer>
