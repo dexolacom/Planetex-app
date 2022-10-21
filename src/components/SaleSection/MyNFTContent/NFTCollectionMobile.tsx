@@ -1,11 +1,12 @@
 // @ts-nocheck
 /* eslint-disable max-lines-per-function */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { _NFT } from './_NFT';
+// import NFT_1 from '../../../assets/NFT_624/1.jpg';
 import arrowTop from '../../../assets/icons/arrow-top.svg';
+import setSkillImg from './setSkillImage';
+import { v4 as uuid } from 'uuid';
 import {
   MobileContent,
   MobileTitle,
@@ -35,27 +36,32 @@ const settings = {
   arrows: false,
 };
 
-const NFTCollectionMobile = () => {
+const NFTCollectionMobile = ({ NFTs }) => {
   return (
     <MobileContent>
       <MobileTitle>My NFT</MobileTitle>
       <Slider {...settings}>
-        {_NFT.map((nft) => {
+        {NFTs.map((nft) => {
           return (
-            <SlideContainer key={nft.id}>
+            <SlideContainer key={uuid()}>
               <SlideContent>
                 <SlideItem>
                   <NFTContainer>
-                    <Thumb url={nft.url} />
+                    <Thumb url={`https://ipfs.io/${nft.image}`} />
+                    {/* <Thumb url={NFT_1} /> */}
                     <SkillsWrapper>
                       <SkillsContainer
-                        padding={nft.skills?.length === 2 ? '0 30px' : '0 10px'}
+                        padding={
+                          nft.skills.split(',').length === 2
+                            ? '0 30px'
+                            : '0 10px'
+                        }
                       >
-                        {nft.skills.map((skill) => {
+                        {nft.skills.split(',').map((skill) => {
                           return (
-                            <Skill key={skill.name}>
+                            <Skill key={`${uuid()}q`}>
                               <SkillContainer>
-                                <SkillImg src={skill.url} />
+                                <SkillImg src={setSkillImg(skill.trim())} />
                                 <SkillArrow src={arrowTop} />
                               </SkillContainer>
                             </Skill>
@@ -65,7 +71,7 @@ const NFTCollectionMobile = () => {
                     </SkillsWrapper>
                     <InfoWrapper>
                       <Name>{nft.name}</Name>
-                      <Role>{nft.role}</Role>
+                      <Role>{nft.profession}</Role>
                     </InfoWrapper>
                   </NFTContainer>
                 </SlideItem>
