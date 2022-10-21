@@ -1,9 +1,10 @@
 // @ts-nocheck
 /* eslint-disable max-lines-per-function */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { _NFT } from './_NFT';
-import arrowTop from '../../../assets/icons/arrow-top.svg';
+// import NFT_1 from '../../../assets/NFT_624/1.jpg';
 import { FullScreenTheme } from '../../../theme';
+import arrowTop from '../../../assets/icons/arrow-top.svg';
+import setSkillImg from './setSkillImage';
+import { v4 as uuid } from 'uuid';
 import {
   Wrapper,
   Content,
@@ -23,27 +24,34 @@ import {
   SkillsContainer,
 } from './styles';
 
-const NFTCollection = () => {
+const NFTCollection = ({ NFTs }) => {
+  console.log('--->', NFTs);
+
   return (
     <FullScreenTheme>
       <Wrapper>
         <Content>
           <Title>My NFT</Title>
           <List>
-            {_NFT.map((nft) => {
+            {NFTs.map((nft) => {
               return (
-                <Item key={nft.id}>
+                <Item key={uuid()}>
                   <NFTContainer>
-                    <Thumb url={nft.url} />
+                    <Thumb url={`https://ipfs.io/${nft.image}`} />
+                    {/* <Thumb url={NFT_1} /> */}
                     <SkillsWrapper>
                       <SkillsContainer
-                        padding={nft.skills?.length === 2 ? '0 30px' : '0 10px'}
+                        padding={
+                          nft.skills.split(',').length === 2
+                            ? '0 30px'
+                            : '0 10px'
+                        }
                       >
-                        {nft.skills.map((skill) => {
+                        {nft.skills.split(',').map((skill) => {
                           return (
-                            <Skill key={skill.name}>
+                            <Skill key={`${uuid()}q`}>
                               <SkillContainer>
-                                <SkillImg src={skill.url} />
+                                <SkillImg src={setSkillImg(skill.trim())} />
                                 <SkillArrow src={arrowTop} />
                               </SkillContainer>
                             </Skill>
@@ -53,7 +61,7 @@ const NFTCollection = () => {
                     </SkillsWrapper>
                     <InfoWrapper>
                       <Name>{nft.name}</Name>
-                      <Role>{nft.role}</Role>
+                      <Role>{nft.profession}</Role>
                     </InfoWrapper>
                   </NFTContainer>
                 </Item>
