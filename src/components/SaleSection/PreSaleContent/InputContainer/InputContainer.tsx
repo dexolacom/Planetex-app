@@ -17,8 +17,8 @@ const InputContainer = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
-    if (value.match(/^[0-9]*[.,]?[0-9]*$/)) {
+  // double zeroz перед числом убрать
+    if (value.match(/^[0-9]*[.]?[0-9]*$/)) {
       if ((+value >= 10 && +value <= 1000) || +value === 0) {
         setIsInputAmountError(false)
         return setTokenAmount(value);
