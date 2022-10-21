@@ -9,8 +9,9 @@ import NFTCollection from './NFTCollection';
 import { useWeb3React } from '@web3-react/core';
 import { getPlanetexTokenContract } from '../../../utils/contracts';
 import getNFTInfo from './api';
+import { injected } from '../../../constants/connectors';
 
-const { log } = console;
+// const { log } = console;
 
 const MyNFTContent = () => {
   const [planetexTokenContract, setPlanetexTokenContract] = useState(null);
@@ -20,10 +21,11 @@ const MyNFTContent = () => {
   const { isMobile } = useCheckIsMobile();
 
   useEffect(() => {
+    setNFTs([]);
     // chainId && account && log('--------', chainId, account);
     const contract = chainId && getPlanetexTokenContract(chainId);
     setPlanetexTokenContract(contract);
-  }, [chainId, account]);
+  }, [chainId, account, injected]);
 
   const getTokens = async (contract) => {
     const idArray = [];
