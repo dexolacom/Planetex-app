@@ -15,6 +15,7 @@ export interface NFTSaleProps {
 export interface MyNFTProps {
   url: string;
   padding?: string;
+  paddingBottom?: string;
 }
 
 export interface SaleSectionProps {
