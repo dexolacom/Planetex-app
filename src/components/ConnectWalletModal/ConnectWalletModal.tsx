@@ -19,11 +19,11 @@ const ConnectWalletModal = ({ setIsModalOpen }: { setIsModalOpen: (b: boolean) =
       <Content>
         <WalletButton onClick={() => connectWalletHandler('injected')}>
           <MetamaskIcon />
-          Metamask
+          MetaMask
         </WalletButton>
         <WalletButton onClick={() => connectWalletHandler('coinbaseWallet')}>
           <CoinbaseIcon />
-          Coinbase
+          CoinBase
         </WalletButton>
         <WalletButton onClick={() => connectWalletHandler('walletConnect')}>
           <WalletConnectIcon />
