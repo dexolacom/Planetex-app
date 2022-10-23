@@ -1,5 +1,7 @@
+/* eslint-disable jsx-quotes */
 /* eslint-disable no-console */
 /* eslint-disable max-lines-per-function */
+import { useState } from 'react';
 import { FullScreenTheme } from '../../../theme';
 import NFTSaleDamage from '../../../assets/icons/NFTSaleDamage.svg';
 import NFTSaleSpeed from '../../../assets/icons/NFTSaleSpeed.svg';
@@ -32,6 +34,7 @@ import { useWeb3React } from '@web3-react/core';
 
 const NftSaleContent = () => {
   const { chainId } = useWeb3React();
+  const [tokenName, setTokenName] = useState('');
 
   return (
     <FullScreenTheme>
@@ -83,16 +86,20 @@ const NftSaleContent = () => {
           </MainContentWrap>
           <ActionContainer>
             <Action>
-              <Select onChange={(e) => console.log(e.target.value)}>
-                {chainId === 97 ? (
+              <Select
+                id="tokenSelect"
+                value={tokenName}
+                onChange={(e) => setTokenName(e.target.value)}
+              >
+                {chainId === 97 || chainId === 56 ? (
                   <>
-                    <option>BNB</option>
-                    <option>BUSD</option>
+                    <option value="BNB">BNB</option>
+                    <option value="BUSD">BUSD</option>
                   </>
                 ) : (
                   <>
-                    <option>ETH</option>
-                    <option>USDT</option>
+                    <option value="ETH">ETH</option>
+                    <option value="USDT">USDT</option>
                   </>
                 )}
               </Select>
