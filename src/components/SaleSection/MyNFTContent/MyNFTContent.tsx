@@ -37,7 +37,7 @@ const MyNFTContent = () => {
 
     if (idArray.length === 0) {
       for (let i = 0; i < ids.length; i += 1) {
-        const character = await methods.characters(ids[i]).call();
+        const character = await methods.tokenURI(ids[i]).call();
         character && idArray.push(character);
       }
     }
