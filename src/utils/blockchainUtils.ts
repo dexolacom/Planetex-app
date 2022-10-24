@@ -151,6 +151,15 @@ export const checkApproveNft = async (
           setIsTransLoading,
         ),
       );
+    } else {
+      return await buyNftToken(
+        chainId,
+        account,
+        tokenName,
+        setIsTransSuccessModal,
+        setIsTransErrorModal,
+        setIsTransLoading,
+      );
     }
   } else {
     return await buyNftToken(
