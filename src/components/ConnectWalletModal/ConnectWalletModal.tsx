@@ -5,7 +5,7 @@ import { connectWallet } from '../../utils/blockchainUtils';
 import { useWeb3React } from '@web3-react/core';
 
 
-const ConnectWalletModal = ({ setIsModalOpen }: { setIsModalOpen: (b: boolean) => string }) => {
+const ConnectWalletModal = ({ setIsModalOpen }: { setIsModalOpen: (b: boolean) => boolean }) => {
   const { activate } = useWeb3React();
 
   const connectWalletHandler = (connector: string) => {
