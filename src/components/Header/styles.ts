@@ -130,11 +130,12 @@ export const Link = styled.a`
   font-size: 18px;
   line-height: 22px;
   text-decoration: none;
-  color: #D4E5FF;
+  color: #868b8b;
+  cursor: auto;
 
-  &:hover {
-    color: #9E40B5;
-  }
+  //&:hover {
+  //  color: #9E40B5;
+  //}
 
   @media screen and (max-width: 992px) {
     font-size: 16px;
