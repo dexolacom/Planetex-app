@@ -50,9 +50,9 @@ export const getPlanetexTokenContractAddress = (
 ) => {
   const addresses = {
     1: '',
-    5: '0x981b26B54340aBCC6F9c011e7bDCD745f4340050',
+    5: '0x710bf88E1F46f7e8383Ce844251f1475e0BEB252',
     56: '',
-    97: '0x981b26B54340aBCC6F9c011e7bDCD745f4340050',
+    97: '',
   };
 
   return (
