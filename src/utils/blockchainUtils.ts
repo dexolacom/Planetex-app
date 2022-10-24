@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { connectors } from '../constants/connectors';
 import { networks } from '../constants/networks';
@@ -102,17 +103,17 @@ export const checkApprove = async (
           setIsTransLoading,
         ),
       );
+    } else {
+      return await buyToken(
+        chainId,
+        tokenAmount,
+        account,
+        tokenName,
+        setIsTransSuccessModal,
+        setIsTransErrorModal,
+        setIsTransLoading,
+      );
     }
-
-    return await buyToken(
-      chainId,
-      tokenAmount,
-      account,
-      tokenName,
-      setIsTransSuccessModal,
-      setIsTransErrorModal,
-      setIsTransLoading,
-    );
   } else {
     return await buyToken(
       chainId,
