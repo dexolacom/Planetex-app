@@ -21,14 +21,15 @@ export const Links = styled.div`
   align-items: center;
   margin-top: 30px;
   gap: 50px;
-  
-  a {
-    font-weight: 700;
-    line-height: 22px;
-    text-decoration: none;
-    color: #D4E5FF;
-    font-size: 24px;
-  }
+`
+
+export const Link = styled.a`
+  font-weight: 700;
+  line-height: 22px;
+  text-decoration: none;
+  color: #868b8b;
+  cursor: auto;
+  font-size: 24px;
 `
 
 export const RouterLink = styled(NavLink)`

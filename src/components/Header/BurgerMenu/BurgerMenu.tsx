@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper, Links, RouterLink, ConnectButton } from './styles';
+import { Wrapper, Links, RouterLink, ConnectButton, Link } from './styles';
 import { useWeb3React } from '@web3-react/core';
 import { connectors } from '../../../constants/connectors';
 import { connectWallet } from '../../../utils/blockchainUtils';
@@ -13,8 +13,8 @@ const BurgerMenu = () => {
       <Links>
         <RouterLink to='/presale'>Pre-Sale</RouterLink>
         <RouterLink to="/nft-sale">NFT Sale</RouterLink>
-        <a href='#'>Main Sale</a>
-        <a href='#'>Private Sale</a>
+        <Link href='#'>Main Sale</Link>
+        <Link href='#'>Private Sale</Link>
         {!account &&
         <ConnectButton onClick={() => connectWallet(activate, connectors.injected, 'injected')}>
           Connect wallet
