@@ -105,26 +105,4 @@ export const InputError = styled.span`
   color: #582424;
   font-size: 16px;
   font-weight: 600;
-  position: absolute;
-  bottom: 144px;
-  
-  @media screen and (max-width: 880px) {
-    bottom: 120px;
-  }
-
-  @media screen and (max-width: 769px) {
-    bottom: 110px;
-  }
-
-  @media screen and (max-width: 576px) {
-    bottom: 95px;
-  }
-
-  @media screen and (max-width: 470px) {
-    bottom: 95px;
-  }
-
-  @media screen and (max-width: 435px) {
-    bottom: 65px;
-  }
 `

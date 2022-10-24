@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import arrow from '../../../../assets/icons/selector.svg';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{marginBottom?: string}>`
   display: flex;
   align-items: center;
   gap: 30px;
-  margin-bottom: 30px;
+  margin-bottom: ${({marginBottom}) => marginBottom ?? '30px'};
 
   @media screen and (max-width: 768px) {
     justify-content: center;
@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 707px) {
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 36px;
+    margin-bottom: ${({marginBottom}) => marginBottom ?? '36px'};
     align-items: flex-end;
     
 

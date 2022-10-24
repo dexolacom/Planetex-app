@@ -36,7 +36,7 @@ const InputContainer = ({
   }, [chainId]);
 
   return (
-    <Wrapper>
+    <Wrapper marginBottom={isInputAmountError ? '5px' : '30px'}>
       <InputBlock border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'}>
         <Input
           type='number'
