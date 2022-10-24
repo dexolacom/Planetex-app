@@ -135,13 +135,23 @@ export const checkApproveNft = async (
   setIsTransErrorModal: (b: boolean) => void,
   setIsTransLoading: (b: boolean) => void,
 ) => {
+  console.log('checkApproveNft --->');
   if (tokenName === 'USDT') {
     const tokenContract = getTokenContract(chainId);
     const spender = getPlanetexTokenContractAddress(chainId);
 
     const allowance = await checkAllowance(account, tokenContract, spender);
 
+    console.log('tokenName --->', tokenName);
+    console.log('account --->', account);
+    console.log('tokenName --->', tokenName);
+
+    console.log('tokenContract --->', tokenContract);
+    console.log('spender --->', spender);
+    console.log('allowance --->', allowance);
+
     if (allowance === '0') {
+      console.log('1');
       await approve(tokenContract, account, spender).then(() =>
         buyNftToken(
           chainId,
@@ -153,6 +163,7 @@ export const checkApproveNft = async (
         ),
       );
     } else {
+      console.log('2');
       return await buyNftToken(
         chainId,
         account,
@@ -163,6 +174,7 @@ export const checkApproveNft = async (
       );
     }
   } else {
+    console.log('3');
     return await buyNftToken(
       chainId,
       account,
