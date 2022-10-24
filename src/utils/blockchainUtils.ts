@@ -73,17 +73,21 @@ export const checkApprove = async (
   setIsTransErrorModal: (b: boolean) => void,
   setIsTransLoading: (b: boolean) => void
 ) => {
-  const tokenContract = getTokenContract(chainId)
-  const spender = getTokenSaleContractAddress(chainId)
+  if (tokenName === 'USDT' || tokenName === 'BUSD') {
+    const tokenContract = getTokenContract(chainId)
+    const spender = getTokenSaleContractAddress(chainId)
 
-  const allowance = await checkAllowance(account, tokenContract, spender)
+    const allowance = await checkAllowance(account, tokenContract, spender)
 
-  if (allowance === '0') {
-    await approve(tokenContract, account, spender)
-      .then(() => buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading))
+    if (allowance === '0') {
+      await approve(tokenContract, account, spender)
+        .then(() => buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading))
+    }
+
+    return await buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)
+  } else {
+    return await buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)
   }
-
-  return await buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)
 }
 
 export const approve = async (contract: any, account: string | null | undefined, spender: string) => {

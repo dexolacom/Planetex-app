@@ -39,6 +39,7 @@ const PreSaleContent = () => {
   useEffect(() => {
     if (chainId) getUserAvailableAmount(chainId, account)
       .then(res => setUserAvailableAmount(formatToHuman(chainId, res?.usdtAmount)))
+    setTokenAmount('')
   }, [chainId, isTransSuccessModal]);
 
   useEffect(() => {
@@ -51,6 +52,10 @@ const PreSaleContent = () => {
       }
     }
   }, [convertedToUSDAmount]);
+
+  useEffect(() => {
+    setConvertedToUSDAmount('')
+  }, [tokenName]);
 
   return (
     <>
