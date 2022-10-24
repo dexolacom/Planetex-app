@@ -12,7 +12,7 @@ const BurgerMenu = () => {
     <Wrapper>
       <Links>
         <RouterLink to='/presale'>Pre-Sale</RouterLink>
-        <a href='#'>NFT Sale</a>
+        <RouterLink to="/nft-sale">NFT Sale</RouterLink>
         <a href='#'>Main Sale</a>
         <a href='#'>Private Sale</a>
         {!account &&

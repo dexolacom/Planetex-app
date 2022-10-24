@@ -36,6 +36,12 @@ export const InputBlock = styled.div<{border?: string}>`
   justify-content: space-between;
   align-items: center;
 
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   &:focus-within {
     border: 1px solid #AF76FD;
   }
