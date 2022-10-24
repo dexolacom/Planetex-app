@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { InputContainerProps } from '../../../../constants/types';
 import { Input, InputBlock, InputInfo, Select, Wrapper } from './styles';
@@ -16,8 +16,8 @@ const InputContainer = ({
   const { chainId } = useWeb3React()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-  // double zeroz перед числом убрать
+    const value = (e.target.value).replace(/^0\d{1}$/, '');
+
     if (value.match(/^[0-9]*[.]?[0-9]*$/)) {
       if ((+value >= 10 && +value <= 1000) || +value === 0) {
         setIsInputAmountError(false)
