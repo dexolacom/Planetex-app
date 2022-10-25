@@ -1,41 +1,42 @@
-import React from 'react';
-import { Column, ColumnContainer, List, Title, Wrapper } from './styles';
-
+/* eslint-disable jsx-quotes */
+// @ts-nocheck
+/* eslint-disable max-lines-per-function */
+import Social from '../Social/Social';
+import {
+  Wrapper,
+  Content,
+  Logo,
+  Navigation,
+  Links,
+  RouterLink,
+  Link,
+} from '../Header/styles';
+import { FooterContainer } from './styles';
+import BackToTopButton from '../BackToTopButton/BackToTopButton';
 
 const Footer = () => {
   return (
-    <Wrapper>
-      <Column>
-        <Title>Contact us</Title>
-        <List>
-          <span>Listing: listing@planetex.io</span>
-          <span>Support: support@planetex.io</span>
-          <span>Partnership: info@planetex.io</span>
-        </List>
-      </Column>
-
-      <ColumnContainer>
-        <Column>
-          <Title>Products</Title>
-          <List>
-            <a href='#'>Trading</a>
-            <a href='#'>Exchange</a>
-            <a href='#'>Launchpad</a>
-            <a href='#'>Stake Box</a>
-          </List>
-        </Column>
-        <Column>
-          <Title>About us</Title>
-          <List>
-            <a href='#'>About Planetex</a>
-            <a href='#'>Blog</a>
-            <a href='#'>Terms</a>
-            <a href='#'>Privacy</a>
-          </List>
-        </Column>
-      </ColumnContainer>
-
-    </Wrapper>
+    <>
+      <Social />
+      <FooterContainer>
+        {/* === Attention! Using Header styles === */}
+        <Wrapper>
+          <Content>
+            <Logo />
+            <Navigation>
+              <Links>
+                <RouterLink to="/presale">Pre-Sale</RouterLink>
+                <RouterLink to="/nft-sale">NFT Sale</RouterLink>
+                <Link href="#">Main Sale</Link>
+                <Link href="#">Private Sale</Link>
+              </Links>
+            </Navigation>
+          </Content>
+        </Wrapper>
+        {/* === Attention! Using Header styles === */}
+      </FooterContainer>
+      <BackToTopButton />
+    </>
   );
 };
 

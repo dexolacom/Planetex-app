@@ -1,27 +1,24 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin: 0 0 60px 0;
-
-  @media screen and (max-width: 880px) {
-    margin: 0 0 80px 0;
-  }
+  padding-top: 35px;
+  margin-bottom: 85px;
+  // background-color: teal;
 
   @media screen and (max-width: 576px) {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 70px 0;
+    padding-top: 20px;
+    margin-bottom: 70px;
   }
 `;
 
 export const Content = styled.div`
   display: flex;
-  // gap: 25px;
+  align-items: center;
   height: 120px;
 
   @media screen and (max-width: 880px) {
     margin 0 auto;
-    max-width: 550px;
+    max-width: 510px;
   }
 `;
 
@@ -47,23 +44,24 @@ export const Title = styled.h4`
   font-size: 24px;
   line-height: 29px;
   color: #d4e5ff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   @media screen and (max-width: 880px) {
     margin-bottom: 10px;
   }
 
   @media screen and (max-width: 576px) {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 `;
 
 export const Text = styled.p`
+  max-width: 700px;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
-  max-width: 700px;
+  letter-spacing: 0.015em;
   color: #d4e5ff;
 
   @media screen and (max-width: 880px) {
@@ -72,23 +70,36 @@ export const Text = styled.p`
   }
 
   @media screen and (max-width: 576px) {
-    font-size: 18px;
     max-width: 170px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+`;
+
+export const ImgWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 155px;
+  height: 100%;
+
+  @media screen and (max-width: 880px) {
+    width: 200px;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 165px;
+    height: 130px;
   }
 `;
 
 export const Img = styled.img`
-  margin-top: -25px;
-  padding-right: 30px;
-  width: 130px;
+  height: 100px;
 
   @media screen and (max-width: 880px) {
-    margin-top: -40px;
-    width: 120px;
+    height: 85px;
   }
 
   @media screen and (max-width: 576px) {
-    margin-top: 0px;
-    width: 123px;
+    height: 120px;
   }
 `;
