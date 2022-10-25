@@ -35,6 +35,7 @@ import Loader from '../../Loader/Loader';
 import StatusModal from '../../StatusModal/StatusModal';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
 import { checkApproveNft } from '../../../utils/blockchainUtils';
+// import img_12 from '../../../assets/NFT_Base64/img_12';
 
 const NftSaleContent = () => {
   const { chainId, account } = useWeb3React();
@@ -42,7 +43,6 @@ const NftSaleContent = () => {
   const [isTransErrorModal, setIsTransErrorModal] = useState(false);
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false);
   const [isTransLoading, setIsTransLoading] = useState(false);
-  // const;
 
   return (
     <>
