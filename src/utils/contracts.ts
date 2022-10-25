@@ -10,7 +10,7 @@ export const getTokenSaleContractAddress = (chainId: number | undefined) => {
     56: '',
     97: '0x42D2278483A4794200F207251d4204879A3412dd',
   }
-  return addresses[chainId as keyof typeof addresses] ?? console.error('chainId is undefined')
+  return addresses[chainId as keyof typeof addresses]
 };
 
 export const getTokenSaleContract = async(chainId: number | undefined) => {
@@ -25,7 +25,7 @@ export const getTokenContractAddress = (chainId: number | undefined) => {
     97: '0x912480a6063AF66A306C25370AB32453C10F7919',
   }
 
-  return addresses[chainId as keyof typeof addresses] ?? console.error('chainId is undefined')
+  return addresses[chainId as keyof typeof addresses]
 }
 
 export const getTokenContract = (chainId: number | undefined) => {

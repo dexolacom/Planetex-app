@@ -11,12 +11,19 @@ import {
   InputError
 } from './styles';
 import { useWeb3React } from '@web3-react/core';
-import { checkApprove, convertToUSD, formatToHuman, getUserAvailableAmount } from '../../../utils/blockchainUtils';
+import {
+  checkAllowance,
+  checkApprove,
+  convertToUSD,
+  formatToHuman,
+  getUserAvailableAmount,
+} from '../../../utils/blockchainUtils';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
 import StatusModal from '../../StatusModal/StatusModal';
 import InputContainer from './InputContainer/InputContainer';
 import Loader from '../../Loader/Loader';
 import useDebounce from '../../../hooks/useDebounce';
+import { getTokenContract, getTokenSaleContractAddress } from '../../../utils/contracts';
 
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
@@ -25,10 +32,18 @@ const PreSaleContent = () => {
   const [isTransErrorModal, setIsTransErrorModal] = useState(false)
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
   const [isTransLoading, setIsTransLoading] = useState(false)
+  const [isApproveLoading, setIsApproveLoading] = useState(false)
   const [isInputAmountError, setIsInputAmountError] = useState(false)
   const [userAvailableAmount, setUserAvailableAmount] = useState('')
   const [convertedToUSDAmount, setConvertedToUSDAmount] = useState('')
+  const [allowance, setAllowance] = useState('')
   const debouncedValue = useDebounce<string>(tokenAmount, 300)
+  const tokenContract = getTokenContract(chainId)
+  const spender = getTokenSaleContractAddress(chainId)
+
+  useEffect(() => {
+    if (chainId) checkAllowance(account, tokenContract, spender).then(res => setAllowance(res))
+  }, [chainId, account, isApproveLoading]);
 
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
@@ -84,17 +99,48 @@ const PreSaleContent = () => {
               }
             </InputError>
           }
-          <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0 || +userAvailableAmount < 10} onClick={
-            () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)}
-          >
-            {isTransLoading
-              ? <>
-                <Loader stroke='#D4E5FF' size='20px' style={{marginRight: '10px'}}/>
-                Pending
-              </>
-              : 'Buy Token'
+
+          {(() => {
+
+            if (isApproveLoading) {
+              return (
+                <SolidButton disabled>
+                  <>
+                    <Loader stroke='#D4E5FF' size='20px' style={{marginRight: '10px'}}/>
+                    Approving
+                  </>
+                </SolidButton>
+              )
             }
-          </SolidButton>
+            if (isTransLoading) {
+              return (
+                <SolidButton disabled>
+                  <>
+                    <Loader stroke='#D4E5FF' size='20px' style={{marginRight: '10px'}}/>
+                    Pending
+                  </>
+                </SolidButton>
+              )
+            }
+
+            if (allowance === '0') {
+              return (
+                <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0 || +userAvailableAmount < 10} onClick={
+                  () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading, setIsApproveLoading)}
+                >
+                  Approve
+                </SolidButton>
+              )
+            }
+
+            else return (
+              <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0 || +userAvailableAmount < 10} onClick={
+                () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading, setIsApproveLoading)}
+              >
+                Buy Token
+              </SolidButton>
+            )
+          })()}
         </Content>
       </Wrapper>
 
