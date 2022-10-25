@@ -147,17 +147,17 @@ export const checkApproveNft = async (
   }
 };
 
-export const approve = async (contract: any, account: string | null | undefined, spender: string, setIsApproveLoading: (b: boolean) => void) => {
-  setIsApproveLoading(true)
+export const approve = async (contract: any, account: string | null | undefined, spender: string, setIsApproveLoading?: (b: boolean) => void) => {
+  setIsApproveLoading && setIsApproveLoading(true)
   return await contract.methods
     .approve(spender, maxApproveAmount)
     .send({ from: account })
     .on('receipt', function() {
-      setIsApproveLoading(false)
+      setIsApproveLoading && setIsApproveLoading(false)
     })
     .on('error', function(error: any) {
       console.error(error);
-      setIsApproveLoading(false)
+      setIsApproveLoading && setIsApproveLoading(false)
     })
 }
 
@@ -166,6 +166,7 @@ export const convertToUSD = async (chainId: number | undefined, tokenAmount: num
   const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', { useGrouping: false })
   const res = await contract.methods.convertToStable(formattedAmount, 0).call()
   return res
+}
 
 export const getUserAvailableAmount = async (
   chainId: number | undefined,
