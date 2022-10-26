@@ -101,7 +101,6 @@ const PreSaleContent = () => {
           }
 
           {(() => {
-
             if (isApproveLoading) {
               return (
                 <SolidButton disabled>
@@ -122,8 +121,7 @@ const PreSaleContent = () => {
                 </SolidButton>
               )
             }
-
-            if (allowance === '0') {
+            if (allowance === '0' && (tokenName === 'USDT' || tokenName === 'BUSD')) {
               return (
                 <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0 || +userAvailableAmount < 10} onClick={
                   () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading, setIsApproveLoading)}
