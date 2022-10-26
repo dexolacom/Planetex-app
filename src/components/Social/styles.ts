@@ -1,5 +1,3 @@
-// @ts-nocheck
-/* eslint-disable max-len */
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -27,11 +25,20 @@ export const SocialList = styled.ul`
 
 export const SocialItem = styled.li`
   margin-right: 16px;
-  width: 32px;
-  height: 32px;
   cursor: pointer;
 
   &:last-child {
     margin-right: 0;
   }
+`;
+
+export const SocialLink = styled.a`
+  cursor: pointer;
+`;
+
+export const SocialImg = styled.img`
+  display: block;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
 `;
