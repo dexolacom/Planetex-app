@@ -8,7 +8,8 @@ import {
   Tag,
   TitleContainer,
   Content,
-  InputError
+  InputError,
+  InputWarning
 } from './styles';
 import { useWeb3React } from '@web3-react/core';
 import {
@@ -99,7 +100,11 @@ const PreSaleContent = () => {
               }
             </InputError>
           }
-
+          {!account &&
+            <InputWarning>
+              Please connect your wallet for buy tokens
+            </InputWarning>
+          }
           {(() => {
             if (isApproveLoading) {
               return (

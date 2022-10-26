@@ -13,7 +13,7 @@ const InputContainer = ({
   setIsInputAmountError
 }:InputContainerProps) => {
 
-  const { chainId } = useWeb3React()
+  const { account, chainId } = useWeb3React()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = (e.target.value).replace(/^0\d{1}$/, '');
@@ -36,9 +36,11 @@ const InputContainer = ({
   }, [chainId]);
 
   return (
-    <Wrapper marginBottom={isInputAmountError ? '5px' : '30px'}>
-      <InputBlock border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'}>
+    <Wrapper marginBottom={(isInputAmountError || !account) ? '5px' : '30px'}>
+      {/*@ts-ignore*/}
+      <InputBlock border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'} filter={!account && 'grayscale(1)'}>
         <Input
+          disabled={!account}
           type='number'
           value={tokenAmount}
           onChange={(e) => handleInputChange(e)}
@@ -48,7 +50,8 @@ const InputContainer = ({
         />
         <InputInfo>{convertedToUSDAmount || '0.00'} $</InputInfo>
       </InputBlock>
-      <Select id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
+      {/*@ts-ignore*/}
+      <Select disabled={!account} filter={!account && 'grayscale(1)'} id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
         {(chainId === 97 || chainId === 56 )
           ? <>
             <option value='BNB'>BNB</option>

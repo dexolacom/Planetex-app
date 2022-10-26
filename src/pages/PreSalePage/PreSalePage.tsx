@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react';
+import React, { useState } from 'react';
 import HeroSection from '../../components/HeroSection/HeroSection';
 import { heroInfo } from '../../constants/constants';
 import { OutlineButton } from '../../theme';
@@ -7,12 +7,18 @@ import { ButtonsContainer } from './styles';
 import SaleSection from '../../components/SaleSection/SaleSection';
 import { changeNetwork } from '../../utils/blockchainUtils';
 import { useWeb3React } from '@web3-react/core';
+import ModalBackdrop from '../../components/ModalBackdrop/ModalBackdrop';
+import ConnectWalletModal from '../../components/ConnectWalletModal/ConnectWalletModal';
 
 const PreSalePage = () => {
   const { chainId } = useWeb3React()
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false)
   const { presale } = heroInfo;
 
   const handleNetworkSwitch = async (networkName: string) => {
+    if (!localStorage.getItem('provider')) {
+      return setIsWalletModalOpen(true)
+    }
     await changeNetwork(networkName);
   };
 
@@ -32,6 +38,12 @@ const PreSalePage = () => {
         </OutlineButton>
       </ButtonsContainer>
       <SaleSection title={presale?.title} />
+      {isWalletModalOpen &&
+        <ModalBackdrop setIsModalOpen={setIsWalletModalOpen}>
+          {/*@ts-ignore*/}
+          <ConnectWalletModal setIsModalOpen={setIsWalletModalOpen}/>
+        </ModalBackdrop>
+      }
     </>
   );
 };

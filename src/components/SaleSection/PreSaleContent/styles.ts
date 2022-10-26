@@ -106,3 +106,7 @@ export const InputError = styled.span`
   font-size: 16px;
   font-weight: 600;
 `
+
+export const InputWarning = styled(InputError)`
+  color: #7c4d1d;
+`
