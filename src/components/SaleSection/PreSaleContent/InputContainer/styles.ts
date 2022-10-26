@@ -27,7 +27,7 @@ export const Wrapper = styled.div<{marginBottom?: string}>`
   }
 `
 
-export const InputBlock = styled.div<{border?: string}>`
+export const InputBlock = styled.div<{border?: string, filter?: string}>`
   background-color: #06080C;
   border: ${({border}) => border ?? '1px solid #372458'};
   border-radius: 10px;
@@ -35,6 +35,7 @@ export const InputBlock = styled.div<{border?: string}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  filter: ${({filter}) => filter ?? "none"};
 
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {
@@ -45,7 +46,7 @@ export const InputBlock = styled.div<{border?: string}>`
   &:focus-within {
     border: 1px solid #AF76FD;
   }
-
+  
   @media screen and (max-width: 707px) {
     width: 100%;
   }
@@ -71,7 +72,7 @@ export const InputInfo = styled.span`
   }
 `
 
-export const Select = styled.select`
+export const Select = styled.select<{filter?: string}>`
   border: 1px solid #372458;
   border-radius: 10px;
   padding: 13px 45px 13px 22px;
@@ -89,6 +90,8 @@ export const Select = styled.select`
   background-position: right .7em top 50%, 0 0;
   background-size: 1.1em auto, 100%;
   background-color: #06080C;
+
+  filter: ${({filter}) => filter ?? "none"};
 
   &:focus {
     border: 1px solid #AF76FD;
