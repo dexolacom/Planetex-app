@@ -2,6 +2,7 @@
 /* eslint-disable max-lines-per-function */
 // import NFT_1 from '../../../assets/NFT_624/1.jpg';
 import { FullScreenTheme } from '../../../theme';
+import NFTImagesBase64 from '../../../assets/NFT_Base64/NFTImagesBase64';
 import arrowTop from '../../../assets/icons/arrow-top.svg';
 import setSkillImg from './setSkillImage';
 import { v4 as uuid } from 'uuid';
@@ -24,6 +25,14 @@ import {
   SkillsContainer,
 } from './styles';
 
+const setImg = (uri) => {
+  const uri_ = uri.split('/')[1];
+
+  if (Object.keys(NFTImagesBase64).includes(uri_)) {
+    return NFTImagesBase64[uri_];
+  }
+};
+
 const NFTCollection = ({ NFTs }) => {
   return (
     <FullScreenTheme>
@@ -35,8 +44,8 @@ const NFTCollection = ({ NFTs }) => {
               return (
                 <Item key={uuid()}>
                   <NFTContainer>
-                    <Thumb url={`https://ipfs.io/${nft.image}`} />
-                    {/* <Thumb url={NFT_1} /> */}
+                    <Thumb url={setImg(nft.image)} />
+                    {/* <Thumb url={`https://ipfs.io/${nft.image}`} /> */}
                     <SkillsWrapper>
                       <SkillsContainer
                         padding={
