@@ -8,6 +8,7 @@ const InputContainer = ({
   tokenName,
   convertedToUSDAmount,
   isInputAmountError,
+  isWalletWarning,
   setTokenAmount,
   setTokenName,
   setIsInputAmountError
@@ -36,7 +37,7 @@ const InputContainer = ({
   }, [chainId]);
 
   return (
-    <Wrapper marginBottom={(isInputAmountError || !account) ? '5px' : '30px'}>
+    <Wrapper marginBottom={(isInputAmountError || isWalletWarning) ? '5px' : '30px'}>
       {/*@ts-ignore*/}
       <InputBlock border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'} filter={!account && 'grayscale(1)'}>
         <Input

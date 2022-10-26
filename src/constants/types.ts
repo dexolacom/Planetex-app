@@ -42,6 +42,7 @@ export interface InputContainerProps {
   tokenName: string;
   convertedToUSDAmount: number | string;
   isInputAmountError: boolean;
+  isWalletWarning: boolean
   setTokenAmount: (n: number | string) => void;
   setTokenName: (s: string) => void;
   setIsInputAmountError: (b: boolean) => void;

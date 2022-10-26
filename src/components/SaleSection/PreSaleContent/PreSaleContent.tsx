@@ -37,6 +37,7 @@ const PreSaleContent = () => {
   const [isInputAmountError, setIsInputAmountError] = useState(false)
   const [userAvailableAmount, setUserAvailableAmount] = useState('')
   const [convertedToUSDAmount, setConvertedToUSDAmount] = useState('')
+  const [isWalletWarning, setIsWalletWarning] = useState(false)
   const [allowance, setAllowance] = useState('')
   const debouncedValue = useDebounce<string>(tokenAmount, 300)
   const tokenContract = getTokenContract(chainId)
@@ -73,6 +74,10 @@ const PreSaleContent = () => {
     setConvertedToUSDAmount('')
   }, [tokenName]);
 
+  useEffect(() => {
+    if (account) setIsWalletWarning(false)
+  }, [account]);
+
   return (
     <>
       <Wrapper>
@@ -87,6 +92,7 @@ const PreSaleContent = () => {
             tokenName={tokenName}
             convertedToUSDAmount={convertedToUSDAmount}
             isInputAmountError={isInputAmountError}
+            isWalletWarning={isWalletWarning}
             // @ts-ignore
             setTokenAmount={setTokenAmount}
             setTokenName={setTokenName}
@@ -100,14 +106,20 @@ const PreSaleContent = () => {
               }
             </InputError>
           }
-          {!account &&
+          {isWalletWarning &&
             <InputWarning>
               Please connect your wallet for buy tokens
             </InputWarning>
           }
+
           {(() => {
-            if (isApproveLoading) {
-              return (
+            if (!account) return (
+                <SolidButton onClick={() => setIsWalletWarning(true)}>
+                  Buy Token
+                </SolidButton>
+              )
+
+            if (isApproveLoading) return (
                 <SolidButton disabled>
                   <>
                     <Loader stroke='#D4E5FF' size='20px' style={{marginRight: '10px'}}/>
@@ -115,9 +127,7 @@ const PreSaleContent = () => {
                   </>
                 </SolidButton>
               )
-            }
-            if (isTransLoading) {
-              return (
+            if (isTransLoading) return (
                 <SolidButton disabled>
                   <>
                     <Loader stroke='#D4E5FF' size='20px' style={{marginRight: '10px'}}/>
@@ -125,16 +135,13 @@ const PreSaleContent = () => {
                   </>
                 </SolidButton>
               )
-            }
-            if (allowance === '0' && (tokenName === 'USDT' || tokenName === 'BUSD')) {
-              return (
+            if (allowance === '0' && (tokenName === 'USDT' || tokenName === 'BUSD')) return (
                 <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0 || +userAvailableAmount < 10} onClick={
                   () => checkApprove(chainId, account, tokenAmount, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading, setIsApproveLoading)}
                 >
                   Approve
                 </SolidButton>
               )
-            }
 
             else return (
               <SolidButton disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0 || +userAvailableAmount < 10} onClick={
