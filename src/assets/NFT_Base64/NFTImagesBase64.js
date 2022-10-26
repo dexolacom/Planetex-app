@@ -17,11 +17,11 @@ const NFTImagesBase64 = {
   QmSiDzsXocVCoELDh91DdvHNqE6wfQnPqbAFYRpqK5Bbig: img_3,
   QmPsYdPvyEsrebU8de4nNhGLNJWxbvbwysdhUUnsyb1bjV: img_4,
   QmVDiogds8dWLSuUQaUWgqGCktYxFMSyixEQ33wy1u9WvR: img_5,
-  Qmeuhn5c8YzQCLTzMHYRHYjUC4TgQsyzoVDtTDgDMYfD7X: img_6,
+  QmP5DWd77HQVsPbupQWZY6z9Zk3nrpnqipAhfCosbDaUqB: img_6,
   QmPwyrY9yzt6C3EzWdRuGHD1GMKueQKnRwvXYmCJzZPiuL: img_7,
   QmQPAQtjZBaMJsx3sh9tsV9geAgpLf1GUBbyq5ehBbhVVn: img_8,
   Qmc7hnngKgzfT3DwgQxkZV3eDDsFYpGFgfTLmyXqfgCU5k: img_9,
-  Qmf7yG6AwEtXpDjEUrR9fFvuxiyzF2aGmQ7SB5vzTRi7Wf: img_10,
+  QmXKK7h7EfuYiEkcRnwWHi8Ju9wsXB8AhahrXF9qeWsGwb: img_10,
   QmcQdqWKMtbhsGPUeVTmiDQmkfmo2peQ6S4jBVQYzHTyfD: img_11,
   QmPH57JXcPZQY8WKwToy2XUAtTrrpUA7BR2LMa2JRfRAnt: img_12,
 };
