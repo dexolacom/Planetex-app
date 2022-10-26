@@ -27,8 +27,8 @@ const Footer = () => {
               <Links>
                 <RouterLink to="/presale">Pre-Sale</RouterLink>
                 <RouterLink to="/nft-sale">NFT Sale</RouterLink>
-                <Link href="#">Main Sale</Link>
-                <Link href="#">Private Sale</Link>
+                <Link href="javascript:void(0)">Main Sale</Link>
+                <Link href="javascript:void(0)">Private Sale</Link>
               </Links>
             </Navigation>
           </Content>
