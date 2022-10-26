@@ -52,18 +52,22 @@ export const InputBlock = styled.div<{border?: string, filter?: string}>`
   }
 `
 
-export const Input = styled.input`
+export const Input = styled.input<{placeholder?: string}>`
   color: #BDCCEA;
   padding: 13px 24px;
   background: transparent;
   outline: none;
   border: none;
-  min-width: 0
+  min-width: 0;
+
+  &::placeholder {
+    color: #494848;
+  }
 `
 
-export const InputInfo = styled.span`
-  border-left: 2px solid #5e626c;
-  color: #5e626c;
+export const InputInfo = styled.span<{color?: string, border?: string}>`
+  border-left: ${({border}) => border};
+  color: ${({color}) => color};
   padding: 0 15px;
 
   @media screen and (max-width: 480px) {
