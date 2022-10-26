@@ -35,13 +35,13 @@ const links = [
     url: 'https://www.instagram.com/planetex_io/',
     img: instagram,
   },
-  { name: 'youtube', url: 'https://www.youtube.com/', img: youtube },
+  { name: 'youtube', url: '', img: youtube },
   {
     name: 'telegram',
     url: 'https://t.me/planetexofficial',
     img: telegram,
   },
-  { name: 'discord', url: 'https://discord.com/', img: discord },
+  { name: 'discord', url: '', img: discord },
   {
     name: 'reddit',
     url: 'https://www.reddit.com/user/planetex_io',
@@ -60,13 +60,17 @@ const SocialContent = () => {
               {links.map((link) => {
                 return (
                   <SocialItem key={link.name}>
-                    <SocialLink
-                      href={link.url}
-                      target={'_blank'}
-                      onClick={() => console.log(link.name)}
-                    >
+                    {link.name === 'discord' || link.name === 'youtube' ? (
                       <SocialImg src={link.img} />
-                    </SocialLink>
+                    ) : (
+                      <SocialLink
+                        href={link.url}
+                        target={'_blank'}
+                        onClick={() => console.log(link.name)}
+                      >
+                        <SocialImg src={link.img} />
+                      </SocialLink>
+                    )}
                   </SocialItem>
                 );
               })}
