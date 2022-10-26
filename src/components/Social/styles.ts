@@ -17,6 +17,10 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   height: 32px;
+
+  @media screen and (max-width: 576px) {
+    height: 22px;
+  }
 `;
 
 export const SocialList = styled.ul`
@@ -41,4 +45,9 @@ export const SocialImg = styled.img`
   width: 32px;
   height: 32px;
   cursor: pointer;
+
+  @media screen and (max-width: 576px) {
+    width: 22px;
+    height: 22px;
+  }
 `;
