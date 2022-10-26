@@ -48,10 +48,13 @@ const InputContainer = ({
           inputMode="decimal"
           maxLength={10}
         />
-        <InputInfo>{convertedToUSDAmount || '0.00'} $</InputInfo>
+        {/*@ts-ignore*/}
+        <InputInfo color={!account ? '#762ACE' : '#5e626c'} border={!account ? '2px solid #762ACE' : '2px solid #5e626c'}>
+          {convertedToUSDAmount || '0.00'} $
+        </InputInfo>
       </InputBlock>
       {/*@ts-ignore*/}
-      <Select disabled={!account} filter={!account && 'grayscale(1)'} id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
+      <Select disabled={!account} filter={!account && 'grayscale(1)'} color={!account && '#5e626c'} id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
         {(chainId === 97 || chainId === 56 )
           ? <>
             <option value='BNB'>BNB</option>
