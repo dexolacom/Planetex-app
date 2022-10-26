@@ -22,7 +22,6 @@ const MyNFTContent = () => {
 
   useEffect(() => {
     setNFTs([]);
-    // chainId && account && log('--------', chainId, account);
     const contract = chainId && getPlanetexTokenContract(chainId);
     setPlanetexTokenContract(contract);
   }, [chainId, account, injected]);
