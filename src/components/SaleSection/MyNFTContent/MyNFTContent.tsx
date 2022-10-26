@@ -10,12 +10,14 @@ import { useWeb3React } from '@web3-react/core';
 import { getPlanetexTokenContract } from '../../../utils/contracts';
 import getNFTInfo from './api';
 import { injected } from '../../../constants/connectors';
+// import { _NFT } from './_NFT';
 
 // const { log } = console;
 
 const MyNFTContent = () => {
   const [planetexTokenContract, setPlanetexTokenContract] = useState(null);
   const [NFTs, setNFTs] = useState([]);
+  const [step, setStep] = useState(null);
 
   const { chainId, account } = useWeb3React();
   const { isMobile } = useCheckIsMobile();
@@ -23,48 +25,57 @@ const MyNFTContent = () => {
   useEffect(() => {
     setNFTs([]);
     const contract = chainId && getPlanetexTokenContract(chainId);
-    setPlanetexTokenContract(contract);
+    contract && setPlanetexTokenContract(contract);
   }, [chainId, account, injected]);
 
+  console.log('=======================================');
+
+  // let count = 0;
+  // const nftInfoArray = [];
+  // let ids = null;
+  // const ids = [91, 12, 23, 34, 45, 56, 67, 88];
+
   const getTokens = async (contract) => {
-    const idArray = [];
-    const nftInfoArray = [];
-    const methods = contract && (await contract.methods);
+    let count = 0;
+    const methods = contract.methods;
     const ids = await methods.userTokens(account).call();
+    const nftInfoArray = [];
 
-    if (!ids) return;
+    const getURI = async () => {
+      if (!ids[count]) return;
+      const tokenURI = await methods.tokenURI(ids[count]).call();
+      const response = await getNFTInfo(tokenURI);
 
-    if (idArray.length === 0) {
-      for (let i = 0; i < ids.length; i += 1) {
-        const character = await methods.tokenURI(ids[i]).call();
-        character && idArray.push(character);
-      }
-    }
+      nftInfoArray.push(response.data);
 
-    if (nftInfoArray.length === 0) {
-      for (let i = 0; i < idArray.length; i += 1) {
-        const response = await getNFTInfo(idArray[i]);
-        response && nftInfoArray.push(response.data);
-      }
-    }
+      setNFTs(nftInfoArray);
+      setStep(count);
 
-    return nftInfoArray;
+      count += 1;
+
+      if (!ids[count]) return;
+
+      getURI();
+    };
+
+    getURI();
   };
 
-  planetexTokenContract &&
-    NFTs.length === 0 &&
-    getTokens(planetexTokenContract).then((data) => {
-      Array.isArray(data) && setNFTs(data);
-    });
+  injected &&
+    account &&
+    chainId &&
+    NFTs?.length === 0 &&
+    planetexTokenContract &&
+    getTokens(planetexTokenContract);
 
   return (
-    <NFTCollectionWrapper paddingBottom={NFTs.length === 0 && true}>
-      {NFTs.length > 0 && (
+    <NFTCollectionWrapper paddingBottom={NFTs?.length === 0 && true}>
+      {NFTs?.length > 0 && (
         <>
           {isMobile ? (
-            <NFTCollectionMobile NFTs={NFTs} />
+            <NFTCollectionMobile NFTs={step !== null && NFTs} />
           ) : (
-            <NFTCollection NFTs={NFTs} />
+            <NFTCollection NFTs={step !== null && NFTs} />
           )}
         </>
       )}
