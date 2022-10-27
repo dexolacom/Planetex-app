@@ -1,5 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { AbstractConnector } from '@web3-react/abstract-connector';
+import buyTokenAbi from '../constants/abis/saleContractAbi.json';
 import { connectors } from '../constants/connectors';
 import { networks } from '../constants/networks';
 import {
@@ -10,6 +11,8 @@ import {
 } from './contracts';
 import { buyToken, buyNftToken } from './buyToken';
 import { maxApproveAmount } from '../constants/constants';
+import { AbiItem } from 'web3-utils';
+import Web3 from 'web3';
 
 export const connectWallet = async (
   activate: any,
@@ -181,7 +184,17 @@ export const formatToHuman = (chainId: number | undefined, amount: string) => {
   return (+amount / 10 ** 6).toFixed(2);
 };
 
+export const getProviders = (chainId: number | undefined) => {
+  const providers = {
+    5: 'https://eth-goerli.nodereal.io/v1/8a4432e42df94dcca2814fde8aea2a2e',
+    97: 'https://bsc-testnet.nodereal.io/v1/e9a36765eb8a40b9bd12e680a1fd2bc5'
+  }
+  return providers[chainId as keyof typeof providers] ?? console.error('chainId is undefined')
+}
+
 export const getUserBalance = async (chainId: number | undefined, account: any) => {
-  const contract = await getTokenSaleContract(chainId)
+  // logic without metamask provider binding
+  const web3 = new Web3(new Web3.providers.HttpProvider(getProviders(chainId)))
+  const contract = new web3.eth.Contract(buyTokenAbi as AbiItem[], getTokenSaleContractAddress(chainId))
   return await contract.methods.userBalance(account, 0).call()
 };
