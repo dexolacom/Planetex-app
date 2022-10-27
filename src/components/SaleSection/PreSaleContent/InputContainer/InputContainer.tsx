@@ -55,7 +55,7 @@ const InputContainer = ({
         </InputInfo>
       </InputBlock>
       {/*@ts-ignore*/}
-      <Select disabled={!account} filter={!account && 'grayscale(1)'} color={!account && '#5e626c'} id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
+      <Select disabled={!account} filter={!account && 'grayscale(1)'} color={!account ? '#5e626c' : ''} id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
         {(chainId === 97 || chainId === 56 )
           ? <>
             <option value='BNB'>BNB</option>

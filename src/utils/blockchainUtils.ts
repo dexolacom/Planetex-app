@@ -180,3 +180,8 @@ export const formatToHuman = (chainId: number | undefined, amount: string) => {
   if (chainId === 56 || chainId === 97) return (+amount / 10 ** 18).toFixed(2);
   return (+amount / 10 ** 6).toFixed(2);
 };
+
+export const getUserBalance = async (chainId: number | undefined, account: any) => {
+  const contract = await getTokenSaleContract(chainId)
+  return await contract.methods.userBalance(account, 0).call()
+};

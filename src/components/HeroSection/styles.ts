@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 576px) {
     display: flex;
     justify-content: center;
-    margin: 0 0 70px 0;
+    margin: 80px 0 70px 0;
   }
 `;
 
@@ -20,7 +20,7 @@ export const Content = styled.div`
   height: 120px;
 
   @media screen and (max-width: 880px) {
-    margin 0 auto;
+    margin: 0 auto;
     max-width: 550px;
   }
 `;
