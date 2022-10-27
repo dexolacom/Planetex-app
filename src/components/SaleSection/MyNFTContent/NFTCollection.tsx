@@ -34,8 +34,6 @@ const setImg = (uri) => {
 };
 
 const NFTCollection = ({ NFTs }) => {
-  console.log('NFTs ==========>', NFTs);
-
   return (
     <FullScreenTheme>
       <Wrapper>
