@@ -11,60 +11,61 @@ import { getPlanetexTokenContract } from '../../../utils/contracts';
 import getNFTInfo from './api';
 import { injected } from '../../../constants/connectors';
 
-// const { log } = console;
-
 const MyNFTContent = () => {
   const [planetexTokenContract, setPlanetexTokenContract] = useState(null);
-  const [NFTs, setNFTs] = useState([]);
+  const [collection, setCollection] = useState([]);
+  const [tokens, setTokens] = useState(null);
 
   const { chainId, account } = useWeb3React();
   const { isMobile } = useCheckIsMobile();
 
   useEffect(() => {
-    setNFTs([]);
+    setCollection([]);
     const contract = chainId && getPlanetexTokenContract(chainId);
-    setPlanetexTokenContract(contract);
+    contract && setPlanetexTokenContract(contract);
   }, [chainId, account, injected]);
 
   const getTokens = async (contract) => {
-    const idArray = [];
-    const nftInfoArray = [];
-    const methods = contract && (await contract.methods);
+    let count = 0;
+    const methods = contract.methods;
     const ids = await methods.userTokens(account).call();
+    const nftInfoArray = [];
 
-    if (!ids) return;
+    const getURI = async () => {
+      if (!ids[count]) return;
+      const tokenURI = await methods.tokenURI(ids[count]).call();
+      const response = await getNFTInfo(tokenURI);
 
-    if (idArray.length === 0) {
-      for (let i = 0; i < ids.length; i += 1) {
-        const character = await methods.tokenURI(ids[i]).call();
-        character && idArray.push(character);
-      }
-    }
+      nftInfoArray.push(response.data);
 
-    if (nftInfoArray.length === 0) {
-      for (let i = 0; i < idArray.length; i += 1) {
-        const response = await getNFTInfo(idArray[i]);
-        response && nftInfoArray.push(response.data);
-      }
-    }
+      setCollection(nftInfoArray);
+      setTokens(count);
 
-    return nftInfoArray;
+      count += 1;
+
+      if (!ids[count]) return;
+
+      getURI();
+    };
+
+    getURI();
   };
 
-  planetexTokenContract &&
-    NFTs.length === 0 &&
-    getTokens(planetexTokenContract).then((data) => {
-      Array.isArray(data) && setNFTs(data);
-    });
+  injected &&
+    account &&
+    chainId &&
+    collection?.length === 0 &&
+    planetexTokenContract &&
+    getTokens(planetexTokenContract);
 
   return (
-    <NFTCollectionWrapper paddingBottom={NFTs.length === 0 && true}>
-      {NFTs.length > 0 && (
+    <NFTCollectionWrapper paddingBottom={collection?.length === 0 && true}>
+      {collection?.length > 0 && (
         <>
           {isMobile ? (
-            <NFTCollectionMobile NFTs={NFTs} />
+            <NFTCollectionMobile NFTs={tokens !== null && collection} />
           ) : (
-            <NFTCollection NFTs={NFTs} />
+            <NFTCollection NFTs={tokens !== null && collection} />
           )}
         </>
       )}
