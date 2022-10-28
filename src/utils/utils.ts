@@ -25,8 +25,8 @@ export const getDecimals = (tokenName: string) => {
 };
 
 export const getUserBalanceSum = async (account: any) => {
-  const busdBalance = await getUserBalance(97, account)
-  const usdtBalance = await getUserBalance(5, account)
+  const busdBalance = await getUserBalance(56, account)
+  const usdtBalance = await getUserBalance(1, account)
   const sum = (BigInt(usdtBalance) + BigInt(busdBalance)).toString()
   return (+sum / 10 ** 18).toFixed()
 };
