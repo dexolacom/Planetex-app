@@ -6,9 +6,9 @@ import { AbiItem } from 'web3-utils';
 
 export const getTokenSaleContractAddress = (chainId: number | undefined) => {
   const addresses = {
-    1: '',
+    1: '0xbcd9482dE62E7705cC4C70F8314eDA251127C699',
     5: '0x20f5072712D12C4d3c0f796c34dceCd1f1C59d4B',
-    56: '',
+    56: '0xbcd9482dE62E7705cC4C70F8314eDA251127C699',
     97: '0x42D2278483A4794200F207251d4204879A3412dd',
   }
   return addresses[chainId as keyof typeof addresses]
@@ -23,9 +23,9 @@ export const getTokenSaleContract = async (chainId: number | undefined) => {
 
 export const getTokenContractAddress = (chainId: number | undefined) => {
   const addresses = {
-    1: '',
+    1: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
     5: '0x8245A02D4D2F73c09C583Ef0C3d0E33D99a60520',
-    56: '',
+    56: '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
     97: '0x912480a6063AF66A306C25370AB32453C10F7919',
   };
 

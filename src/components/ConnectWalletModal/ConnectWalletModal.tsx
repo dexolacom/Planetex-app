@@ -1,8 +1,8 @@
 import React from 'react';
 import { Wrapper, Content, WalletButton, CrossIcon, MetamaskIcon, CoinbaseIcon, WalletConnectIcon } from './styles';
 import { connectors } from '../../constants/connectors';
-import { connectWallet } from '../../utils/blockchainUtils';
 import { useWeb3React } from '@web3-react/core';
+import { connectWallet } from '../../utils/walletUtils';
 
 
 const ConnectWalletModal = ({ setIsModalOpen }: { setIsModalOpen: (b: boolean) => boolean }) => {
