@@ -27,30 +27,6 @@ export const getDecimals = (tokenName: string) => {
 export const getUserBalanceSum = async (account: any) => {
   const busdBalance = await getUserBalance(97, account)
   const usdtBalance = await getUserBalance(5, account)
-
-  function findSum(first: string, second: string) {
-    let sum = '';
-    let carry = 0;
-    const diff = second.length - first.length;
-    for (let i = first.length - 1; i >= 0; i--) {
-      const temp =
-        (Number(first.charAt(i)) % 10) +
-        (Number(second.charAt(i + diff)) % 10) +
-        carry;
-      if (temp >= 10) {
-        sum = (temp % 10) + sum;
-        carry = Math.floor(temp / 10);
-      } else {
-        sum = temp + sum;
-        carry = 0;
-      }
-    }
-    if (carry) {
-      sum = carry + sum;
-    }
-    return sum;
-  }
-
-  return (+findSum(busdBalance, usdtBalance) / 10 ** 18).toFixed()
-
+  const sum = (BigInt(usdtBalance) + BigInt(busdBalance)).toString()
+  return (+sum / 10 ** 18).toFixed()
 };
