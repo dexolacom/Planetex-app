@@ -2,7 +2,7 @@ import React from 'react';
 import { Wrapper, Links, RouterLink, ConnectButton, Link } from './styles';
 import { useWeb3React } from '@web3-react/core';
 import { connectors } from '../../../constants/connectors';
-import { connectWallet } from '../../../utils/blockchainUtils';
+import { connectWallet } from '../../../utils/walletUtils';
 
 
 const BurgerMenu = () => {

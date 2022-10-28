@@ -2,7 +2,7 @@ import React from 'react';
 import { Content, Wrapper, WalletContainer, ArrowIcon } from './styles';
 import {  stringTrim } from '../../../utils/utils';
 import { useWeb3React } from '@web3-react/core';
-import { disconnectWallet } from '../../../utils/blockchainUtils';
+import { disconnectWallet } from '../../../utils/walletUtils';
 
 const AccountContainer = () => {
   const { account, deactivate } = useWeb3React()

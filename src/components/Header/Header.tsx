@@ -16,9 +16,9 @@ import AccountContainer from './AccountContainer/AccountContainer';
 import useCheckIsMobile from '../../hooks/useCheckIsMobile';
 import { useWeb3React } from '@web3-react/core';
 import { HeaderProps } from '../../constants/types';
-import { connectWalletOnPageLoad } from '../../utils/blockchainUtils';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 import ConnectWalletModal from '../ConnectWalletModal/ConnectWalletModal';
+import { connectWalletOnPageLoad } from '../../utils/walletUtils';
 
 
 const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
