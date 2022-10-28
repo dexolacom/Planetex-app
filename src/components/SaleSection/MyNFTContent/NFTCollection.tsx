@@ -1,6 +1,5 @@
 // @ts-nocheck
 /* eslint-disable max-lines-per-function */
-// import NFT_1 from '../../../assets/NFT_624/1.jpg';
 import { FullScreenTheme } from '../../../theme';
 import NFTImagesBase64 from '../../../assets/NFT_Base64/NFTImagesBase64';
 import arrowTop from '../../../assets/icons/arrow-top.svg';

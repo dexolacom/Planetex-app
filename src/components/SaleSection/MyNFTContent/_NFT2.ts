@@ -1,7 +1,7 @@
 // @ts-nocheck
 /* eslint-disable quotes */
 
-export const _NFT = [
+export const _NFT2 = [
   {
     uri: 'QmP1W4iS9ymHpj71E8kStVmupXvc9wppG8DtGJraL2iV4u',
     name: 'Hector Hernandez',
@@ -78,6 +78,13 @@ export const _NFT = [
     profession: 'Physicist Warlock',
     skills: 'Damage, Health',
     image: 'ipfs/QmcQdqWKMtbhsGPUeVTmiDQmkfmo2peQ6S4jBVQYzHTyfD',
+  },
+  {
+    uri: 'QmQnjXAkoF3qHM3hFDCmqE3JpBHTVK94wHAyTCvmxhxqAb',
+    name: 'Christopher McKnill',
+    profession: 'Legendary Astronaut',
+    skills: 'Damage,Health, Armor',
+    image: 'ipfs/QmPH57JXcPZQY8WKwToy2XUAtTrrpUA7BR2LMa2JRfRAnt',
   },
   {
     uri: 'QmQnjXAkoF3qHM3hFDCmqE3JpBHTVK94wHAyTCvmxhxqAb',
