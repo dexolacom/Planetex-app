@@ -43,6 +43,7 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
       <Wrapper>
         <Content>
           {isMobile ? <MobileLogo /> : <Logo />}
+          <h1 style={{color: '#FFF'}}>Hello</h1>
           <Navigation>
             <Links>
               <RouterLink to="/presale">Pre-Sale</RouterLink>
