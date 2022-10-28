@@ -1,6 +1,6 @@
-// @ts-ignore
 import presale from '../assets/images/presale.svg';
-import nftSale from '../assets/images/heroNFTSale.svg';
+// @ts-ignore
+import nftSale from '../assets/images/_heroNFTSale.png';
 import Web3 from 'web3';
 
 export const web3 = new Web3(Web3.givenProvider);
