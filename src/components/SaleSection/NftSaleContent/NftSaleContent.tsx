@@ -11,7 +11,7 @@ import NFTSaleHeroGroup from '../../../assets/images/NFTSaleHeroGroup.svg';
 import {
   Wrapper,
   Content,
-  HeroGroupImg,
+  // HeroGroupImg,
   PriceContainer,
   PriceText,
   MainContentWrap,
@@ -49,7 +49,7 @@ const NftSaleContent = () => {
       <FullScreenTheme>
         <Wrapper>
           <Content>
-            <HeroGroupImg src={NFTSaleHeroGroup} />
+            {/*<HeroGroupImg src={NFTSaleHeroGroup} />*/}
             <PriceContainer>
               <PriceText>49$</PriceText>
             </PriceContainer>
