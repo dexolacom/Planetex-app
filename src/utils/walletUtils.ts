@@ -38,11 +38,11 @@ export const changeNetwork = async (networkName: string) => {
     // @ts-ignore
     if (!window.ethereum) throw new Error('No crypto wallet found');
 
-    if (networkName === 'goerli') {
+    if (networkName === 'eth') {
       // @ts-ignore
       return await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: `0x${Number(5).toString(16)}` }],
+        params: [{ chainId: `0x${Number(1).toString(16)}` }],
       });
     }
     // @ts-ignore

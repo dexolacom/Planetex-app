@@ -35,7 +35,7 @@ export const InputBlock = styled.div<{border?: string, filter?: string}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  filter: ${({filter}) => filter ?? "none"};
+  filter: ${({filter}) => filter};
 
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {
@@ -95,7 +95,7 @@ export const Select = styled.select<{filter?: string}>`
   background-size: 1.1em auto, 100%;
   background-color: #06080C;
 
-  filter: ${({filter}) => filter ?? "none"};
+  filter: ${({filter}) => filter};
 
   &:focus {
     border: 1px solid #AF76FD;

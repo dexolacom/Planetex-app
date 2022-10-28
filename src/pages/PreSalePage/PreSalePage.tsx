@@ -34,10 +34,10 @@ const PreSalePage = () => {
         />
         {account && <UserBalance/>}
         <ButtonsContainer>
-          <OutlineButton isActive={chainId === 5 || chainId === 1} onClick={() => handleNetworkSwitch('goerli')}>
+          <OutlineButton isActive={chainId === 5 || chainId === 1} onClick={() => handleNetworkSwitch('eth')}>
             Ethereum Network
           </OutlineButton>
-          <OutlineButton isActive={chainId === 97 || chainId === 56} onClick={() => handleNetworkSwitch('bscT')}>
+          <OutlineButton isActive={chainId === 97 || chainId === 56} onClick={() => handleNetworkSwitch('bsc')}>
             BSC Network
           </OutlineButton>
         </ButtonsContainer>
