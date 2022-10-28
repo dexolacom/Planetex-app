@@ -1,101 +1,89 @@
 // @ts-nocheck
-import NFT_1 from '../../../assets/NFT_624/1.jpg';
-import NFT_2 from '../../../assets/NFT_624/2.jpg';
-import NFT_3 from '../../../assets/NFT_624/3.jpg';
-import NFT_4 from '../../../assets/NFT_624/4.jpg';
-import NFT_5 from '../../../assets/NFT_624/12.jpg';
-import NFT_6 from '../../../assets/NFT_624/9.jpg';
-import NFT_7 from '../../../assets/NFT_624/7.jpg';
-import NFT_8 from '../../../assets/NFT_624/8.jpg';
-// import NFT_9 from '../../../assets/NFT_624/6.jpg';
-// import NFT_10 from '../../../assets/NFT_624/10.jpg';
-// import NFT_11 from '../../../assets/NFT_624/11.jpg';
-// import NFT_12 from '../../../assets/NFT_624/5.jpg';
-import NFTSaleDamage from '../../../assets/icons/NFTSaleDamage.svg';
-import NFTSaleSpeed from '../../../assets/icons/NFTSaleSpeed.svg';
-import NFTSaleHealth from '../../../assets/icons/NFTSaleHealth.svg';
-import NFTSaleArmor from '../../../assets/icons/NFTSaleArmor.svg';
+/* eslint-disable quotes */
 
 export const _NFT = [
   {
-    id: 1,
+    uri: 'QmP1W4iS9ymHpj71E8kStVmupXvc9wppG8DtGJraL2iV4u',
     name: 'Hector Hernandez',
-    role: 'Contrabandist',
-    url: NFT_1,
-    skills: [
-      { name: 'demage', url: NFTSaleDamage },
-      { name: 'speed', url: NFTSaleSpeed },
-    ],
+    profession: 'Contrabandist',
+    skills: 'Damage, Speed',
+    image: 'ipfs/Qmeu7o674fcS4GJq66Db9CeLMSdvmNa3UoAg2ZTy5sB41C',
   },
   {
-    id: 2,
+    uri: 'QmRWX87NkvBqzaDSb3SsaYAKpmW4SxFCLapqyvdXq8ugiG',
     name: 'ZoJo',
-    role: 'Space Wrestler ',
-    url: NFT_2,
-    skills: [
-      { name: 'armor', url: NFTSaleArmor },
-      { name: 'speed', url: NFTSaleSpeed },
-    ],
+    profession: 'Space Wrestler',
+    skills: 'Health, Armor',
+    image: 'ipfs/Qmb8LK8NqmFzQruDQeAQ978ox7ybCJwaErTFEWF5Xngqfh',
   },
   {
-    id: 3,
+    uri: 'QmVS1Qoa8ZsHWdPTk1wfrb33JNXnkeCqLsUcDDzmDzb4Zr',
     name: 'Major Kroton',
-    role: 'Retired Soldier',
-    url: NFT_3,
-    skills: [
-      { name: 'demage', url: NFTSaleDamage },
-      { name: 'health', url: NFTSaleHealth },
-    ],
+    profession: 'Retired Soldier',
+    skills: 'Damage, Health',
+    image: 'ipfs/QmSiDzsXocVCoELDh91DdvHNqE6wfQnPqbAFYRpqK5Bbig',
   },
   {
-    id: 4,
+    uri: 'QmcgZLvpikkYCiZQtWh7hnpEt2C48EAb2uZXRT3U8asvH6',
     name: 'Object No. 113',
-    role: 'None',
-    url: NFT_4,
-    skills: [
-      { name: 'health', url: NFTSaleHealth },
-      { name: 'speed', url: NFTSaleSpeed },
-    ],
+    profession: 'None',
+    skills: 'Health, Speed',
+    image: 'ipfs/QmPsYdPvyEsrebU8de4nNhGLNJWxbvbwysdhUUnsyb1bjV',
   },
   {
-    id: 5,
-    name: 'Christopher McKnill',
-    role: 'Legendary Astronaut',
-    url: NFT_5,
-    skills: [
-      { name: 'health', url: NFTSaleHealth },
-      { name: 'armor', url: NFTSaleArmor },
-      { name: 'demage', url: NFTSaleDamage },
-    ],
+    uri: 'QmNmmUNJiPx9K46XhJAdSb2jNuM3h5UHdzS74fHtRkA2g7',
+    name: 'Lady Sunset',
+    profession: 'Professional Killer',
+    skills: 'Damage, Speed',
+    image: 'ipfs/QmVDiogds8dWLSuUQaUWgqGCktYxFMSyixEQ33wy1u9WvR',
   },
   {
-    id: 6,
-    name: 'Nitrine Spark',
-    role: 'Traveler',
-    url: NFT_6,
-    skills: [
-      { name: 'health', url: NFTSaleHealth },
-      { name: 'speed', url: NFTSaleSpeed },
-    ],
+    uri: 'Qmeuhn5c8YzQCLTzMHYRHYjUC4TgQsyzoVDtTDgDMYfD7X',
+    name: 'Mister Poo',
+    profession: 'Illegal Weapons Engineer',
+    skills: 'Damage, Armor',
+    image: 'ipfs/QmP5DWd77HQVsPbupQWZY6z9Zk3nrpnqipAhfCosbDaUqB',
   },
   {
-    id: 7,
+    uri: 'QmegNF3udvjM8GWDPjadKfmKjGciDuEyZwH6mi5oRticSY',
     name: 'Tony Masfant',
-    role: 'Spaceship Commander',
-    url: NFT_7,
-    skills: [
-      { name: 'armor', url: NFTSaleArmor },
-      { name: 'speed', url: NFTSaleSpeed },
-    ],
+    profession: 'Spaceship Commander',
+    skills: 'Speed, Armor',
+    image: 'ipfs/QmPwyrY9yzt6C3EzWdRuGHD1GMKueQKnRwvXYmCJzZPiuL',
   },
   {
-    id: 8,
+    uri: 'QmXktQuvkLEMY2D1fKMMUyxAQFmDJDUGnVnYGTDHDnokL9',
     name: 'Jesse Сannibal',
-    role: 'Doctor ',
-    url: NFT_8,
-    skills: [
-      { name: 'health', url: NFTSaleHealth },
-      { name: 'speed', url: NFTSaleSpeed },
-    ],
+    profession: 'Doctor',
+    skills: 'Health, Speed',
+    image: 'ipfs/QmQPAQtjZBaMJsx3sh9tsV9geAgpLf1GUBbyq5ehBbhVVn',
+  },
+  {
+    uri: 'QmcWHkmZHhhNDQ5VxiyjucqVMEhoV9V6d7YyvDmWfRK9wC',
+    name: 'Nitrine Spark',
+    profession: 'Traveler',
+    skills: 'Health, Speed',
+    image: 'ipfs/Qmc7hnngKgzfT3DwgQxkZV3eDDsFYpGFgfTLmyXqfgCU5k',
+  },
+  {
+    uri: 'Qmf7yG6AwEtXpDjEUrR9fFvuxiyzF2aGmQ7SB5vzTRi7Wf',
+    name: "Robot 'Skeleton 11'",
+    profession: 'Spaceship Guardian',
+    skills: 'Health, Armor',
+    image: 'ipfs/QmXKK7h7EfuYiEkcRnwWHi8Ju9wsXB8AhahrXF9qeWsGwb',
+  },
+  {
+    uri: 'QmcKZhQdPWjLAUUfL1iBRSutc5zt5wG4pgnHy2vXZMYtvx',
+    name: 'Alfred Constanta',
+    profession: 'Physicist Warlock',
+    skills: 'Damage, Health',
+    image: 'ipfs/QmcQdqWKMtbhsGPUeVTmiDQmkfmo2peQ6S4jBVQYzHTyfD',
+  },
+  {
+    uri: 'QmQnjXAkoF3qHM3hFDCmqE3JpBHTVK94wHAyTCvmxhxqAb',
+    name: 'Christopher McKnill',
+    profession: 'Legendary Astronaut',
+    skills: 'Damage,Health, Armor',
+    image: 'ipfs/QmPH57JXcPZQY8WKwToy2XUAtTrrpUA7BR2LMa2JRfRAnt',
   },
 ];

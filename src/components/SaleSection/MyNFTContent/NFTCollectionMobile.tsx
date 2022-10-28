@@ -3,7 +3,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import NFT_1 from '../../../assets/NFT_624/1.jpg';
+import NFTImagesBase64 from '../../../assets/NFT_Base64/NFTImagesBase64';
 import arrowTop from '../../../assets/icons/arrow-top.svg';
 import setSkillImg from './setSkillImage';
 import { v4 as uuid } from 'uuid';
@@ -36,6 +36,14 @@ const settings = {
   arrows: false,
 };
 
+const setImg = (uri) => {
+  const uri_ = uri.split('/')[1];
+
+  if (Object.keys(NFTImagesBase64).includes(uri_)) {
+    return NFTImagesBase64[uri_];
+  }
+};
+
 const NFTCollectionMobile = ({ NFTs }) => {
   return (
     <MobileContent>
@@ -47,8 +55,8 @@ const NFTCollectionMobile = ({ NFTs }) => {
               <SlideContent>
                 <SlideItem>
                   <NFTContainer>
-                    <Thumb url={`https://ipfs.io/${nft.image}`} />
-                    {/* <Thumb url={NFT_1} /> */}
+                    <Thumb url={setImg(nft.image)} />
+                    {/* <Thumb url={`https://ipfs.io/${nft.image}`} /> */}
                     <SkillsWrapper>
                       <SkillsContainer
                         padding={

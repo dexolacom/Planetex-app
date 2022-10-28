@@ -1,13 +1,16 @@
+// @ts-nocheck
+/* eslint-disable indent */
 /* eslint-disable jsx-quotes */
 /* eslint-disable no-console */
 /* eslint-disable max-lines-per-function */
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import SaleNFTContext from '../SaleNFTContext';
 import { FullScreenTheme } from '../../../theme';
 import NFTSaleDamage from '../../../assets/icons/NFTSaleDamage.svg';
 import NFTSaleSpeed from '../../../assets/icons/NFTSaleSpeed.svg';
 import NFTSaleHealth from '../../../assets/icons/NFTSaleHealth.svg';
 import NFTSaleArmor from '../../../assets/icons/NFTSaleArmor.svg';
-import NFTSaleHeroGroup from '../../../assets/images/NFTSaleHeroGroup.svg';
+import _NFTSaleGroup from '../../../assets/images/_NFTSaleGroup.png';
 import {
   Wrapper,
   Content,
@@ -31,10 +34,12 @@ import {
 } from './styles';
 import { SolidButton } from '../../../theme';
 import { useWeb3React } from '@web3-react/core';
+import { getPlanetexTokenContract } from '../../../utils/contracts';
 import Loader from '../../Loader/Loader';
 import StatusModal from '../../StatusModal/StatusModal';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
 import { checkApproveNft } from '../../../utils/blockchainUtils';
+import getTokens from '../MyNFTContent/getTokens';
 
 const NftSaleContent = () => {
   const { chainId, account } = useWeb3React();
@@ -42,14 +47,66 @@ const NftSaleContent = () => {
   const [isTransErrorModal, setIsTransErrorModal] = useState(false);
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false);
   const [isTransLoading, setIsTransLoading] = useState(false);
-  // const;
+
+  const { collection, setCollection, setTokens } = useContext(SaleNFTContext);
+
+  useEffect(() => {
+    if (isTransSuccessModal === true) checkNewNFT();
+  }, [isTransSuccessModal]);
+
+  const mint = async () => {
+    await checkApproveNft(
+      chainId,
+      account,
+      tokenName,
+      setIsTransSuccessModal,
+      setIsTransErrorModal,
+      setIsTransLoading,
+    );
+  };
+
+  const checkNewNFT = async () => {
+    const contract = chainId && getPlanetexTokenContract(chainId);
+
+    let count = 0;
+    let ids = [];
+
+    const refreshIntervalId = setInterval(async () => {
+      ids = await contract.methods.userTokens(account).call();
+
+      if (count === 10) {
+        clearInterval(refreshIntervalId);
+        return;
+      }
+
+      if (ids.length > collection.length) {
+        const _count = 0;
+        const _ids = ids.slice(-1);
+
+        getTokens(
+          contract,
+          chainId,
+          account,
+          setCollection,
+          setTokens,
+          _count,
+          _ids,
+          collection,
+        );
+        clearInterval(refreshIntervalId);
+        return;
+      }
+
+      count += 1;
+    }, 1000);
+  };
 
   return (
     <>
       <FullScreenTheme>
         <Wrapper>
           <Content>
-            {/*<HeroGroupImg src={NFTSaleHeroGroup} />*/}
+            <HeroGroupImg src={_NFTSaleGroup} />
             <PriceContainer>
               <PriceText>49$</PriceText>
             </PriceContainer>
@@ -107,19 +164,7 @@ const NftSaleContent = () => {
                 </Select>
               </Action>
               <Action>
-                <SolidButton
-                  disabled={isTransLoading}
-                  onClick={() => {
-                    checkApproveNft(
-                      chainId,
-                      account,
-                      tokenName,
-                      setIsTransSuccessModal,
-                      setIsTransErrorModal,
-                      setIsTransLoading,
-                    );
-                  }}
-                >
+                <SolidButton disabled={isTransLoading} onClick={() => mint()}>
                   {isTransLoading ? (
                     <>
                       <Loader

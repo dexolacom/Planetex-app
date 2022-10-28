@@ -28,21 +28,37 @@ export const checkApprove = async (
   setIsTransSuccessModal: (b: boolean) => void,
   setIsTransErrorModal: (b: boolean) => void,
   setIsTransLoading: (b: boolean) => void,
-  setIsApproveLoading: (b: boolean) => void
+  setIsApproveLoading: (b: boolean) => void,
 ) => {
   if (tokenName === 'USDT' || tokenName === 'BUSD') {
-    const tokenContract = getTokenContract(chainId)
-    const spender = getTokenSaleContractAddress(chainId)
-    const allowance = await checkAllowance(account, tokenContract, spender)
+    const tokenContract = getTokenContract(chainId);
+    const spender = getTokenSaleContractAddress(chainId);
+    const allowance = await checkAllowance(account, tokenContract, spender);
 
     if (allowance === '0') {
-      await approve(tokenContract, account, spender, setIsApproveLoading)
+      await approve(tokenContract, account, spender, setIsApproveLoading);
     }
-    return await buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)
+    return await buyToken(
+      chainId,
+      tokenAmount,
+      account,
+      tokenName,
+      setIsTransSuccessModal,
+      setIsTransErrorModal,
+      setIsTransLoading,
+    );
   } else {
-    return await buyToken(chainId, tokenAmount, account, tokenName, setIsTransSuccessModal, setIsTransErrorModal, setIsTransLoading)
+    return await buyToken(
+      chainId,
+      tokenAmount,
+      account,
+      tokenName,
+      setIsTransSuccessModal,
+      setIsTransErrorModal,
+      setIsTransLoading,
+    );
   }
-}
+};
 
 export const checkApproveNft = async (
   chainId: number | undefined,
@@ -91,26 +107,36 @@ export const checkApproveNft = async (
   }
 };
 
-export const approve = async (contract: any, account: string | null | undefined, spender: string, setIsApproveLoading?: (b: boolean) => void) => {
-  setIsApproveLoading && setIsApproveLoading(true)
+export const approve = async (
+  contract: any,
+  account: string | null | undefined,
+  spender: string,
+  setIsApproveLoading?: (b: boolean) => void,
+) => {
+  setIsApproveLoading && setIsApproveLoading(true);
   return await contract.methods
     .approve(spender, maxApproveAmount)
     .send({ from: account })
-    .on('receipt', function() {
-      setIsApproveLoading && setIsApproveLoading(false)
+    .on('receipt', function () {
+      setIsApproveLoading && setIsApproveLoading(false);
     })
-    .on('error', function(error: any) {
+    .on('error', function (error: any) {
       console.error(error);
-      setIsApproveLoading && setIsApproveLoading(false)
-    })
-}
+      setIsApproveLoading && setIsApproveLoading(false);
+    });
+};
 
-export const convertToUSD = async (chainId: number | undefined, tokenAmount: number | string) => {
-  const contract = await getTokenSaleContract(chainId)
-  const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', { useGrouping: false })
-  const res = await contract.methods.convertToStable(formattedAmount, 0).call()
-  return res
-}
+export const convertToUSD = async (
+  chainId: number | undefined,
+  tokenAmount: number | string,
+) => {
+  const contract = await getTokenSaleContract(chainId);
+  const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', {
+    useGrouping: false,
+  });
+  const res = await contract.methods.convertToStable(formattedAmount, 0).call();
+  return res;
+};
 
 export const getUserAvailableAmount = async (
   chainId: number | undefined,
@@ -128,14 +154,23 @@ export const formatToHuman = (chainId: number | undefined, amount: string) => {
 export const getProviders = (chainId: number | undefined) => {
   const providers = {
     5: 'https://eth-goerli.nodereal.io/v1/8a4432e42df94dcca2814fde8aea2a2e',
-    97: 'https://bsc-testnet.nodereal.io/v1/e9a36765eb8a40b9bd12e680a1fd2bc5'
-  }
-  return providers[chainId as keyof typeof providers] ?? console.error('chainId is undefined')
-}
+    97: 'https://bsc-testnet.nodereal.io/v1/e9a36765eb8a40b9bd12e680a1fd2bc5',
+  };
+  return (
+    providers[chainId as keyof typeof providers] ??
+    console.error('chainId is undefined')
+  );
+};
 
-export const getUserBalance = async (chainId: number | undefined, account: any) => {
+export const getUserBalance = async (
+  chainId: number | undefined,
+  account: any,
+) => {
   // logic without metamask provider binding
-  const web3 = new Web3(new Web3.providers.HttpProvider(getProviders(chainId)))
-  const contract = new web3.eth.Contract(buyTokenAbi as AbiItem[], getTokenSaleContractAddress(chainId))
-  return await contract.methods.userBalance(account, 0).call()
+  const web3 = new Web3(new Web3.providers.HttpProvider(getProviders(chainId)));
+  const contract = new web3.eth.Contract(
+    buyTokenAbi as AbiItem[],
+    getTokenSaleContractAddress(chainId),
+  );
+  return await contract.methods.userBalance(account, 0).call();
 };

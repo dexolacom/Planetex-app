@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable max-lines-per-function */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getTokenSaleContract, getPlanetexTokenContract } from './contracts';
 import { getDecimals } from './utils';
 
@@ -61,6 +64,7 @@ export const buyNftToken = async (
 ) => {
   const contract = await getPlanetexTokenContract(chainId);
   setIsTransLoading(true);
+
   try {
     if (tokenName === 'USDT') {
       return await contract.methods
@@ -75,9 +79,11 @@ export const buyNftToken = async (
           setIsTransLoading(false);
         });
     }
+
     const ethValue = await contract.methods
       .getEthPurchaseAmount()
       .call({ from: account });
+
     return await contract.methods
       .buyForEth()
       .send({ from: account, value: ethValue })

@@ -1,71 +1,48 @@
 // @ts-nocheck
 /* eslint-disable no-console */
 /* eslint-disable max-lines-per-function */
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
+import { useWeb3React } from '@web3-react/core';
+import { injected } from '../../../constants/connectors';
+import { getPlanetexTokenContract } from '../../../utils/contracts';
+import SaleNFTContext from '../SaleNFTContext';
 import { NFTCollectionWrapper } from './styles';
 import useCheckIsMobile from '../../../hooks/useCheckIsMobile';
 import NFTCollectionMobile from './NFTCollectionMobile';
 import NFTCollection from './NFTCollection';
-import { useWeb3React } from '@web3-react/core';
-import { getPlanetexTokenContract } from '../../../utils/contracts';
-import getNFTInfo from './api';
-import { injected } from '../../../constants/connectors';
-
-// const { log } = console;
+import getTokens from './getTokens';
+import vars from './vars';
 
 const MyNFTContent = () => {
-  const [planetexTokenContract, setPlanetexTokenContract] = useState(null);
-  const [NFTs, setNFTs] = useState([]);
-
   const { chainId, account } = useWeb3React();
   const { isMobile } = useCheckIsMobile();
+  const contract = chainId && getPlanetexTokenContract(chainId);
+
+  const { collection, tokens, setCollection, setTokens } =
+    useContext(SaleNFTContext);
 
   useEffect(() => {
-    setNFTs([]);
-    // chainId && account && log('--------', chainId, account);
-    const contract = chainId && getPlanetexTokenContract(chainId);
-    setPlanetexTokenContract(contract);
+    setCollection([]);
+    setTokens(null);
+    vars.acc = account;
+    vars.net = chainId;
   }, [chainId, account, injected]);
 
-  const getTokens = async (contract) => {
-    const idArray = [];
-    const nftInfoArray = [];
-    const methods = contract && (await contract.methods);
-    const ids = await methods.userTokens(account).call();
-
-    if (!ids) return;
-
-    if (idArray.length === 0) {
-      for (let i = 0; i < ids.length; i += 1) {
-        const character = await methods.tokenURI(ids[i]).call();
-        character && idArray.push(character);
-      }
-    }
-
-    if (nftInfoArray.length === 0) {
-      for (let i = 0; i < idArray.length; i += 1) {
-        const response = await getNFTInfo(idArray[i]);
-        response && nftInfoArray.push(response.data);
-      }
-    }
-
-    return nftInfoArray;
-  };
-
-  planetexTokenContract &&
-    NFTs.length === 0 &&
-    getTokens(planetexTokenContract).then((data) => {
-      Array.isArray(data) && setNFTs(data);
-    });
+  injected &&
+    account &&
+    chainId &&
+    collection?.length === 0 &&
+    contract &&
+    getTokens(contract, chainId, account, setCollection, setTokens, 0);
 
   return (
-    <NFTCollectionWrapper paddingBottom={NFTs.length === 0 && true}>
-      {NFTs.length > 0 && (
+    <NFTCollectionWrapper paddingBottom={collection?.length === 0 && true}>
+      {collection?.length > 0 && (
         <>
           {isMobile ? (
-            <NFTCollectionMobile NFTs={NFTs} />
+            <NFTCollectionMobile NFTs={tokens !== null && collection} />
           ) : (
-            <NFTCollection NFTs={NFTs} />
+            <NFTCollection NFTs={tokens !== null && collection} />
           )}
         </>
       )}
