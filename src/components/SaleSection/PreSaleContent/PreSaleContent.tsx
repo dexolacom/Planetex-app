@@ -25,13 +25,15 @@ import InputContainer from './InputContainer/InputContainer';
 import Loader from '../../Loader/Loader';
 import useDebounce from '../../../hooks/useDebounce';
 import { getTokenContract, getTokenSaleContractAddress } from '../../../utils/contracts';
+import { useTransactionContext } from '../../../contexts/transactionContext';
 
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
+  const {isTransSuccessModal, setIsTransSuccessModal} = useTransactionContext()
   const [tokenAmount, setTokenAmount] = useState('');
   const [tokenName, setTokenName] = useState('');
   const [isTransErrorModal, setIsTransErrorModal] = useState(false)
-  const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
+
   const [isTransLoading, setIsTransLoading] = useState(false)
   const [isApproveLoading, setIsApproveLoading] = useState(false)
   const [isInputAmountError, setIsInputAmountError] = useState(false)
