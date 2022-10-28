@@ -14,7 +14,7 @@ import _NFTSaleGroup from '../../../assets/images/_NFTSaleGroup.png';
 import {
   Wrapper,
   Content,
-  HeroGroupImg,
+  // HeroGroupImg,
   PriceContainer,
   PriceText,
   MainContentWrap,
