@@ -11,7 +11,9 @@ export const Wrapper = styled.div`
   position: absolute;
   top: 180px;
   right: 85px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
   @media screen and (max-width: 1185px) {
     top: 130px;

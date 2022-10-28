@@ -51,6 +51,6 @@ export const getUserBalanceSum = async (account: any) => {
     return sum;
   }
 
-  return (+findSum(busdBalance, usdtBalance) / 10 ** 18)
+  return (+findSum(busdBalance, usdtBalance) / 10 ** 18).toFixed()
 
 };
