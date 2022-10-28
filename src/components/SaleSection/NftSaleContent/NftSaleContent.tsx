@@ -63,8 +63,6 @@ const NftSaleContent = () => {
       setIsTransErrorModal,
       setIsTransLoading,
     );
-
-    setIsTransSuccessModal(true);
   };
 
   const checkNewNFT = async () => {
@@ -76,7 +74,12 @@ const NftSaleContent = () => {
     const refreshIntervalId = setInterval(async () => {
       ids = await contract.methods.userTokens(account).call();
 
-      if (ids.length > collection.length || count === 10) {
+      if (count === 10) {
+        clearInterval(refreshIntervalId);
+        return;
+      }
+
+      if (ids.length > collection.length) {
         const _count = 0;
         const _ids = ids.slice(-1);
 
@@ -91,6 +94,7 @@ const NftSaleContent = () => {
           collection,
         );
         clearInterval(refreshIntervalId);
+        return;
       }
 
       count += 1;
