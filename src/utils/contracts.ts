@@ -10,8 +10,8 @@ export const getTokenSaleContractAddress = (chainId: number | undefined) => {
     5: '0x20f5072712D12C4d3c0f796c34dceCd1f1C59d4B',
     56: '0xbcd9482dE62E7705cC4C70F8314eDA251127C699',
     97: '0x42D2278483A4794200F207251d4204879A3412dd',
-  }
-  return addresses[chainId as keyof typeof addresses]
+  };
+  return addresses[chainId as keyof typeof addresses];
 };
 
 export const getTokenSaleContract = async (chainId: number | undefined) => {
@@ -29,9 +29,8 @@ export const getTokenContractAddress = (chainId: number | undefined) => {
     97: '0x912480a6063AF66A306C25370AB32453C10F7919',
   };
 
-  return addresses[chainId as keyof typeof addresses]
-}
-
+  return addresses[chainId as keyof typeof addresses];
+};
 
 export const getTokenContract = (chainId: number | undefined) => {
   return new web3.eth.Contract(
@@ -44,7 +43,7 @@ export const getPlanetexTokenContractAddress = (
   chainId: number | undefined,
 ) => {
   const addresses = {
-    1: '',
+    1: '0x118254B030bBfDa5910bbFC857DB41488C7B1D22',
     5: '0x710bf88E1F46f7e8383Ce844251f1475e0BEB252',
     56: '',
     97: '',
