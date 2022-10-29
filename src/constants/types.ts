@@ -42,8 +42,27 @@ export interface InputContainerProps {
   tokenName: string;
   convertedToUSDAmount: number | string;
   isInputAmountError: boolean;
-  isWalletWarning: boolean
+  isWalletWarning: boolean;
   setTokenAmount: (n: number | string) => void;
   setTokenName: (s: string) => void;
   setIsInputAmountError: (b: boolean) => void;
+}
+
+export interface TokenNameSelectProps {
+  tokenName: string;
+  setTokenName: (s: string) => void;
+}
+
+export interface ActionButtonProps {
+  tokenContract: any;
+  account: string;
+  spender: string;
+  isWallet: boolean;
+  tokenName: string;
+  allowance: string;
+  isApproveLoading: boolean;
+  isTransLoading: boolean;
+  setIsApproveLoading: (b: boolean) => void;
+  setAllowance: (b: boolean) => void;
+  mint: () => void;
 }
