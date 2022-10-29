@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable max-lines-per-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getTokenSaleContract, getPlanetexTokenContract } from './contracts';
 import { getDecimals } from './utils';
@@ -62,7 +62,11 @@ export const buyNftToken = async (
   setIsTransErrorModal: (b: boolean) => void,
   setIsTransLoading: (b: boolean) => void,
 ) => {
-  const contract = await getPlanetexTokenContract(chainId);
+  const contract = getPlanetexTokenContract(chainId);
+  const isSaleStarted = await contract.methods.isSaleStarted().call();
+
+  if (!isSaleStarted) return console.log('Round not started');
+
   setIsTransLoading(true);
 
   try {

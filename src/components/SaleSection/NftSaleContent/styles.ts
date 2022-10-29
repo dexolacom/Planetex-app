@@ -376,3 +376,8 @@ export const Select = styled.select`
     border: 1px solid #af76fd;
   }
 `;
+
+export const ButtonContent = styled.div`
+  display: flex;
+  align-items: center;
+`;

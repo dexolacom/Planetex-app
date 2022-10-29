@@ -11,7 +11,6 @@ import { maxApproveAmount } from '../constants/constants';
 import { AbiItem } from 'web3-utils';
 import Web3 from 'web3';
 
-
 export const checkAllowance = async (
   account: string | null | undefined,
   contract: any,
@@ -75,26 +74,17 @@ export const checkApproveNft = async (
     const allowance = await checkAllowance(account, tokenContract, spender);
 
     if (allowance === '0') {
-      await approve(tokenContract, account, spender).then(() =>
-        buyNftToken(
-          chainId,
-          account,
-          tokenName,
-          setIsTransSuccessModal,
-          setIsTransErrorModal,
-          setIsTransLoading,
-        ),
-      );
-    } else {
-      return await buyNftToken(
-        chainId,
-        account,
-        tokenName,
-        setIsTransSuccessModal,
-        setIsTransErrorModal,
-        setIsTransLoading,
-      );
+      await approve(tokenContract, account, spender);
     }
+
+    return await buyNftToken(
+      chainId,
+      account,
+      tokenName,
+      setIsTransSuccessModal,
+      setIsTransErrorModal,
+      setIsTransLoading,
+    );
   } else {
     return await buyNftToken(
       chainId,
@@ -155,7 +145,7 @@ export const getProviders = (chainId: number | undefined) => {
     5: 'https://eth-goerli.nodereal.io/v1/8a4432e42df94dcca2814fde8aea2a2e',
     97: 'https://bsc-testnet.nodereal.io/v1/e9a36765eb8a40b9bd12e680a1fd2bc5',
     56: 'https://bsc-dataseed1.binance.org',
-    1: 'https://api.mycryptoapi.com/eth'
+    1: 'https://api.mycryptoapi.com/eth',
   };
   return (
     providers[chainId as keyof typeof providers] ??
