@@ -138,6 +138,8 @@ export const TextContainer = styled.div`
   margin-right: 20px;
   width: 100%;
   max-width: 282px;
+  // background-color: red;
+  // padding-bottom: 10px;
 
   @media screen and (max-width: 880px) {
     margin-right: 10px;
