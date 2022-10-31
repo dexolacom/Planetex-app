@@ -15,7 +15,7 @@ export const heroInfo = {
   },
   nftSale: {
     title: 'NFT-Sale',
-    text: 'Planetex account and wallet creation. Keep track of your orders in real time with in depth market analysis.',
+    text: 'Connect your wallet in a couple of clicks and mint your character for the game',
     img: nftSale,
   },
 };

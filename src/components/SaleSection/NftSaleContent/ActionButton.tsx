@@ -4,24 +4,16 @@ import { Action, ButtonContent } from './styles';
 import { ActionButtonProps } from '../../../constants/types';
 import { SolidButton } from '../../../theme';
 import Loader from '../../Loader/Loader';
-import { approve } from '../../../utils/blockchainUtils';
 
 const ActionButton = ({
-  tokenContract,
-  account,
-  spender,
   isWallet,
   tokenName,
   allowance,
   isApproveLoading,
   isTransLoading,
-  setIsApproveLoading,
+  approveMint,
   mint,
 }: ActionButtonProps) => {
-  const approveMint = async () => {
-    await approve(tokenContract, account, spender, setIsApproveLoading);
-  };
-
   return (
     <Action>
       {allowance === '0' && tokenName === 'USDT' ? (
