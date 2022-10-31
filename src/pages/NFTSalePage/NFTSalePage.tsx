@@ -1,7 +1,6 @@
 import { FullScreenTheme } from '../../theme';
-// import { FullScreenTheme, NFTSaleContentTheme2 } from '../../../theme';
-import HeroSectionSaleNFT from '../../components/HeroSectionSaleNFT/HeroSectionSaleNFT';
 import { heroInfo } from '../../constants/constants';
+import HeroSectionSaleNFT from '../../components/HeroSectionSaleNFT/HeroSectionSaleNFT';
 import SaleSection from '../../components/SaleSection/SaleSection';
 
 const NFTSalePage = () => {

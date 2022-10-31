@@ -1,15 +1,10 @@
 // @ts-nocheck
 /* eslint-disable indent */
 /* eslint-disable jsx-quotes */
-/* eslint-disable no-console */
 /* eslint-disable max-lines-per-function */
 import { useEffect, useState, useContext } from 'react';
 import SaleNFTContext from '../SaleNFTContext';
 import { FullScreenTheme } from '../../../theme';
-import NFTSaleDamage from '../../../assets/icons/NFTSaleDamage.svg';
-import NFTSaleSpeed from '../../../assets/icons/NFTSaleSpeed.svg';
-import NFTSaleHealth from '../../../assets/icons/NFTSaleHealth.svg';
-import NFTSaleArmor from '../../../assets/icons/NFTSaleArmor.svg';
 import _NFTSaleGroup from '../../../assets/images/_NFTSaleGroup.png';
 import {
   Wrapper,
@@ -20,59 +15,98 @@ import {
   MainContentWrap,
   Title,
   Text,
-  SkillTitle,
   TextContainer,
-  SkillsContainer,
-  Skills,
-  Skill,
-  SkillContent,
-  SkillImg,
-  SkillText,
   ActionContainer,
-  Action,
-  Select,
 } from './styles';
-import { SolidButton } from '../../../theme';
+import TokenNameSelect from './TokenNameSelect';
+import ActionButton from './ActionButton';
+import NFTSkills from './NFTSkills';
 import { useWeb3React } from '@web3-react/core';
-import { getPlanetexTokenContract } from '../../../utils/contracts';
-import Loader from '../../Loader/Loader';
+import {
+  getTokenContract,
+  getPlanetexTokenContract,
+  getPlanetexTokenContractAddress,
+} from '../../../utils/contracts';
 import StatusModal from '../../StatusModal/StatusModal';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
-import { checkApproveNft } from '../../../utils/blockchainUtils';
+import {
+  checkAllowance,
+  checkApproveNft,
+  approve,
+} from '../../../utils/blockchainUtils';
 import getTokens from '../MyNFTContent/getTokens';
+import { changeNetwork } from '../../../utils/walletUtils';
 
-const NftSaleContent = () => {
+const NFTSaleContent = () => {
   const { chainId, account } = useWeb3React();
   const [tokenName, setTokenName] = useState('');
+  const [isWallet, setIsWallet] = useState(false);
   const [isTransErrorModal, setIsTransErrorModal] = useState(false);
   const [isTransSuccessModal, setIsTransSuccessModal] = useState(false);
+  const [isApproveLoading, setIsApproveLoading] = useState(false);
   const [isTransLoading, setIsTransLoading] = useState(false);
+  const [allowance, setAllowance] = useState('');
+
+  const tokenContract = chainId && getTokenContract(chainId);
+  const spender = chainId && getPlanetexTokenContractAddress(chainId);
 
   const { collection, setCollection, setTokens } = useContext(SaleNFTContext);
 
   useEffect(() => {
-    if (isTransSuccessModal === true) checkNewNFT();
+    if (chainId)
+      checkAllowance(account, tokenContract, spender).then((res) => {
+        setAllowance(res);
+      });
+  }, [chainId, account, isApproveLoading]);
+
+  useEffect(() => setIsWallet(account ? true : false), [account]);
+
+  useEffect(() => {
+    isTransSuccessModal === true && checkNewNFT();
   }, [isTransSuccessModal]);
 
+  const handleNetworkSwitch = async (networkName: string) => {
+    if (!localStorage.getItem('provider')) {
+      return setIsWalletModalOpen(true);
+    }
+    await changeNetwork(networkName);
+  };
+
+  const approveMint = async () => {
+    if (chainId !== 1 || chainId !== 5) {
+      await handleNetworkSwitch('eth');
+    }
+
+    if (chainId === 1 || chainId === 5) {
+      await approve(tokenContract, account, spender, setIsApproveLoading);
+    }
+  };
+
   const mint = async () => {
-    await checkApproveNft(
-      chainId,
-      account,
-      tokenName,
-      setIsTransSuccessModal,
-      setIsTransErrorModal,
-      setIsTransLoading,
-    );
+    if (chainId !== 1 || chainId !== 5) {
+      await handleNetworkSwitch('eth');
+    }
+
+    if (chainId === 1 || chainId === 5) {
+      await checkApproveNft(
+        chainId,
+        account,
+        tokenName,
+        setIsTransSuccessModal,
+        setIsTransErrorModal,
+        setIsTransLoading,
+      );
+    }
   };
 
   const checkNewNFT = async () => {
-    const contract = chainId && getPlanetexTokenContract(chainId);
+    const NFTContract = chainId && getPlanetexTokenContract(chainId);
 
     let count = 0;
     let ids = [];
 
     const refreshIntervalId = setInterval(async () => {
-      ids = await contract.methods.userTokens(account).call();
+      ids = await NFTContract.methods.userTokens(account).call();
 
       if (count === 10) {
         clearInterval(refreshIntervalId);
@@ -84,7 +118,7 @@ const NftSaleContent = () => {
         const _ids = ids.slice(-1);
 
         getTokens(
-          contract,
+          NFTContract,
           chainId,
           account,
           setCollection,
@@ -114,71 +148,34 @@ const NftSaleContent = () => {
               <TextContainer>
                 <Title>NFT-Sale</Title>
                 <Text>
-                  Stake your SEAN up to 35 days to earn extra SEAN.ur SEAN up to
-                  35 days to earn extra SEays to earn extra SEto earn extra
-                  SEAN.ur SEAN up to 35 days extra SEAN.ur SEAN up to 35 days to
-                  earn extra SEays to earn extra SEto earn extra SEAN.ur SEA
+                  12 original characters are waiting for you in our NFT
+                  collection, which consists of 10,000 tokens. After mint, the
+                  token will be displayed on this page with information about
+                  the name, profession and skills of your character. The number
+                  of characters for one user is not limited.
                 </Text>
               </TextContainer>
-              <SkillsContainer>
-                <SkillTitle>Сharacter skills</SkillTitle>
-                <Skills>
-                  <Skill>
-                    <SkillContent>
-                      <SkillImg src={NFTSaleDamage} />
-                      <SkillText>Damage</SkillText>
-                    </SkillContent>
-                  </Skill>
-                  <Skill>
-                    <SkillContent>
-                      <SkillImg src={NFTSaleSpeed} />
-                      <SkillText>Speed</SkillText>
-                    </SkillContent>
-                  </Skill>
-                  <Skill>
-                    <SkillContent>
-                      <SkillImg src={NFTSaleHealth} />
-                      <SkillText>Health</SkillText>
-                    </SkillContent>
-                  </Skill>
-                  <Skill>
-                    <SkillContent>
-                      <SkillImg src={NFTSaleArmor} />
-                      <SkillText>Armor</SkillText>
-                    </SkillContent>
-                  </Skill>
-                </Skills>
-              </SkillsContainer>
+              <NFTSkills />
             </MainContentWrap>
             <ActionContainer>
-              <Action>
-                <Select
-                  id="tokenSelect"
-                  value={tokenName}
-                  onChange={(e) => setTokenName(e.target.value)}
-                >
-                  <>
-                    <option value="ETH">ETH</option>
-                    <option value="USDT">USDT</option>
-                  </>
-                </Select>
-              </Action>
-              <Action>
-                <SolidButton disabled={isTransLoading} onClick={() => mint()}>
-                  {isTransLoading ? (
-                    <>
-                      <Loader
-                        stroke="#D4E5FF"
-                        size="20px"
-                        style={{ marginRight: '10px' }}
-                      />
-                      Pending
-                    </>
-                  ) : (
-                    'Mint'
-                  )}
-                </SolidButton>
-              </Action>
+              <TokenNameSelect
+                tokenName={tokenName}
+                setTokenName={setTokenName}
+              />
+              <ActionButton
+                tokenContract={tokenContract}
+                account={account}
+                spender={spender}
+                tokenName={tokenName}
+                isWallet={isWallet}
+                allowance={allowance}
+                isApproveLoading={isApproveLoading}
+                isTransLoading={isTransLoading}
+                setAllowance={setAllowance}
+                setIsApproveLoading={setIsApproveLoading}
+                approveMint={approveMint}
+                mint={mint}
+              />
             </ActionContainer>
           </Content>
         </Wrapper>
@@ -199,4 +196,4 @@ const NftSaleContent = () => {
   );
 };
 
-export default NftSaleContent;
+export default NFTSaleContent;

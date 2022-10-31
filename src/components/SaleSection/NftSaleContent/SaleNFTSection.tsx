@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useState } from 'react';
 import SaleNFTContext from '../SaleNFTContext';
-import NftSaleContent from './NftSaleContent';
+import NFTSaleContent from './NftSaleContent';
 import MyNFTContent from '../MyNFTContent/MyNFTContent';
 
 const SaleNFTSection = () => {
@@ -17,7 +17,7 @@ const SaleNFTSection = () => {
         setTokens,
       }}
     >
-      <NftSaleContent />
+      <NFTSaleContent />
       <MyNFTContent />
     </SaleNFTContext.Provider>
   );

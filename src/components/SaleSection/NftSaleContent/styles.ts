@@ -138,6 +138,8 @@ export const TextContainer = styled.div`
   margin-right: 20px;
   width: 100%;
   max-width: 282px;
+  // background-color: red;
+  // padding-bottom: 10px;
 
   @media screen and (max-width: 880px) {
     margin-right: 10px;
@@ -375,4 +377,9 @@ export const Select = styled.select`
   &:focus {
     border: 1px solid #af76fd;
   }
+`;
+
+export const ButtonContent = styled.div`
+  display: flex;
+  align-items: center;
 `;
