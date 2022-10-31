@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { useState } from 'react';
 import SaleNFTContext from '../SaleNFTContext';
-import NFTSaleContent from './NftSaleContent';
 import MyNFTContent from '../MyNFTContent/MyNFTContent';
+import NFTSaleContent from './NftSaleContent';
 
 const SaleNFTSection = () => {
   const [collection, setCollection] = useState([]);
