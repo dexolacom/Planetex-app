@@ -104,7 +104,7 @@ const PreSaleContent = () => {
             <Title>Pre-Sale</Title>
             <Tag>Limited purchase restrictions 10-1000$</Tag>
           </TitleContainer>
-          <Text>Stake your SEAN up to 35 days to earn extra SEAN.</Text>
+          <Text>Choose a payment method and receive vested tokens to your wallet.</Text>
           <InputContainer
             tokenAmount={tokenAmount}
             tokenName={tokenName}
