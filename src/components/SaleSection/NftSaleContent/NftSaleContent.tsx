@@ -1,7 +1,6 @@
 // @ts-nocheck
 /* eslint-disable indent */
 /* eslint-disable jsx-quotes */
-/* eslint-disable no-console */
 /* eslint-disable max-lines-per-function */
 import { useEffect, useState, useContext } from 'react';
 import SaleNFTContext from '../SaleNFTContext';
