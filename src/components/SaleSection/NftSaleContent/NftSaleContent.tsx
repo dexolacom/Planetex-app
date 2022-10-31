@@ -32,8 +32,10 @@ import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
 import {
   checkAllowance,
   checkApproveNft,
+  approve,
 } from '../../../utils/blockchainUtils';
 import getTokens from '../MyNFTContent/getTokens';
+import { changeNetwork } from '../../../utils/walletUtils';
 
 const NFTSaleContent = () => {
   const { chainId, account } = useWeb3React();
@@ -63,15 +65,38 @@ const NFTSaleContent = () => {
     isTransSuccessModal === true && checkNewNFT();
   }, [isTransSuccessModal]);
 
+  const handleNetworkSwitch = async (networkName: string) => {
+    if (!localStorage.getItem('provider')) {
+      return setIsWalletModalOpen(true);
+    }
+    await changeNetwork(networkName);
+  };
+
+  const approveMint = async () => {
+    if (chainId !== 1 || chainId !== 5) {
+      await handleNetworkSwitch('eth');
+    }
+
+    if (chainId === 1 || chainId === 5) {
+      await approve(tokenContract, account, spender, setIsApproveLoading);
+    }
+  };
+
   const mint = async () => {
-    await checkApproveNft(
-      chainId,
-      account,
-      tokenName,
-      setIsTransSuccessModal,
-      setIsTransErrorModal,
-      setIsTransLoading,
-    );
+    if (chainId !== 1 || chainId !== 5) {
+      await handleNetworkSwitch('eth');
+    }
+
+    if (chainId === 1 || chainId === 5) {
+      await checkApproveNft(
+        chainId,
+        account,
+        tokenName,
+        setIsTransSuccessModal,
+        setIsTransErrorModal,
+        setIsTransLoading,
+      );
+    }
   };
 
   const checkNewNFT = async () => {
@@ -123,10 +148,11 @@ const NFTSaleContent = () => {
               <TextContainer>
                 <Title>NFT-Sale</Title>
                 <Text>
-                  Stake your SEAN up to 35 days to earn extra SEAN.ur SEAN up to
-                  35 days to earn extra SEays to earn extra SEto earn extra
-                  SEAN.ur SEAN up to 35 days extra SEAN.ur SEAN up to 35 days to
-                  earn extra SEays to earn extra SEto earn extra SEAN.ur SEA
+                  12 original characters are waiting for you in our NFT
+                  collection, which consists of 10,000 tokens. After mint, the
+                  token will be displayed on this page with information about
+                  the name, profession and skills of your character. The number
+                  of characters for one user is not limited.
                 </Text>
               </TextContainer>
               <NFTSkills />
@@ -147,6 +173,7 @@ const NFTSaleContent = () => {
                 isTransLoading={isTransLoading}
                 setAllowance={setAllowance}
                 setIsApproveLoading={setIsApproveLoading}
+                approveMint={approveMint}
                 mint={mint}
               />
             </ActionContainer>

@@ -64,5 +64,6 @@ export interface ActionButtonProps {
   isTransLoading: boolean;
   setIsApproveLoading: (b: boolean) => void;
   setAllowance: (b: boolean) => void;
+  approveMint: () => void;
   mint: () => void;
 }
