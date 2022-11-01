@@ -11,7 +11,7 @@ import {
   Link,
   BurgerTabletIcon,
   ConnectButton,
-  MobileLogo,
+  // MobileLogo,
   BurgerTabletCrossIcon,
 } from './styles';
 import AccountContainer from './AccountContainer/AccountContainer';
@@ -21,6 +21,8 @@ import { HeaderProps } from '../../constants/types';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 import ConnectWalletModal from '../ConnectWalletModal/ConnectWalletModal';
 import { connectWalletOnPageLoad } from '../../utils/walletUtils';
+// @ts-ignore
+import logoIcon from '../../assets/icons/logo.png';
 
 const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
   const { isMobile } = useCheckIsMobile();
@@ -51,7 +53,8 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
                 : 'https://planetex-app.herokuapp.com'
             }
           >
-            {isMobile ? <MobileLogo /> : <Logo />}
+            <Logo src={logoIcon} />
+            {/* {isMobile ? <MobileLogo /> : <Logo src={logoIcon} />} */}
           </LogoLink>
           <Navigation>
             <Links>
