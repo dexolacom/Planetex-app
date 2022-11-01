@@ -39,7 +39,7 @@ export const MobileContent = styled.div`
 
 export const MobileTitle = styled.h2`
   padding: 50px 0;
-  font-size: 36px;
+  font-size: 28px;
   line-height: 44px;
   text-align: center;
   color: #d4e5ff;
@@ -78,6 +78,7 @@ export const Title = styled.h2`
   @media screen and (max-width: 880px) {
     padding-left: 0;
     margin-bottom: 50px;
+    font-size: 26px;
     text-align: center;
   }
 `;

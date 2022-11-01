@@ -41,12 +41,12 @@ export const TextContainer = styled.div`
 
 export const Title = styled.h3`
   font-size: 24px;
-  // font-weight: 700;
   line-height: 29px;
   color: #d4e5ff;
   margin-bottom: 10px;
 
   @media screen and (max-width: 880px) {
+    font-size: 20px;
     margin-bottom: 10px;
   }
 
