@@ -95,7 +95,12 @@ const PreSaleContent = () => {
             <Title>Pre-Sale</Title>
             <Tag>Minimum investment 10$</Tag>
           </TitleContainer>
-          <Text>After the purchase, the tokens will be in the cliff for 4 months and vesting for 17 months. Vesting has a linear quarterly unlock.</Text>
+          <Text>
+            Choose a payment method and receive vested tokens to your wallet. After the purchase, the tokens will be in the vesting. [4 months cliff, 17 months vesting, linear quarterly unlock]
+            <br/>
+            <br/>
+            After the purchase, the tokens will be in the cliff for 4 months and vesting for 17 months. Vesting has a linear quarterly unlock.
+          </Text>
           <InputContainer
             tokenAmount={tokenAmount}
             tokenName={tokenName}
