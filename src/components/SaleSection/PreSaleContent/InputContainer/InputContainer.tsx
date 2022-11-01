@@ -9,15 +9,18 @@ const InputContainer = ({
   convertedToUSDAmount,
   isInputAmountError,
   isWalletWarning,
+  isApproveWarning,
   setTokenAmount,
   setTokenName,
-  setIsInputAmountError
+  setIsInputAmountError,
+  setIsApproveWarning
 }:InputContainerProps) => {
 
   const { account, chainId } = useWeb3React()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = (e.target.value).replace(/^0\d{1}$/, '');
+    setIsApproveWarning(false)
 
     if (value.match(/^[0-9]*[.,]?[0-9]*$/)) {
       if (+value >= 10 || +value === 0) {
@@ -37,7 +40,7 @@ const InputContainer = ({
   }, [chainId]);
 
   return (
-    <Wrapper marginBottom={(isInputAmountError || isWalletWarning) ? '5px' : '30px'}>
+    <Wrapper marginBottom={(isInputAmountError || isWalletWarning || isApproveWarning) ? '5px' : '30px'}>
       {/*@ts-ignore*/}
       <InputBlock border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'} filter={account ? '' : 'grayscale(1)'}>
         <Input
@@ -51,7 +54,11 @@ const InputContainer = ({
         />
         {/*@ts-ignore*/}
         <InputInfo color={!account ? '#762ACE' : '#5e626c'} border={!account ? '2px solid #762ACE' : '2px solid #5e626c'}>
-          {convertedToUSDAmount || '0.00'} $
+          {tokenName === 'USDT' || tokenName === 'BUSD'
+            ? `${tokenAmount || '0.00'} $`
+            : `${convertedToUSDAmount || '0.00'} $`
+          }
+
         </InputInfo>
       </InputBlock>
       {/*@ts-ignore*/}

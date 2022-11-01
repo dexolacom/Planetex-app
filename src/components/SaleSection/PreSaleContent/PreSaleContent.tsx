@@ -19,7 +19,6 @@ import {
   checkApprove,
   convertToUSD,
   formatToHuman,
-  getUserAvailableAmount,
 } from '../../../utils/blockchainUtils';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
 import StatusModal from '../../StatusModal/StatusModal';
@@ -42,9 +41,9 @@ const PreSaleContent = () => {
   const [isTransLoading, setIsTransLoading] = useState(false);
   const [isApproveLoading, setIsApproveLoading] = useState(false);
   const [isInputAmountError, setIsInputAmountError] = useState(false);
-  const [userAvailableAmount, setUserAvailableAmount] = useState('');
   const [convertedToUSDAmount, setConvertedToUSDAmount] = useState('');
   const [isWalletWarning, setIsWalletWarning] = useState(false);
+  const [isApproveWarning, setIsApproveWarning] = useState(false);
   const [allowance, setAllowance] = useState('');
   const debouncedValue = useDebounce<string>(tokenAmount, 300);
   const tokenContract = getTokenContract(chainId);
@@ -66,10 +65,6 @@ const PreSaleContent = () => {
   }, [debouncedValue]);
 
   useEffect(() => {
-    if (chainId)
-      getUserAvailableAmount(chainId, account).then((res) =>
-        setUserAvailableAmount(formatToHuman(chainId, res?.usdtAmount)),
-      );
     setTokenAmount('');
   }, [chainId, isTransSuccessModal]);
 
@@ -78,7 +73,7 @@ const PreSaleContent = () => {
       if (+convertedToUSDAmount === 0) {
         return setIsInputAmountError(false);
       }
-      if (+convertedToUSDAmount <= +userAvailableAmount && +convertedToUSDAmount >= 10) {
+      if (+convertedToUSDAmount >= 10) {
         setIsInputAmountError(false);
       }
     }
@@ -100,31 +95,30 @@ const PreSaleContent = () => {
             <Title>Pre-Sale</Title>
             <Tag>Minimum investment 10$</Tag>
           </TitleContainer>
-          <Text>Choose a payment method and receive vested tokens to your wallet. After the purchase, the tokens will be in the vesting. [4 months cliff, 17 months vesting, linear quarterly unlock]</Text>
+          <Text>Choose a payment method and receive vested tokens to your wallet. After the purchase, the tokens will be
+            in the vesting. [4 months cliff, 17 months vesting, linear quarterly unlock]</Text>
           <InputContainer
             tokenAmount={tokenAmount}
             tokenName={tokenName}
             convertedToUSDAmount={convertedToUSDAmount}
             isInputAmountError={isInputAmountError}
             isWalletWarning={isWalletWarning}
+            isApproveWarning={isApproveWarning}
             // @ts-ignore
             setTokenAmount={setTokenAmount}
             setTokenName={setTokenName}
             setIsInputAmountError={setIsInputAmountError}
+            setIsApproveWarning={setIsApproveWarning}
           />
           {isInputAmountError && (
-            <InputError>
-              {+userAvailableAmount < 10
-                ? <>You have reached the limit of buying tokens</>
-                : <>Please, enter an amount more than 10$</>
-              }
-            </InputError>
+            <InputError>Please, enter an amount more than 10$</InputError>
           )}
           {isWalletWarning && (
-            <InputWarning>
-              Please connect your wallet for buy tokens
-            </InputWarning>
+            <InputWarning>Please connect your wallet for buy tokens</InputWarning>
           )}
+          {isApproveWarning &&
+            <InputWarning>Please enter the amount</InputWarning>
+          }
 
           {(() => {
             if (!account)
@@ -139,8 +133,8 @@ const PreSaleContent = () => {
                 <SolidButton disabled>
                   <>
                     <Loader
-                      stroke="#D4E5FF"
-                      size="20px"
+                      stroke='#D4E5FF'
+                      size='20px'
                       style={{ marginRight: '10px' }}
                     />
                     Approving
@@ -152,39 +146,34 @@ const PreSaleContent = () => {
                 <SolidButton disabled>
                   <>
                     <Loader
-                      stroke="#D4E5FF"
-                      size="20px"
+                      stroke='#D4E5FF'
+                      size='20px'
                       style={{ marginRight: '10px' }}
                     />
                     Pending
                   </>
                 </SolidButton>
               );
-            if (
-              allowance === '0' &&
-              (tokenName === 'USDT' || tokenName === 'BUSD')
-            )
+            if (allowance === '0' && (tokenName === 'USDT' || tokenName === 'BUSD'))
               return (
                 <SolidButton
-                  disabled={
-                    !tokenAmount ||
-                    isTransLoading ||
-                    isInputAmountError ||
-                    +tokenAmount === 0 ||
-                    +userAvailableAmount < 10
-                  }
-                  onClick={() =>
-                    checkApprove(
-                      chainId,
-                      account,
-                      tokenAmount,
-                      tokenName,
-                      setIsTransSuccessModal,
-                      setIsTransErrorModal,
-                      setIsTransLoading,
-                      setIsApproveLoading,
-                    )
-                  }
+                  // disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0}
+                  onClick={() => {
+                    setIsApproveWarning(true);
+                    if (+tokenAmount !== 0) {
+                      setIsApproveWarning(false);
+                      checkApprove(
+                        chainId,
+                        account,
+                        tokenAmount,
+                        tokenName,
+                        setIsTransSuccessModal,
+                        setIsTransErrorModal,
+                        setIsTransLoading,
+                        setIsApproveLoading,
+                      );
+                    }
+                  }}
                 >
                   Approve
                 </SolidButton>
@@ -196,8 +185,7 @@ const PreSaleContent = () => {
                     !tokenAmount ||
                     isTransLoading ||
                     isInputAmountError ||
-                    +tokenAmount === 0 ||
-                    +userAvailableAmount < 10
+                    +tokenAmount === 0
                   }
                   onClick={() =>
                     checkApprove(
