@@ -43,9 +43,11 @@ export interface InputContainerProps {
   convertedToUSDAmount: number | string;
   isInputAmountError: boolean;
   isWalletWarning: boolean;
+  isApproveWarning: boolean;
   setTokenAmount: (n: number | string) => void;
   setTokenName: (s: string) => void;
   setIsInputAmountError: (b: boolean) => void;
+  setIsApproveWarning: (b: boolean) => void;
 }
 
 export interface TokenNameSelectProps {
