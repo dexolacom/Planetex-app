@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import React, { useEffect, useState } from 'react';
 import {
   Content,
@@ -5,6 +6,7 @@ import {
   Navigation,
   Links,
   RouterLink,
+  LogoLink,
   Logo,
   Link,
   BurgerTabletIcon,
@@ -20,11 +22,10 @@ import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 import ConnectWalletModal from '../ConnectWalletModal/ConnectWalletModal';
 import { connectWalletOnPageLoad } from '../../utils/walletUtils';
 
-
 const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
   const { isMobile } = useCheckIsMobile();
-  const { account, activate } = useWeb3React();
-  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false)
+  const { chainId, account, activate } = useWeb3React();
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
 
   useEffect(() => {
     connectWalletOnPageLoad(activate);
@@ -42,7 +43,15 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
     <>
       <Wrapper>
         <Content>
-          {isMobile ? <MobileLogo /> : <Logo />}
+          <LogoLink
+            href={
+              chainId === 1
+                ? 'https://token.planetex.io/'
+                : 'https://planetex-app.herokuapp.com/ '
+            }
+          >
+            {isMobile ? <MobileLogo /> : <Logo />}
+          </LogoLink>
           <Navigation>
             <Links>
               <RouterLink to="/presale">Pre-Sale</RouterLink>
@@ -65,12 +74,12 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
           </Navigation>
         </Content>
       </Wrapper>
-      {isWalletModalOpen &&
+      {isWalletModalOpen && (
         <ModalBackdrop setIsModalOpen={setIsWalletModalOpen}>
           {/*@ts-ignore*/}
-          <ConnectWalletModal setIsModalOpen={setIsWalletModalOpen}/>
+          <ConnectWalletModal setIsModalOpen={setIsWalletModalOpen} />
         </ModalBackdrop>
-      }
+      )}
     </>
   );
 };
