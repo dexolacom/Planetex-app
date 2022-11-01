@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{filter?: string, color?: string}>`
   border: 1px solid #372458;
   border-radius: 10px;
   padding: 13px 22px;
-  color: #5e626c;
+  color: ${({color}) => color};
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -12,4 +12,6 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: ${({filter}) => filter};
+  flex: 1;
 `

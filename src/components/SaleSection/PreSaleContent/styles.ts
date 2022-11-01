@@ -121,9 +121,3 @@ export const InputError = styled.span`
 export const InputWarning = styled(InputError)`
   color: #7c4d1d;
 `;
-
-export const ButtonsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`

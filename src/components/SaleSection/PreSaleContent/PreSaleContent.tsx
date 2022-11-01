@@ -12,7 +12,6 @@ import {
   Content,
   InputError,
   InputWarning,
-  ButtonsContainer,
 } from './styles';
 import { useWeb3React } from '@web3-react/core';
 import {
@@ -31,7 +30,6 @@ import {
   getTokenSaleContractAddress,
 } from '../../../utils/contracts';
 import { useTransactionContext } from '../../../contexts/transactionContext';
-import ConvertedBalance from './ConvertedBalance/ConvertedBalance';
 
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
@@ -121,8 +119,7 @@ const PreSaleContent = () => {
             <InputWarning>Please enter the amount</InputWarning>
           }
 
-          <ButtonsContainer>
-            {(() => {
+          {(() => {
               if (!account)
                 return (
                   <SolidButton onClick={() => setIsWalletWarning(true)}>
@@ -206,8 +203,6 @@ const PreSaleContent = () => {
                   </SolidButton>
                 );
             })()}
-            <ConvertedBalance/>
-          </ButtonsContainer>
 
         </Content>
       </Wrapper>

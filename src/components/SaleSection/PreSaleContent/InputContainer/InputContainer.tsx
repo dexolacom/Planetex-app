@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { InputContainerProps } from '../../../../constants/types';
-import { Input, InputBlock, InputInfo, Select, Wrapper } from './styles';
+import { Input, InputBlock, InputInfo, Select, Wrapper, SelectBlock } from './styles';
+import ConvertedBalance from '../ConvertedBalance/ConvertedBalance';
 
 const InputContainer = ({
   tokenAmount,
@@ -61,19 +62,24 @@ const InputContainer = ({
 
         </InputInfo>
       </InputBlock>
-      {/*@ts-ignore*/}
-      <Select disabled={!account} filter={account ? '' : 'grayscale(1)'} color={!account ? '#5e626c' : ''} id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
-        {(chainId === 97 || chainId === 56 )
-          ? <>
-            <option value='BNB'>BNB</option>
-            <option value='BUSD'>BUSD</option>
-          </>
-          : <>
-            <option value='ETH'>ETH</option>
-            <option value='USDT'>USDT</option>
-          </>
-        }
-      </Select>
+
+      <SelectBlock>
+        <ConvertedBalance/>
+        {/*@ts-ignore*/}
+        <Select disabled={!account} filter={account ? '' : 'grayscale(1)'} color={!account ? '#5e626c' : ''} id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
+          {(chainId === 97 || chainId === 56 )
+            ? <>
+              <option value='BNB'>BNB</option>
+              <option value='BUSD'>BUSD</option>
+            </>
+            : <>
+              <option value='ETH'>ETH</option>
+              <option value='USDT'>USDT</option>
+            </>
+          }
+        </Select>
+      </SelectBlock>
+
     </Wrapper>
   );
 };
