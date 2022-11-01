@@ -154,8 +154,7 @@ export const TextContainer = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: 25px;
-  font-weight: 700;
-  font-size: 48px;
+  font-size: 36px;
   line-height: 59px;
   letter-spacing: 0.015em;
   color: #d4e5ff;
@@ -206,10 +205,9 @@ export const SkillsContainer = styled.div`
   }
 `;
 
-export const SkillTitle = styled.h1`
+export const SkillTitle = styled.h2`
   margin-bottom: 20px;
-  font-weight: 700;
-  font-size: 32px;
+  font-size: 26px;
   line-height: 39px;
   letter-spacing: 0.015em;
   color: #d4e5ff;
