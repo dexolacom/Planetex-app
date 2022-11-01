@@ -87,8 +87,8 @@ export const ImgWrapper = styled.div`
   }
 
   @media screen and (max-width: 576px) {
-    width: 165px;
-    height: 130px;
+    width: 155px;
+    height: 110px;
   }
 `;
 
@@ -100,6 +100,6 @@ export const Img = styled.img`
   }
 
   @media screen and (max-width: 576px) {
-    height: 120px;
+    height: 100px;
   }
 `;
