@@ -1,10 +1,12 @@
-/* eslint-disable jsx-quotes */
 // @ts-nocheck
+/* eslint-disable jsx-quotes */
 /* eslint-disable max-lines-per-function */
+import { useWeb3React } from '@web3-react/core';
 import Social from '../Social/Social';
 import {
   Wrapper,
   Content,
+  LogoLink,
   Logo,
   Navigation,
   Links,
@@ -13,8 +15,11 @@ import {
 } from '../Header/styles';
 import { FooterContainer } from './styles';
 import BackToTopButton from '../BackToTopButton/BackToTopButton';
+import logoIcon from '../../assets/icons/logo.png';
 
 const Footer = () => {
+  const { chainId } = useWeb3React();
+
   return (
     <>
       <Social />
@@ -22,7 +27,16 @@ const Footer = () => {
         {/* === Attention! Using Header styles === */}
         <Wrapper>
           <Content>
-            <Logo />
+            <LogoLink
+              target="_blank"
+              href={
+                chainId === 1
+                  ? 'https://token.planetex.io/'
+                  : 'https://planetex-app.herokuapp.com'
+              }
+            >
+              <Logo src={logoIcon} />
+            </LogoLink>
             <Navigation>
               <Links>
                 <RouterLink to="/presale">Pre-Sale</RouterLink>

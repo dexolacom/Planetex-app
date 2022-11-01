@@ -15,7 +15,7 @@ import {
   BurgerTabletCrossIcon,
 } from './styles';
 import AccountContainer from './AccountContainer/AccountContainer';
-import useCheckIsMobile from '../../hooks/useCheckIsMobile';
+// import useCheckIsMobile from '../../hooks/useCheckIsMobile';
 import { useWeb3React } from '@web3-react/core';
 import { HeaderProps } from '../../constants/types';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
@@ -25,7 +25,7 @@ import { connectWalletOnPageLoad } from '../../utils/walletUtils';
 import logoIcon from '../../assets/icons/logo.png';
 
 const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
-  const { isMobile } = useCheckIsMobile();
+  // const { isMobile } = useCheckIsMobile();
   const { chainId, account, activate } = useWeb3React();
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
 
