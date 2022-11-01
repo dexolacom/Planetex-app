@@ -40,9 +40,7 @@ export const TextContainer = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-family: 'Zen Dots', cursive;
   font-size: 24px;
-  font-style: italic;
   // font-weight: 700;
   line-height: 29px;
   color: #d4e5ff;
