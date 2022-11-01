@@ -20,7 +20,7 @@ const InputContainer = ({
     const value = (e.target.value).replace(/^0\d{1}$/, '');
 
     if (value.match(/^[0-9]*[.,]?[0-9]*$/)) {
-      if ((+value >= 10 && +value <= 1000) || +value === 0) {
+      if (+value >= 10 || +value === 0) {
         setIsInputAmountError(false)
         return setTokenAmount(value);
       }

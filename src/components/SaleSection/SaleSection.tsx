@@ -1,7 +1,7 @@
 import React from 'react';
 import { SaleSectionProps } from '../../constants/types';
 import PreSaleContent from './PreSaleContent/PreSaleContent';
-import MintNFTSection from './NFTSaleContent/MintNFTSection';
+import MintNFTSection from './NftSaleContent/MintNFTSection';
 
 const SaleSection = ({ title }: SaleSectionProps) => {
   return (
