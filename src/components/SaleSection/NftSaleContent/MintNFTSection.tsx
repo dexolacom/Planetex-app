@@ -4,7 +4,7 @@ import SaleNFTContext from '../SaleNFTContext';
 import MyNFTContent from '../MyNFTContent/MyNFTContent';
 import NFTSaleContent from './NftSaleContent';
 
-const SaleNFTSection = () => {
+const MintNFTSection = () => {
   const [collection, setCollection] = useState([]);
   const [tokens, setTokens] = useState(null);
 
@@ -23,4 +23,4 @@ const SaleNFTSection = () => {
   );
 };
 
-export default SaleNFTSection;
+export default MintNFTSection;

@@ -39,9 +39,11 @@ export const TextContainer = styled.div`
   flex-direction: column;
 `;
 
-export const Title = styled.h4`
-  font-weight: 700;
+export const Title = styled.h3`
+  font-family: 'Zen Dots', cursive;
   font-size: 24px;
+  font-style: italic;
+  // font-weight: 700;
   line-height: 29px;
   color: #d4e5ff;
   margin-bottom: 10px;

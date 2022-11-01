@@ -39,8 +39,10 @@ export const MobileContent = styled.div`
 
 export const MobileTitle = styled.h2`
   padding: 50px 0;
-  font-weight: 700;
+  font-family: 'Zen Dots', cursive;
+  font-style: italic;
   font-size: 36px;
+  // font-weight: 700;
   line-height: 44px;
   text-align: center;
   color: #d4e5ff;
@@ -72,9 +74,11 @@ export const Content = styled.div`
 export const Title = styled.h2`
   padding-left: 30px;
   margin-bottom: 60px;
-  font-size: 36px;
+  font-family: 'Zen Dots', cursive;
+  font-style: italic;
+  font-size: 32px;
   line-height: 44px;
-  font-weight: 700;
+  // font-weight: 400;
   color: #d4e5ff;
 
   @media screen and (max-width: 880px) {

@@ -16,7 +16,7 @@ import NFTSaleArmor from '../../../assets/icons/NFTSaleArmor.svg';
 const NFTSkills = () => {
   return (
     <SkillsContainer>
-      <SkillTitle>Сharacter skills</SkillTitle>
+      <SkillTitle>Character skills</SkillTitle>
       <Skills>
         <Skill>
           <SkillContent>
