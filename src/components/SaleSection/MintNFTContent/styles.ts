@@ -160,13 +160,13 @@ export const Title = styled.h1`
   color: #d4e5ff;
 
   @media screen and (max-width: 880px) {
-    font-size: 28px;
+    font-size: 22px;
     line-height: 34px;
     margin-bottom: 12px;
   }
 
   @media screen and (max-width: 576px) {
-    font-size: 32px;
+    font-size: 26px;
     line-height: 39px;
   }
 `;
@@ -214,7 +214,7 @@ export const SkillTitle = styled.h2`
 
   @media screen and (max-width: 880px) {
     margin-bottom: 15px;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 29px;
   }
 
