@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as LogoIcon } from '../../assets/icons/logo.svg';
+// import { ReactComponent as LogoIcon } from '../../assets/icons/logo.svg';
 import { ReactComponent as BurgerTablet } from '../../assets/icons/burgerTablet.svg';
 import { ReactComponent as BurgerTabletCross } from '../../assets/icons/burgerTabletCross.svg';
 import { ReactComponent as MobileLogoIcon } from '../../assets/icons/mobileLogo.svg';
@@ -40,13 +40,18 @@ export const LogoLink = styled.a`
   display: flex;
 `;
 
-export const Logo = styled(LogoIcon)`
-  margin-bottom: 6px;
+export const Logo = styled.img`
+  max-width: 160px;
+  margin: 0 15px 6px 0;
 `;
 
-export const MobileLogo = styled(MobileLogoIcon)`
-  display: inline-block;
-`;
+// export const Logo = styled(LogoIcon)`
+//   margin-bottom: 6px;
+// `;
+
+// export const MobileLogo = styled(MobileLogoIcon)`
+//   display: inline-block;
+// `;
 
 export const BurgerTabletIcon = styled(BurgerTablet)`
   display: none;
