@@ -17,7 +17,7 @@ import { useWeb3React } from '@web3-react/core';
 import {
   checkAllowance,
   checkApprove,
-  convertToUSD,
+  convertToUSDAndPltx,
   formatToHuman,
 } from '../../../utils/blockchainUtils';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
@@ -58,7 +58,7 @@ const PreSaleContent = () => {
 
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
-      convertToUSD(chainId, tokenAmount).then((res) =>
+      convertToUSDAndPltx(chainId, tokenAmount).then((res) =>
         setConvertedToUSDAmount(formatToHuman(chainId, res?.usdtAmount)),
       );
     }

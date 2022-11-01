@@ -116,7 +116,7 @@ export const approve = async (
     });
 };
 
-export const convertToUSD = async (
+export const convertToUSDAndPltx = async (
   chainId: number | undefined,
   tokenAmount: number | string,
 ) => {
