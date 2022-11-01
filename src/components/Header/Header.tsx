@@ -44,10 +44,11 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
       <Wrapper>
         <Content>
           <LogoLink
+            target="_blank"
             href={
               chainId === 1
                 ? 'https://token.planetex.io/'
-                : 'https://planetex-app.herokuapp.com/ '
+                : 'https://planetex-app.herokuapp.com'
             }
           >
             {isMobile ? <MobileLogo /> : <Logo />}
