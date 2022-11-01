@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 // import { ReactComponent as LogoIcon } from '../../assets/icons/logo.svg';
 import { ReactComponent as BurgerTablet } from '../../assets/icons/burgerTablet.svg';
 import { ReactComponent as BurgerTabletCross } from '../../assets/icons/burgerTabletCross.svg';
-import { ReactComponent as MobileLogoIcon } from '../../assets/icons/mobileLogo.svg';
+// import { ReactComponent as MobileLogoIcon } from '../../assets/icons/mobileLogo.svg';
 import { OutlineButton } from '../../theme';
 
 export const Wrapper = styled.div`
