@@ -3,22 +3,20 @@ import arrow from '../../../../assets/icons/selector.svg';
 
 export const Wrapper = styled.div<{marginBottom?: string}>`
   display: flex;
-  align-items: center;
-  gap: 30px;
+  //align-items: flex-start;
+  width: 65%;
+  flex-direction: column;
+  gap: 15px;
+  
   margin-bottom: ${({marginBottom}) => marginBottom ?? '30px'};
 
   @media screen and (max-width: 768px) {
     justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   @media screen and (max-width: 707px) {
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: ${({marginBottom}) => marginBottom ?? '36px'};
-    align-items: flex-end;
-    
-
     > * {
       &:first-child {
         order: 2
@@ -28,6 +26,7 @@ export const Wrapper = styled.div<{marginBottom?: string}>`
 `
 
 export const InputBlock = styled.div<{border?: string, filter?: string}>`
+  flex: 2;
   background-color: #06080C;
   border: ${({border}) => border ?? '1px solid #372458'};
   border-radius: 10px;
@@ -76,7 +75,18 @@ export const InputInfo = styled.span<{color?: string, border?: string}>`
   }
 `
 
+export const SelectBlock = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  @media screen and (max-width: 576px) {
+    gap: 10px;
+  }
+`
+
 export const Select = styled.select<{filter?: string}>`
+  flex: 1;
   border: 1px solid #372458;
   border-radius: 10px;
   padding: 13px 45px 13px 22px;
@@ -85,6 +95,7 @@ export const Select = styled.select<{filter?: string}>`
   font-size: 20px;
   line-height: 24px;
   outline: none;
+  text-align: center;
 
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -99,9 +110,5 @@ export const Select = styled.select<{filter?: string}>`
 
   &:focus {
     border: 1px solid #AF76FD;
-  }
-
-  @media screen and (max-width: 707px) {
-    width: 100%;
   }
 `
