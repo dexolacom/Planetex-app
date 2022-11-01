@@ -34,8 +34,7 @@ import { useTransactionContext } from '../../../contexts/transactionContext';
 
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
-  const { isTransSuccessModal, setIsTransSuccessModal } =
-    useTransactionContext();
+  const { isTransSuccessModal, setIsTransSuccessModal } = useTransactionContext();
   const [tokenAmount, setTokenAmount] = useState('');
   const [tokenName, setTokenName] = useState('');
   const [isTransErrorModal, setIsTransErrorModal] = useState(false);
@@ -79,10 +78,7 @@ const PreSaleContent = () => {
       if (+convertedToUSDAmount === 0) {
         return setIsInputAmountError(false);
       }
-      if (
-        +convertedToUSDAmount <= +userAvailableAmount &&
-        +convertedToUSDAmount >= 10
-      ) {
+      if (+convertedToUSDAmount <= +userAvailableAmount && +convertedToUSDAmount >= 10) {
         setIsInputAmountError(false);
       }
     }
@@ -102,9 +98,9 @@ const PreSaleContent = () => {
         <Content>
           <TitleContainer>
             <Title>Pre-Sale</Title>
-            <Tag>Limited purchase restrictions 10-1000$</Tag>
+            <Tag>Minimum investment 10$</Tag>
           </TitleContainer>
-          <Text>Choose a payment method and receive vested tokens to your wallet.</Text>
+          <Text>Choose a payment method and receive vested tokens to your wallet. After the purchase, the tokens will be in the vesting. [4 months cliff, 17 months vesting, linear quarterly unlock]</Text>
           <InputContainer
             tokenAmount={tokenAmount}
             tokenName={tokenName}
@@ -118,14 +114,10 @@ const PreSaleContent = () => {
           />
           {isInputAmountError && (
             <InputError>
-              {+userAvailableAmount < 10 ? (
-                <>You have reached the limit of buying tokens</>
-              ) : (
-                <>
-                  Please, enter an amount from 10$ to{' '}
-                  {userAvailableAmount.replace(/(\.0+|0+)$/, '')}$
-                </>
-              )}
+              {+userAvailableAmount < 10
+                ? <>You have reached the limit of buying tokens</>
+                : <>Please, enter an amount more than 10$</>
+              }
             </InputError>
           )}
           {isWalletWarning && (

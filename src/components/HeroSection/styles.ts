@@ -42,7 +42,7 @@ export const TextContainer = styled.div`
   flex-direction: column;
 `;
 
-export const Title = styled.h4`
+export const Title = styled.h3`
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;

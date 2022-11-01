@@ -1,13 +1,13 @@
 import React from 'react';
 import { SaleSectionProps } from '../../constants/types';
 import PreSaleContent from './PreSaleContent/PreSaleContent';
-import SaleNFTSection from './NftSaleContent/SaleNFTSection';
+import MintNFTSection from './NftSaleContent/MintNFTSection';
 
 const SaleSection = ({ title }: SaleSectionProps) => {
   return (
     <div>
       {title === 'Pre-Sale' && <PreSaleContent />}
-      {title === 'NFT-Sale' && <SaleNFTSection />}
+      {title === 'NFT-Sale' && <MintNFTSection />}
     </div>
   );
 };
