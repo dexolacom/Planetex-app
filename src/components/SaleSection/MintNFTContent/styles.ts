@@ -2,20 +2,9 @@
 /* eslint-disable max-len */
 import styled from 'styled-components';
 import arrow from '../../../assets/icons/selector.svg';
-import NFTSaleBg from '../../../assets/images/NFTSaleBg.jpg';
+import _NFTSaleBg from '../../../assets/images/_NFTSaleBg.jpg';
+import _NFTSaleBgMobile from '../../../assets/images/_NFTSaleBgMobile.jpg';
 import { NFTSaleProps } from '../../../constants/types';
-
-// const setSkillImgSize = (props) => {
-//   let _height = '30px';
-//   if (Object.keys(props).indexOf('height') !== -1) {
-//     const img_ = props.src?.split('/')[3].split('.')[0].slice(7);
-//     _height =
-//       img_ === 'Health'
-//         ? `${Number(props.height.slice(0, 2)) * 1.5}px`
-//         : `${Number(props.height.slice(0, 2)) * 1.7}px`;
-//   }
-//   return _height;
-// };
 
 export const Wrapper = styled.div`
   clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
@@ -37,11 +26,12 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<NFTSaleProps>`
   clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
   position: relative;
   padding: 50px 70px 60px 80px;
-  background-image: url(${NFTSaleBg});
+  background-image: url(${(props) =>
+    props.mobBg ? _NFTSaleBgMobile : _NFTSaleBg});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
