@@ -22,7 +22,7 @@ const HeroSectionSaleNFT = ({ title, text, img }: HeroProps) => {
           <Title>{title}</Title>
           <MobileContainer>
             <ImgWrapper>
-              <Img src={img} />
+              <Img src={img} alt="nft set" />
             </ImgWrapper>
             <Text>{text}</Text>
           </MobileContainer>
@@ -30,7 +30,7 @@ const HeroSectionSaleNFT = ({ title, text, img }: HeroProps) => {
       ) : (
         <Content>
           <ImgWrapper>
-            <Img src={img} />
+            <Img src={img} alt="nft set" />
           </ImgWrapper>
           <TextContainer>
             <Title>{title}</Title>

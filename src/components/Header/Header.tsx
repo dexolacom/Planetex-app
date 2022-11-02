@@ -53,8 +53,7 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
                 : 'https://planetex-app.herokuapp.com'
             }
           >
-            <Logo src={logoIcon} />
-            {/* {isMobile ? <MobileLogo /> : <Logo src={logoIcon} />} */}
+            <Logo src={logoIcon} alt="Planetex" />
           </LogoLink>
           <Navigation>
             <Links>

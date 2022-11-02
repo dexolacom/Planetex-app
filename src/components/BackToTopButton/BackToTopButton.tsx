@@ -21,7 +21,7 @@ const BackToTopButton = () => {
           setPosition({ ...position, position: { top: 0, left: 0 } })
         }
       >
-        <BackToTopImg src={ArrowToTop} />
+        <BackToTopImg src={ArrowToTop} alt={'arrow top'} />
       </BackToTopBtn>
     </BackToTopContainer>
   );
