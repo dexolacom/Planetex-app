@@ -3,7 +3,6 @@ import arrow from '../../../../assets/icons/selector.svg';
 
 export const Wrapper = styled.div<{marginBottom?: string}>`
   display: flex;
-  //align-items: flex-start;
   width: 65%;
   flex-direction: column;
   gap: 15px;
@@ -68,6 +67,10 @@ export const InputInfo = styled.span<{color?: string, border?: string}>`
   border-left: ${({border}) => border};
   color: ${({color}) => color};
   padding: 0 15px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @media screen and (max-width: 480px) {
     width: 100%;
@@ -86,7 +89,7 @@ export const SelectBlock = styled.div`
 `
 
 export const Select = styled.select<{filter?: string}>`
-  flex: 1;
+  flex: 0.7;
   border: 1px solid #372458;
   border-radius: 10px;
   padding: 13px 45px 13px 22px;
