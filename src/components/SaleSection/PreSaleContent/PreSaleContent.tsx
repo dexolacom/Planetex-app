@@ -16,7 +16,7 @@ import {
 import { useWeb3React } from '@web3-react/core';
 import {
   checkAllowance,
-  checkApprove,
+  checkApprove, convertToPltx,
   convertToUSDAndPltx,
   formatToHuman,
 } from '../../../utils/blockchainUtils';
@@ -41,7 +41,8 @@ const PreSaleContent = () => {
   const [isTransLoading, setIsTransLoading] = useState(false);
   const [isApproveLoading, setIsApproveLoading] = useState(false);
   const [isInputAmountError, setIsInputAmountError] = useState(false);
-  const [convertedToUSDAmount, setConvertedToUSDAmount] = useState('');
+  const [convertedToUSDPltxAmount, setConvertedToUSDPltxAmount] = useState('');
+  const [convertedToPltxAmount, setConvertedToPltxAmount] = useState('')
   const [isWalletWarning, setIsWalletWarning] = useState(false);
   const [isApproveWarning, setIsApproveWarning] = useState(false);
   const [allowance, setAllowance] = useState('');
@@ -59,10 +60,16 @@ const PreSaleContent = () => {
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
       convertToUSDAndPltx(chainId, tokenAmount).then((res) =>
-        setConvertedToUSDAmount(formatToHuman(chainId, res?.usdtAmount)),
+        setConvertedToUSDPltxAmount(formatToHuman(chainId, res?.usdtAmount)),
       );
+    } else {
+      convertToPltx(chainId, tokenAmount).then(res => console.log(res))
     }
+    // convertToPltx(chainId, tokenAmount).then(res => setConvertedToPltxAmount(formatToHuman(chainId, res)))
+
   }, [debouncedValue]);
+
+  // console.log(convertedToPltxAmount);
 
   useEffect(() => {
     setTokenAmount('');
@@ -70,17 +77,17 @@ const PreSaleContent = () => {
 
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
-      if (+convertedToUSDAmount === 0) {
+      if (+convertedToUSDPltxAmount === 0) {
         return setIsInputAmountError(false);
       }
-      if (+convertedToUSDAmount >= 10) {
+      if (+convertedToUSDPltxAmount >= 10) {
         setIsInputAmountError(false);
       }
     }
-  }, [convertedToUSDAmount]);
+  }, [convertedToUSDPltxAmount]);
 
   useEffect(() => {
-    setConvertedToUSDAmount('');
+    setConvertedToUSDPltxAmount('');
   }, [tokenName]);
 
   useEffect(() => {
@@ -96,15 +103,13 @@ const PreSaleContent = () => {
             <Tag>Minimum investment 10$</Tag>
           </TitleContainer>
           <Text>
-            Choose a payment method and receive vested tokens to your wallet. After the purchase, the tokens will be in the vesting. [4 months cliff, 17 months vesting, linear quarterly unlock]
-            <br/>
-            <br/>
             After the purchase, the tokens will be in the cliff for 4 months and vesting for 17 months. Vesting has a linear quarterly unlock.
           </Text>
           <InputContainer
             tokenAmount={tokenAmount}
             tokenName={tokenName}
-            convertedToUSDAmount={convertedToUSDAmount}
+            convertedToUSDPltxAmount={convertedToUSDPltxAmount}
+            convertedToPltxAmount={convertedToPltxAmount}
             isInputAmountError={isInputAmountError}
             isWalletWarning={isWalletWarning}
             isApproveWarning={isApproveWarning}

@@ -127,6 +127,17 @@ export const convertToUSDAndPltx = async (
   return await contract.methods.convertToStable(formattedAmount, 0).call();
 };
 
+export const convertToPltx = async (
+  chainId: number | undefined,
+  tokenAmount: number | string,
+) => {
+  const contract = await getTokenSaleContract(chainId);
+  const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', {
+    useGrouping: false,
+  });
+  return await contract.methods.convertUsdtToPltx(0, formattedAmount).call();
+};
+
 // export const getUserAvailableAmount = async (
 //   chainId: number | undefined,
 //   account: any,
