@@ -34,7 +34,8 @@ import { useTransactionContext } from '../../../contexts/transactionContext';
 
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
-  const { isTransSuccessModal, setIsTransSuccessModal } = useTransactionContext();
+  const { isTransSuccessModal, setIsTransSuccessModal } =
+    useTransactionContext();
   const [tokenAmount, setTokenAmount] = useState('');
   const [tokenName, setTokenName] = useState('');
   const [isTransErrorModal, setIsTransErrorModal] = useState(false);
@@ -122,80 +123,59 @@ const PreSaleContent = () => {
             <InputError>Please, enter an amount more than 10$</InputError>
           )}
           {isWalletWarning && (
-            <InputWarning>Please connect your wallet for buy tokens</InputWarning>
+            <InputWarning>
+              Please connect your wallet for buy tokens
+            </InputWarning>
           )}
-          {isApproveWarning &&
+          {isApproveWarning && (
             <InputWarning>Please enter the amount</InputWarning>
-          }
+          )}
 
           {(() => {
-              if (!account)
-                return (
-                  <SolidButton onClick={() => setIsWalletWarning(true)}>
-                    Buy Token
-                  </SolidButton>
-                );
+            if (!account)
+              return (
+                <SolidButton onClick={() => setIsWalletWarning(true)}>
+                  Buy Token
+                </SolidButton>
+              );
 
-              if (isApproveLoading)
-                return (
-                  <SolidButton disabled>
-                    <>
-                      <Loader
-                        stroke='#D4E5FF'
-                        size='20px'
-                        style={{ marginRight: '10px' }}
-                      />
-                      Approving
-                    </>
-                  </SolidButton>
-                );
-              if (isTransLoading)
-                return (
-                  <SolidButton disabled>
-                    <>
-                      <Loader
-                        stroke='#D4E5FF'
-                        size='20px'
-                        style={{ marginRight: '10px' }}
-                      />
-                      Pending
-                    </>
-                  </SolidButton>
-                );
-              if (allowance === '0' && (tokenName === 'USDT' || tokenName === 'BUSD'))
-                return (
-                  <SolidButton
-                    // disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0}
-                    onClick={() => {
-                      setIsApproveWarning(true);
-                      if (+tokenAmount !== 0) {
-                        setIsApproveWarning(false);
-                        checkApprove(
-                          chainId,
-                          account,
-                          tokenAmount,
-                          tokenName,
-                          setIsTransSuccessModal,
-                          setIsTransErrorModal,
-                          setIsTransLoading,
-                          setIsApproveLoading,
-                        );
-                      }
-                    }}
-                  >
-                    Approve
-                  </SolidButton>
-                );
-              else
-                return (
-                  <SolidButton
-                    disabled={
-                      !tokenAmount ||
-                      isTransLoading ||
-                      isInputAmountError ||
-                      +tokenAmount === 0
-                    }
-                    onClick={() =>
+            if (isApproveLoading)
+              return (
+                <SolidButton disabled>
+                  <>
+                    <Loader
+                      stroke="#D4E5FF"
+                      size="20px"
+                      style={{ marginRight: '10px' }}
+                    />
+                    Approving
+                  </>
+                </SolidButton>
+              );
+            if (isTransLoading)
+              return (
+                <SolidButton disabled>
+                  <>
+                    <Loader
+                      stroke="#D4E5FF"
+                      size="20px"
+                      style={{ marginRight: '10px' }}
+                    />
+                    Pending
+                  </>
+                </SolidButton>
+              );
+            if (
+              allowance === '0' &&
+              (tokenName === 'USDT' || tokenName === 'BUSD')
+            )
+              return (
+                <SolidButton
+                  // disabled={!tokenAmount || isTransLoading || isInputAmountError || +tokenAmount === 0}
+                  onClick={() => {
+                    setIsApproveWarning(true);
+                    if (+tokenAmount !== 0) {
+                      setIsApproveWarning(false);
                       checkApprove(
                         chainId,
                         account,
@@ -205,14 +185,39 @@ const PreSaleContent = () => {
                         setIsTransErrorModal,
                         setIsTransLoading,
                         setIsApproveLoading,
-                      )
+                      );
                     }
-                  >
-                    Buy Token
-                  </SolidButton>
-                );
-            })()}
-
+                  }}
+                >
+                  Approve
+                </SolidButton>
+              );
+            else
+              return (
+                <SolidButton
+                  disabled={
+                    !tokenAmount ||
+                    isTransLoading ||
+                    isInputAmountError ||
+                    +tokenAmount === 0
+                  }
+                  onClick={() =>
+                    checkApprove(
+                      chainId,
+                      account,
+                      tokenAmount,
+                      tokenName,
+                      setIsTransSuccessModal,
+                      setIsTransErrorModal,
+                      setIsTransLoading,
+                      setIsApproveLoading,
+                    )
+                  }
+                >
+                  Buy Token
+                </SolidButton>
+              );
+          })()}
         </Content>
       </Wrapper>
 
