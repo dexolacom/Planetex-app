@@ -7,8 +7,8 @@ import ConvertedBalance from '../ConvertedBalance/ConvertedBalance';
 const InputContainer = ({
   tokenAmount,
   tokenName,
-  convertedToUSDPltxAmount,
-  convertedToPltxAmount,
+  convertedToUSD,
+  convertedToPltx,
   isInputAmountError,
   isWalletWarning,
   isApproveWarning,
@@ -58,18 +58,14 @@ const InputContainer = ({
         <InputInfo color={!account ? '#762ACE' : '#5e626c'} border={!account ? '2px solid #762ACE' : '2px solid #5e626c'}>
           {tokenName === 'USDT' || tokenName === 'BUSD'
             ? `${tokenAmount || '0.00'} $`
-            : `${convertedToUSDPltxAmount || '0.00'} $`
+            : `${convertedToUSD || '0.00'} $`
           }
 
         </InputInfo>
       </InputBlock>
 
       <SelectBlock>
-        <ConvertedBalance
-          convertedToUSDPltxAmount={convertedToUSDPltxAmount}
-          convertedToPltxAmount={convertedToPltxAmount}
-          tokenName={tokenName}
-        />
+        <ConvertedBalance convertedToPltx={convertedToPltx}/>
         {/*@ts-ignore*/}
         <Select disabled={!account} filter={account ? '' : 'grayscale(1)'} color={!account ? '#5e626c' : ''} id='tokenSelect' value={tokenName} onChange={(e) => setTokenName(e.target.value)}>
           {(chainId === 97 || chainId === 56 )

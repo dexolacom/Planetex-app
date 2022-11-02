@@ -116,7 +116,7 @@ export const approve = async (
     });
 };
 
-export const convertToUSDAndPltx = async (
+export const convertToUSD = async (
   chainId: number | undefined,
   tokenAmount: number | string,
 ) => {
@@ -130,12 +130,27 @@ export const convertToUSDAndPltx = async (
 export const convertToPltx = async (
   chainId: number | undefined,
   tokenAmount: number | string,
+  tokenName: string
 ) => {
   const contract = await getTokenSaleContract(chainId);
-  const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', {
-    useGrouping: false,
-  });
-  return await contract.methods.convertUsdtToPltx(0, formattedAmount).call();
+
+  if (tokenName === 'USDT' || tokenName === 'BUSD') {
+    if (chainId === 56 || chainId === 97) {
+      const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', { useGrouping: false});
+      const res = await contract.methods.convertUsdtToPltx(0, formattedAmount).call();
+      return (+res / 10 ** 18).toFixed()
+    }
+
+    if (chainId === 1 || chainId === 5) {
+      const formattedAmount = (+tokenAmount * 10 ** 6).toLocaleString('fullwide', { useGrouping: false});
+      const res = await contract.methods.convertUsdtToPltx(0, formattedAmount).call();
+      return (+res / 10 ** 18).toFixed()
+    }
+  }
+
+  const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', { useGrouping: false});
+  const res = await contract.methods.convertToStable(formattedAmount, 0).call();
+  return (+(res?.planetexAmount) / 10 ** 18).toFixed()
 };
 
 // export const getUserAvailableAmount = async (

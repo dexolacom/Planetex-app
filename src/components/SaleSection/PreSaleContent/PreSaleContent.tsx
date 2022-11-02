@@ -17,7 +17,7 @@ import { useWeb3React } from '@web3-react/core';
 import {
   checkAllowance,
   checkApprove, convertToPltx,
-  convertToUSDAndPltx,
+  convertToUSD,
   formatToHuman,
 } from '../../../utils/blockchainUtils';
 import ModalBackdrop from '../../ModalBackdrop/ModalBackdrop';
@@ -31,6 +31,7 @@ import {
 } from '../../../utils/contracts';
 import { useTransactionContext } from '../../../contexts/transactionContext';
 
+
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
   const { isTransSuccessModal, setIsTransSuccessModal } = useTransactionContext();
@@ -41,8 +42,8 @@ const PreSaleContent = () => {
   const [isTransLoading, setIsTransLoading] = useState(false);
   const [isApproveLoading, setIsApproveLoading] = useState(false);
   const [isInputAmountError, setIsInputAmountError] = useState(false);
-  const [convertedToUSDPltxAmount, setConvertedToUSDPltxAmount] = useState('');
-  const [convertedToPltxAmount, setConvertedToPltxAmount] = useState('')
+  const [convertedToUSD, setConvertedToUSD] = useState('');
+  const [convertedToPltx, setConvertedToPltx] = useState('')
   const [isWalletWarning, setIsWalletWarning] = useState(false);
   const [isApproveWarning, setIsApproveWarning] = useState(false);
   const [allowance, setAllowance] = useState('');
@@ -59,17 +60,13 @@ const PreSaleContent = () => {
 
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
-      convertToUSDAndPltx(chainId, tokenAmount).then((res) =>
-        setConvertedToUSDPltxAmount(formatToHuman(chainId, res?.usdtAmount)),
+      convertToUSD(chainId, tokenAmount).then((res) =>
+        setConvertedToUSD(formatToHuman(chainId, res?.usdtAmount)),
       );
-    } else {
-      convertToPltx(chainId, tokenAmount).then(res => console.log(res))
     }
-    // convertToPltx(chainId, tokenAmount).then(res => setConvertedToPltxAmount(formatToHuman(chainId, res)))
-
+    // @ts-ignore
+    convertToPltx(chainId, tokenAmount, tokenName).then(res => setConvertedToPltx(res))
   }, [debouncedValue]);
-
-  // console.log(convertedToPltxAmount);
 
   useEffect(() => {
     setTokenAmount('');
@@ -77,17 +74,17 @@ const PreSaleContent = () => {
 
   useEffect(() => {
     if (tokenName === 'BNB' || tokenName === 'ETH') {
-      if (+convertedToUSDPltxAmount === 0) {
+      if (+convertedToUSD === 0) {
         return setIsInputAmountError(false);
       }
-      if (+convertedToUSDPltxAmount >= 10) {
+      if (+convertedToUSD >= 10) {
         setIsInputAmountError(false);
       }
     }
-  }, [convertedToUSDPltxAmount]);
+  }, [convertedToUSD]);
 
   useEffect(() => {
-    setConvertedToUSDPltxAmount('');
+    setConvertedToUSD('');
   }, [tokenName]);
 
   useEffect(() => {
@@ -108,8 +105,8 @@ const PreSaleContent = () => {
           <InputContainer
             tokenAmount={tokenAmount}
             tokenName={tokenName}
-            convertedToUSDPltxAmount={convertedToUSDPltxAmount}
-            convertedToPltxAmount={convertedToPltxAmount}
+            convertedToUSD={convertedToUSD}
+            convertedToPltx={convertedToPltx}
             isInputAmountError={isInputAmountError}
             isWalletWarning={isWalletWarning}
             isApproveWarning={isApproveWarning}

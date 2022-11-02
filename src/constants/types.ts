@@ -40,8 +40,8 @@ export interface StatusModalProps {
 export interface InputContainerProps {
   tokenAmount: number | string;
   tokenName: string;
-  convertedToUSDPltxAmount: number | string;
-  convertedToPltxAmount: number | string;
+  convertedToUSD: number | string;
+  convertedToPltx: number | string;
   isInputAmountError: boolean;
   isWalletWarning: boolean;
   isApproveWarning: boolean;
@@ -52,9 +52,7 @@ export interface InputContainerProps {
 }
 
 export interface ConvertedBalanceProps {
-  convertedToUSDPltxAmount: number | string;
-  convertedToPltxAmount: number | string;
-  tokenName: string
+  convertedToPltx: number | string;
 }
 
 export interface TokenNameSelectProps {
