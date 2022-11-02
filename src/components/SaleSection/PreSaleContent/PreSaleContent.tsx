@@ -85,6 +85,8 @@ const PreSaleContent = () => {
 
   useEffect(() => {
     setConvertedToUSD('');
+    setConvertedToPltx('')
+    setTokenAmount('')
   }, [tokenName]);
 
   useEffect(() => {
