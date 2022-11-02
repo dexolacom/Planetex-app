@@ -64,7 +64,6 @@ h1,
 h2,
 h3 {
   font-family: 'Zen Dots', sans-serif, cursive;
-  /* font-style: italic; */
 }
 
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
