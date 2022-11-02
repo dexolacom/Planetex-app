@@ -10,6 +10,7 @@ export interface NFTSaleProps {
   marginRight?: string;
   width?: string;
   height?: string;
+  mobBg?: boolean;
 }
 
 export interface MyNFTProps {

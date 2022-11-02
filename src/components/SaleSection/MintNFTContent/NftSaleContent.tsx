@@ -3,6 +3,7 @@
 /* eslint-disable jsx-quotes */
 /* eslint-disable max-lines-per-function */
 import { useEffect, useState, useContext } from 'react';
+import useCheckIsMobile from '../../../hooks/useCheckIsMobile';
 import SaleNFTContext from '../SaleNFTContext';
 import { FullScreenTheme } from '../../../theme';
 import _NFTSaleGroup from '../../../assets/images/_NFTSaleGroup.png';
@@ -49,6 +50,8 @@ const NFTSaleContent = () => {
 
   const tokenContract = chainId && getTokenContract(chainId);
   const spender = chainId && getPlanetexTokenContractAddress(chainId);
+
+  const { isMobile } = useCheckIsMobile();
 
   const { collection, setCollection, setTokens } = useContext(SaleNFTContext);
 
@@ -135,11 +138,13 @@ const NFTSaleContent = () => {
     }, 1000);
   };
 
+  console.log('isMobile', isMobile);
+
   return (
     <>
       <FullScreenTheme>
         <Wrapper>
-          <Content>
+          <Content className="Content" mobBg={isMobile}>
             <HeroGroupImg src={_NFTSaleGroup} alt="nft for sale" />
             <PriceContainer>
               <PriceText>49$</PriceText>
