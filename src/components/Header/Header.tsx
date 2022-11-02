@@ -41,6 +41,8 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
     }
   }, []);
 
+  console.log('chainId', chainId);
+
   return (
     <>
       <Wrapper>
@@ -48,7 +50,7 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
           <LogoLink
             target="_blank"
             href={
-              chainId === 1 || chainId === 56
+              chainId === 1 || chainId === 56 || chainId === undefined
                 ? 'https://token.planetex.io/'
                 : 'https://planetex-app.herokuapp.com'
             }
