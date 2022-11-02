@@ -20,25 +20,25 @@ const NFTSkills = () => {
       <Skills>
         <Skill>
           <SkillContent>
-            <SkillImg src={NFTSaleDamage} />
+            <SkillImg src={NFTSaleDamage} alt="Damage skill" />
             <SkillText>Damage</SkillText>
           </SkillContent>
         </Skill>
         <Skill>
           <SkillContent>
-            <SkillImg src={NFTSaleSpeed} />
+            <SkillImg src={NFTSaleSpeed} alt="Speed skill" />
             <SkillText>Speed</SkillText>
           </SkillContent>
         </Skill>
         <Skill>
           <SkillContent>
-            <SkillImg src={NFTSaleHealth} />
+            <SkillImg src={NFTSaleHealth} alt="Health skill" />
             <SkillText>Health</SkillText>
           </SkillContent>
         </Skill>
         <Skill>
           <SkillContent>
-            <SkillImg src={NFTSaleArmor} />
+            <SkillImg src={NFTSaleArmor} alt="Armor skill" />
             <SkillText>Armor</SkillText>
           </SkillContent>
         </Skill>

@@ -140,7 +140,7 @@ const NFTSaleContent = () => {
       <FullScreenTheme>
         <Wrapper>
           <Content>
-            <HeroGroupImg src={_NFTSaleGroup} />
+            <HeroGroupImg src={_NFTSaleGroup} alt="nft for sale" />
             <PriceContainer>
               <PriceText>49$</PriceText>
             </PriceContainer>
