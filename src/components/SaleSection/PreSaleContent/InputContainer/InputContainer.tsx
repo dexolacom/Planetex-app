@@ -47,12 +47,13 @@ const InputContainer = ({
       <InputBlock border={isInputAmountError ? '1px solid #582424' : '1px solid #372458'} filter={account ? '' : 'grayscale(1)'}>
         <Input
           disabled={!account}
-          type='number'
+          type='text'
           value={tokenAmount}
           onChange={(e) => handleInputChange(e)}
           placeholder={'0.0'}
           inputMode="decimal"
-          maxLength={10}
+          // @ts-ignore
+          maxLength="11"
         />
         {/*@ts-ignore*/}
         <InputInfo color={!account ? '#762ACE' : '#5e626c'} border={!account ? '2px solid #762ACE' : '2px solid #5e626c'}>

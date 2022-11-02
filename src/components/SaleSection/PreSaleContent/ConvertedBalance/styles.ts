@@ -9,9 +9,13 @@ export const Wrapper = styled.div<{filter?: string, color?: string}>`
   font-size: 16px;
   line-height: 24px;
   background-color: #06080C;
-  display: flex;
   align-items: center;
   justify-content: center;
   filter: ${({filter}) => filter};
   flex: 1;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
 `
