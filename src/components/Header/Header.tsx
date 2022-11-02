@@ -41,8 +41,6 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
     }
   }, []);
 
-  console.log('chainId', chainId);
-
   return (
     <>
       <Wrapper>
