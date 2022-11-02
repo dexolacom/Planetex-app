@@ -63,7 +63,7 @@ export const Line = styled.div`
 
 export const Content = styled.div`
   max-width: 970px;
-  margin: 70px 45px 170px 190px;
+  margin: 70px 45px 170px 150px;
 
   @media screen and (max-width: 1200px) {
     margin: 70px 45px 170px 100px;
