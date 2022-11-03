@@ -18,12 +18,21 @@ const ConnectWalletModal = ({ setIsModalOpen }: { setIsModalOpen: (b: boolean) =
       <CrossIcon onClick={() => setIsModalOpen(false)} />
 
       <Content>
-        {window.navigator.userAgent.search('MetaMaskMobile') > 0 && (
-          <WalletButton onClick={() => connectWalletHandler('injected')}>
-            <MetamaskIcon />
-            MetaMask
-          </WalletButton>
-        )}
+        {
+          window.innerWidth < 400 ? (
+            window.navigator.userAgent.search('MetaMaskMobile') > 0 && (
+              <WalletButton onClick={() => connectWalletHandler('injected')}>
+                <MetamaskIcon />
+                MetaMask
+              </WalletButton>
+            )
+          ) : (
+            <WalletButton onClick={() => connectWalletHandler('injected')}>
+                <MetamaskIcon />
+                MetaMask
+              </WalletButton>
+          )
+        }
         <WalletButton onClick={() => connectWalletHandler('coinbaseWallet')}>
           <CoinbaseIcon />
           CoinBase
