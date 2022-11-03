@@ -23,6 +23,7 @@ import ConnectWalletModal from '../ConnectWalletModal/ConnectWalletModal';
 import { connectWalletOnPageLoad } from '../../utils/walletUtils';
 // @ts-ignore
 import logoIcon from '../../assets/icons/logo.png';
+import logoIconMobile from '../../assets/icons/logoShort.svg';
 
 const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
   // const { isMobile } = useCheckIsMobile();
@@ -53,7 +54,7 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
                 : 'https://planetex-app.herokuapp.com'
             }
           >
-            <Logo src={logoIcon} alt="Planetex" />
+            <Logo src={window.innerWidth > 428 ? logoIcon : logoIconMobile} alt="Planetex" />
           </LogoLink>
           <Navigation>
             <Links>
