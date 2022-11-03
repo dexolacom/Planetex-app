@@ -34,7 +34,7 @@ const setImg = (uri) => {
 
 const NFTCollection = ({ NFTs }) => {
   return (
-    <FullScreenTheme>
+    // <FullScreenTheme>
       <Wrapper>
         <Content>
           <Title>My NFT</Title>
@@ -76,7 +76,7 @@ const NFTCollection = ({ NFTs }) => {
           </List>
         </Content>
       </Wrapper>
-    </FullScreenTheme>
+    // </FullScreenTheme>
   );
 };
 
