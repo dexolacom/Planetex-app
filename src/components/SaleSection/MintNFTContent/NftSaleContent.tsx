@@ -3,9 +3,9 @@
 /* eslint-disable jsx-quotes */
 /* eslint-disable max-lines-per-function */
 import { useEffect, useState, useContext } from 'react';
+import { useWeb3React } from '@web3-react/core';
 import useCheckIsMobile from '../../../hooks/useCheckIsMobile';
 import SaleNFTContext from '../SaleNFTContext';
-import { FullScreenTheme } from '../../../theme';
 import _NFTSaleGroup from '../../../assets/images/_NFTSaleGroup.png';
 import {
   Wrapper,
@@ -22,7 +22,6 @@ import {
 import TokenNameSelect from './TokenNameSelect';
 import ActionButton from './ActionButton';
 import NFTSkills from './NFTSkills';
-import { useWeb3React } from '@web3-react/core';
 import {
   getTokenContract,
   getPlanetexTokenContract,
@@ -53,7 +52,10 @@ const NFTSaleContent = () => {
 
   const { isMobile } = useCheckIsMobile();
 
-  const { collection, setCollection, setTokens } = useContext(SaleNFTContext);
+  const { ids_, setIds_, collection, setCollection, setTokens } =
+    useContext(SaleNFTContext);
+
+  console.log('ids_', ids_);
 
   useEffect(() => {
     if (chainId)
@@ -138,53 +140,49 @@ const NFTSaleContent = () => {
     }, 1000);
   };
 
-  console.log('isMobile', isMobile);
-
   return (
     <>
-      <FullScreenTheme>
-        <Wrapper>
-          <Content className="Content" mobBg={isMobile}>
-            <HeroGroupImg src={_NFTSaleGroup} alt="nft for sale" />
-            <PriceContainer>
-              <PriceText>49$</PriceText>
-            </PriceContainer>
-            <MainContentWrap>
-              <TextContainer>
-                <Title>NFT-Sale</Title>
-                <Text>
-                  12 original characters are waiting for you in our NFT
-                  collection, which consists of 10,000 tokens. After mint, the
-                  token will be displayed on this page with information about
-                  the name, profession and skills of your character. The number
-                  of characters for one user is not limited.
-                </Text>
-              </TextContainer>
-              <NFTSkills />
-            </MainContentWrap>
-            <ActionContainer>
-              <TokenNameSelect
-                tokenName={tokenName}
-                setTokenName={setTokenName}
-              />
-              <ActionButton
-                tokenContract={tokenContract}
-                account={account}
-                spender={spender}
-                tokenName={tokenName}
-                isWallet={isWallet}
-                allowance={allowance}
-                isApproveLoading={isApproveLoading}
-                isTransLoading={isTransLoading}
-                setAllowance={setAllowance}
-                setIsApproveLoading={setIsApproveLoading}
-                approveMint={approveMint}
-                mint={mint}
-              />
-            </ActionContainer>
-          </Content>
-        </Wrapper>
-      </FullScreenTheme>
+      <Wrapper>
+        <Content className="Content" mobBg={isMobile}>
+          <HeroGroupImg src={_NFTSaleGroup} alt="nft for sale" />
+          <PriceContainer>
+            <PriceText>49$</PriceText>
+          </PriceContainer>
+          <MainContentWrap>
+            <TextContainer>
+              <Title>NFT-Sale</Title>
+              <Text>
+                12 original characters are waiting for you in our NFT
+                collection, which consists of 10,000 tokens. After mint, the
+                token will be displayed on this page with information about the
+                name, profession and skills of your character. The number of
+                characters for one user is not limited.
+              </Text>
+            </TextContainer>
+            <NFTSkills />
+          </MainContentWrap>
+          <ActionContainer>
+            <TokenNameSelect
+              tokenName={tokenName}
+              setTokenName={setTokenName}
+            />
+            <ActionButton
+              tokenContract={tokenContract}
+              account={account}
+              spender={spender}
+              tokenName={tokenName}
+              isWallet={isWallet}
+              allowance={allowance}
+              isApproveLoading={isApproveLoading}
+              isTransLoading={isTransLoading}
+              setAllowance={setAllowance}
+              setIsApproveLoading={setIsApproveLoading}
+              approveMint={approveMint}
+              mint={mint}
+            />
+          </ActionContainer>
+        </Content>
+      </Wrapper>
 
       {isTransErrorModal && (
         <ModalBackdrop setIsModalOpen={setIsTransErrorModal}>

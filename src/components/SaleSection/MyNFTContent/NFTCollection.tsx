@@ -44,7 +44,6 @@ const NFTCollection = ({ NFTs }) => {
                 <Item key={uuid()}>
                   <NFTContainer>
                     <Thumb url={setImg(nft.image)} />
-                    {/* <Thumb url={`https://ipfs.io/${nft.image}`} /> */}
                     <SkillsWrapper>
                       <SkillsContainer
                         padding={

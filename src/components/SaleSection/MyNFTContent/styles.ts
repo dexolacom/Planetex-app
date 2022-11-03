@@ -7,7 +7,8 @@ export const NFTCollectionWrapper = styled.div<MyNFTProps>`
   padding-bottom: ${(props) => props.paddingBottom === true && '145px'};
 
   @media screen and (max-width: 880px) {
-    padding-bottom: ${(props) => props.paddingBottom === true && '122px'};
+    padding-bottom: ${(props) =>
+      props.paddingBottom === true && 'padding-bottom: 122px;'};
   }
 
   @media screen and (max-width: 576px) {
@@ -17,7 +18,7 @@ export const NFTCollectionWrapper = styled.div<MyNFTProps>`
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 60px 0 75px 0;
+  padding: 60px 0 0 0;
   width: 100%;
 
   @media screen and (max-width: 880px) {
@@ -34,6 +35,7 @@ export const Wrapper = styled.div`
 `;
 
 export const MobileContent = styled.div`
+  margin: 0 -20px 0 -20px;
   padding: 0 0 35px;
 `;
 
@@ -65,7 +67,11 @@ export const SlideItem = styled.li`
 `;
 
 export const Content = styled.div`
-  // background-color: skyblue;
+  position: relative;
+  left: -55px;
+  width: 1250px;
+  // margin: 0 -130px 0 -130px;
+  background-color: skyblue;
 `;
 
 export const Title = styled.h2`
