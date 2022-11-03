@@ -67,10 +67,10 @@ export const SlideItem = styled.li`
 `;
 
 export const Content = styled.div`
-  position: relative;
-  left: -55px;
+  // position: relative;
+  // left: -55px;
   width: 1250px;
-  // margin: 0 -130px 0 -130px;
+  margin: 0 0 0 -160px;
   background-color: skyblue;
 `;
 
