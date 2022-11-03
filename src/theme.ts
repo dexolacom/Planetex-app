@@ -25,21 +25,25 @@ export const SolidButton = styled.button<{ padding?: string }>`
   }
 `;
 
-export const OutlineButton = styled.button<{padding?: string, isActive?: boolean}>`
+export const OutlineButton = styled.button<{
+  padding?: string;
+  isActive?: boolean;
+}>`
   padding: 15px 45px;
-  border: ${({isActive}) => isActive ? '2px solid transparent' : '2px solid #9e40b5'}; 
+  border: ${({ isActive }) =>
+    isActive ? '2px solid transparent' : '2px solid #9e40b5'};
   border-radius: 45px;
-  color: ${({isActive}) => isActive ? '#D4E5FF' : '#9e40b5'};
+  color: ${({ isActive }) => (isActive ? '#D4E5FF' : '#9e40b5')};
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
-  background-color: ${({isActive}) => isActive ? '#9E40B5' : 'transparent'};
+  background-color: ${({ isActive }) => (isActive ? '#9E40B5' : 'transparent')};
   cursor: pointer;
-  
+
   &:hover {
-    background-color: ${({isActive}) => isActive ? '#9E40B5' : '#150A25'};
-    color: ${({isActive}) => isActive ? '#D4E5FF' : '#9E40B5'};
-    border:  2px solid #9E40B5;
+    background-color: ${({ isActive }) => (isActive ? '#9E40B5' : '#150A25')};
+    color: ${({ isActive }) => (isActive ? '#D4E5FF' : '#9E40B5')};
+    border: 2px solid #9e40b5;
   }
 
   @media screen and (max-width: 880px) {
@@ -78,30 +82,13 @@ export const Content = styled.div`
   }
 `;
 
-// export const HeroSectionTheme = styled.div`
-//   max-width: 970px;
-//   margin: 70px 45px 0px 0px;
-
-//   @media screen and (max-width: 1200px) {
-//     margin: 70px 45px 0px 100px;
-//   }
-
-//   @media screen and (max-width: 880px) {
-//     margin: 70px 40px 0;
-//   }
-
-//   @media screen and (max-width: 576px) {
-//     margin: 40px 20px 0;
-//   }
-// `;
-
 export const FullScreenTheme = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  margin: 0 auto;
-  max-width: 1330px;
-  padding: 0 40px;
+  // justify-content: start;
+  // margin: 0 auto;
+  // max-width: 1330px;
+  // padding: 0 40px;
   // background-color: red;
 
   @media screen and (max-width: 880px) {

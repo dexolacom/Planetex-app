@@ -23,6 +23,8 @@ const getTokens = async (
     const tokenURI = await contract.methods.tokenURI(ids[count]).call();
     const response = await getNFTInfo(tokenURI);
 
+    vars.process = true;
+
     nftInfoArray.unshift(response.data);
 
     if (
@@ -40,7 +42,12 @@ const getTokens = async (
 
     count += 1;
 
-    if (!ids[count]) return;
+    if (!ids[count]) {
+      vars.process = false;
+      console.log('--- done ---');
+      console.log('--- vars.proces ---', vars.proces);
+      return;
+    }
 
     getURI();
   };

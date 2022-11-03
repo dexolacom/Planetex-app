@@ -12,6 +12,7 @@ import NFTCollectionMobile from './NFTCollectionMobile';
 import NFTCollection from './NFTCollection';
 import getTokens from './getTokens';
 import vars from './vars';
+import { _NFT } from './_NFT';
 
 const MyNFTContent = () => {
   const { chainId, account } = useWeb3React();
@@ -36,18 +37,38 @@ const MyNFTContent = () => {
     getTokens(contract, chainId, account, setCollection, setTokens, 0);
 
   return (
-    <NFTCollectionWrapper paddingBottom={collection?.length === 0 && true}>
+    <NFTCollectionWrapper
+      className="NFTCollectionWrapper"
+      paddingBottom={collection?.length === 0 && true}
+    >
       {collection?.length > 0 && (
         <>
           {isMobile ? (
-            <NFTCollectionMobile NFTs={tokens !== null && collection} />
+            <NFTCollectionMobile NFTs={_NFT} />
           ) : (
-            <NFTCollection NFTs={tokens !== null && collection} />
+            <NFTCollection NFTs={_NFT} />
           )}
         </>
       )}
     </NFTCollectionWrapper>
   );
+
+  // return (
+  //   <NFTCollectionWrapper
+  //     className="NFTCollectionWrapper"
+  //     paddingBottom={collection?.length === 0 && true}
+  //   >
+  //     {collection?.length > 0 && (
+  //       <>
+  //         {isMobile ? (
+  //           <NFTCollectionMobile NFTs={tokens !== null && collection} />
+  //         ) : (
+  //           <NFTCollection NFTs={tokens !== null && collection} />
+  //         )}
+  //       </>
+  //     )}
+  //   </NFTCollectionWrapper>
+  // );
 };
 
 export default MyNFTContent;

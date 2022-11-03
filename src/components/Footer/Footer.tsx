@@ -16,6 +16,7 @@ import {
 import { FooterContainer } from './styles';
 import BackToTopButton from '../BackToTopButton/BackToTopButton';
 import logoIcon from '../../assets/icons/logo.png';
+import vars from '../SaleSection/MyNFTContent/vars';
 
 const Footer = () => {
   const { chainId } = useWeb3React();
@@ -49,7 +50,7 @@ const Footer = () => {
         </Wrapper>
         {/* === Attention! Using Header styles === */}
       </FooterContainer>
-      <BackToTopButton />
+      {vars.process === false && <BackToTopButton />}
     </>
   );
 };

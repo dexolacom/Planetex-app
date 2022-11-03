@@ -34,49 +34,46 @@ const setImg = (uri) => {
 
 const NFTCollection = ({ NFTs }) => {
   return (
-    <FullScreenTheme>
-      <Wrapper>
-        <Content>
-          <Title>My NFT</Title>
-          <List>
-            {NFTs.map((nft) => {
-              return (
-                <Item key={uuid()}>
-                  <NFTContainer>
-                    <Thumb url={setImg(nft.image)} />
-                    {/* <Thumb url={`https://ipfs.io/${nft.image}`} /> */}
-                    <SkillsWrapper>
-                      <SkillsContainer
-                        padding={
-                          nft.skills.split(',').length === 2
-                            ? '0 30px'
-                            : '0 10px'
-                        }
-                      >
-                        {nft.skills.split(',').map((skill) => {
-                          return (
-                            <Skill key={`${uuid()}q`}>
-                              <SkillContainer>
-                                <SkillImg src={setSkillImg(skill.trim())} />
-                                <SkillArrow src={arrowTop} />
-                              </SkillContainer>
-                            </Skill>
-                          );
-                        })}
-                      </SkillsContainer>
-                    </SkillsWrapper>
-                    <InfoWrapper>
-                      <Name>{nft.name}</Name>
-                      <Role>{nft.profession}</Role>
-                    </InfoWrapper>
-                  </NFTContainer>
-                </Item>
-              );
-            })}
-          </List>
-        </Content>
-      </Wrapper>
-    </FullScreenTheme>
+    // <FullScreenTheme>
+    <Wrapper className="Wrapper">
+      <Content>
+        <Title>My NFT</Title>
+        <List>
+          {NFTs.map((nft) => {
+            return (
+              <Item key={uuid()}>
+                <NFTContainer>
+                  <Thumb url={setImg(nft.image)} />
+                  <SkillsWrapper>
+                    <SkillsContainer
+                      padding={
+                        nft.skills.split(',').length === 2 ? '0 30px' : '0 10px'
+                      }
+                    >
+                      {nft.skills.split(',').map((skill) => {
+                        return (
+                          <Skill key={`${uuid()}q`}>
+                            <SkillContainer>
+                              <SkillImg src={setSkillImg(skill.trim())} />
+                              <SkillArrow src={arrowTop} />
+                            </SkillContainer>
+                          </Skill>
+                        );
+                      })}
+                    </SkillsContainer>
+                  </SkillsWrapper>
+                  <InfoWrapper>
+                    <Name>{nft.name}</Name>
+                    <Role>{nft.profession}</Role>
+                  </InfoWrapper>
+                </NFTContainer>
+              </Item>
+            );
+          })}
+        </List>
+      </Content>
+    </Wrapper>
+    // </FullScreenTheme>
   );
 };
 
