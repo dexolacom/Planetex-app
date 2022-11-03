@@ -4,24 +4,27 @@ import styled from 'styled-components';
 import { MyNFTProps } from '../../../constants/types';
 
 export const NFTCollectionWrapper = styled.div<MyNFTProps>`
-  padding-bottom: ${(props) => props.paddingBottom === true && '145px'};
+  display: flex;
+  justify-content: center;
+  // padding-bottom: ${(props) => props.paddingBottom === true && '145px'};
+  // background-color: teal;
 
   @media screen and (max-width: 880px) {
-    padding-bottom: ${(props) => props.paddingBottom === true && '122px'};
+    padding-bottom: ${(props) =>
+      props.paddingBottom === true && 'padding-bottom: 122px;'};
   }
 
   @media screen and (max-width: 576px) {
     padding-bottom: ${(props) => props.paddingBottom === true && '45px'};
+    // background-color: tomato;
   }
 `;
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 60px 0 75px 0;
   width: 100%;
 
   @media screen and (max-width: 880px) {
-    padding: 50px 0 0 0;
     margin: 0 auto;
     max-width: 640px;
   }
@@ -34,6 +37,7 @@ export const Wrapper = styled.div`
 `;
 
 export const MobileContent = styled.div`
+  width: 100%;
   padding: 0 0 35px;
 `;
 
@@ -65,7 +69,22 @@ export const SlideItem = styled.li`
 `;
 
 export const Content = styled.div`
-  // background-color: skyblue;
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1880px;
+
+  @media screen and (max-width: 1820px) {
+    max-width: 1760px;
+  }
+
+  @media screen and (max-width: 1620px) {
+    max-width: 1260px;
+  }
+
+  @media screen and (max-width: 880px) {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h2`
@@ -154,10 +173,6 @@ export const SkillsContainer = styled.div<MyNFTProps>`
   height: 49px;
   background-color: #1d1429;
   border-radius: 0 0 3px 3px;
-
-  // @media screen and (max-width: 576px) {
-  //   padding: 0 13%;
-  // }
 `;
 
 export const Skill = styled.div`

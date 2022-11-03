@@ -56,7 +56,6 @@ const NFTCollectionMobile = ({ NFTs }) => {
                 <SlideItem>
                   <NFTContainer>
                     <Thumb url={setImg(nft.image)} />
-                    {/* <Thumb url={`https://ipfs.io/${nft.image}`} /> */}
                     <SkillsWrapper>
                       <SkillsContainer
                         padding={

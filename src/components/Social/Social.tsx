@@ -1,7 +1,6 @@
 // @ts-nocheck
 /* eslint-disable no-console */
 /* eslint-disable max-lines-per-function */
-import { FullScreenTheme } from '../../theme';
 import facebook from '../../assets/social/facebook.svg';
 import twitter from '../../assets/social/twitter.svg';
 import instagram from '../../assets/social/instagram.svg';
@@ -63,31 +62,29 @@ const links = [
 const SocialContent = () => {
   return (
     <>
-      <FullScreenTheme>
-        <Wrapper>
-          <Content>
-            <SocialList>
-              {links.map((link) => {
-                return (
-                  <SocialItem key={link.name}>
-                    {link.name === 'discord' || link.name === 'youtube' ? (
+      <Wrapper>
+        <Content>
+          <SocialList>
+            {links.map((link) => {
+              return (
+                <SocialItem key={link.name}>
+                  {link.name === 'discord' || link.name === 'youtube' ? (
+                    <SocialImg src={link.img} alt={link.alt} />
+                  ) : (
+                    <SocialLink
+                      href={link.url}
+                      target={'_blank'}
+                      onClick={() => console.log(link.name)}
+                    >
                       <SocialImg src={link.img} alt={link.alt} />
-                    ) : (
-                      <SocialLink
-                        href={link.url}
-                        target={'_blank'}
-                        onClick={() => console.log(link.name)}
-                      >
-                        <SocialImg src={link.img} alt={link.alt} />
-                      </SocialLink>
-                    )}
-                  </SocialItem>
-                );
-              })}
-            </SocialList>
-          </Content>
-        </Wrapper>
-      </FullScreenTheme>
+                    </SocialLink>
+                  )}
+                </SocialItem>
+              );
+            })}
+          </SocialList>
+        </Content>
+      </Wrapper>
     </>
   );
 };

@@ -12,6 +12,7 @@ import NFTCollectionMobile from './NFTCollectionMobile';
 import NFTCollection from './NFTCollection';
 import getTokens from './getTokens';
 import vars from './vars';
+// import { _NFT } from './_NFT';
 
 const MyNFTContent = () => {
   const { chainId, account } = useWeb3React();

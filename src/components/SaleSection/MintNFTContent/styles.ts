@@ -16,13 +16,11 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 880px) {
     clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
     margin: 0 auto;
-    max-width: 640px;
   }
 
   @media screen and (max-width: 576px) {
     clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 13%);
     margin: 0 auto;
-    max-width: 350px;
   }
 `;
 
@@ -35,6 +33,10 @@ export const Content = styled.div<NFTSaleProps>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media screen and (max-width: 959px) {
+    padding: 50px 40px 60px 60px;
+  }
 
   @media screen and (max-width: 880px) {
     clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 14%);
@@ -97,7 +99,6 @@ export const PriceContainer = styled.div`
 `;
 
 export const PriceText = styled.span`
-  color: red;
   font-weight: 600;
   font-size: 32px;
   line-height: 39px;
@@ -128,12 +129,10 @@ export const TextContainer = styled.div`
   margin-right: 20px;
   width: 100%;
   max-width: 282px;
-  // background-color: red;
-  // padding-bottom: 10px;
 
   @media screen and (max-width: 880px) {
-    margin-right: 10px;
-    max-width: 234px;
+    margin-right: 20px;
+    max-width: 300px;
   }
 
   @media screen and (max-width: 576px) {
@@ -169,6 +168,7 @@ export const Text = styled.p`
   color: #f9f9f9;
 
   @media screen and (max-width: 880px) {
+    padding-bottom: 10px;
     font-size: 14px;
     line-height: 17px;
   }
@@ -185,12 +185,15 @@ export const SkillsContainer = styled.div`
 
   @media screen and (max-width: 880px) {
     padding-top: 40px;
-    max-width: 260px;
+    padding-bottom: 30px;
+    max-width: 320px;
   }
 
   @media screen and (max-width: 576px) {
     padding-top: 0;
-    margin-bottom: 15px;
+    padding-bottom: 0px;
+
+    width: 100%;
     max-width: 100%;
   }
 `;
@@ -226,7 +229,7 @@ export const Skills = styled.div`
 export const Skill = styled.div`
   display: flex;
   margin-bottom: 13px;
-  width: 210px;
+  width: 48.5%;
   height: 60px;
   font-size: 20px;
   color: #d4e5ff;
@@ -234,23 +237,18 @@ export const Skill = styled.div`
   border-radius: 60px;
 
   &:nth-child(odd) {
-    margin-right: 18px;
+    margin-right: 3%;
   }
 
   @media screen and (max-width: 880px) {
-    margin-bottom: 8px;
-    width: 122px;
+    width: 48.5%;
     height: 34px;
-
-    &:nth-child(odd) {
-      margin-right: 10px;
-    }
   }
 
   @media screen and (max-width: 576px) {
-    margin: 0 6px 10px;
-    width: 130px;
+    width: 48.5%;
     height: 36px;
+    background: rgba(17, 7, 20, 0.86);
   }
 `;
 
@@ -259,7 +257,6 @@ export const SkillContent = styled.div`
   align-items: center;
   padding: 0 20px 0 20px;
   width: 100%;
-  // background-color: teal;
 
   display: flex;
 
@@ -335,6 +332,7 @@ export const Action = styled.div`
 
     > select {
       margin-bottom: 12px;
+      margin-right: 0;
     }
 
     > button {
