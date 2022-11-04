@@ -44,8 +44,6 @@ const getTokens = async (
 
     if (!ids[count]) {
       vars.process = false;
-      console.log('--- done ---');
-      console.log('--- vars.proces ---', vars.proces);
       return;
     }
 

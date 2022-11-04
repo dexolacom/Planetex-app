@@ -86,7 +86,6 @@ export const Thumb = styled.div`
 
   @media screen and (max-width: 880px) {
     width: 145px;
-    // background-color: pink;
   }
 
   @media screen and (max-width: 576px) {

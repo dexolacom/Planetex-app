@@ -31,11 +31,7 @@ const HeroSection = ({ title, text, img }: HeroProps) => {
       ) : (
         <Content>
           <Thumb>
-            <Img
-              src={img}
-              // style={{ height: `${title === 'Pre-Sale' ? '122px' : '105x'}` }}
-              title={title}
-            />
+            <Img src={img} title={title} />
           </Thumb>
           <TextContainer>
             <Title>{title}</Title>
