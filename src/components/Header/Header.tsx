@@ -11,11 +11,11 @@ import {
   Link,
   BurgerTabletIcon,
   ConnectButton,
-  // MobileLogo,
+  MobileLogo,
   BurgerTabletCrossIcon,
 } from './styles';
 import AccountContainer from './AccountContainer/AccountContainer';
-// import useCheckIsMobile from '../../hooks/useCheckIsMobile';
+import useCheckIsMobile from '../../hooks/useCheckIsMobile';
 import { useWeb3React } from '@web3-react/core';
 import { HeaderProps } from '../../constants/types';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
@@ -23,9 +23,10 @@ import ConnectWalletModal from '../ConnectWalletModal/ConnectWalletModal';
 import { connectWalletOnPageLoad } from '../../utils/walletUtils';
 // @ts-ignore
 import logoIcon from '../../assets/icons/logo.png';
+import logoIconMobile from '../../assets/icons/logoShort.svg';
 
 const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
-  // const { isMobile } = useCheckIsMobile();
+  const { isMobile } = useCheckIsMobile();
   const { chainId, account, activate } = useWeb3React();
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
 
@@ -48,13 +49,19 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
           <LogoLink
             target="_blank"
             href={
-              chainId === 1 || chainId === 56
+              chainId === 1 || chainId === 56 || chainId === undefined
                 ? 'https://token.planetex.io/'
                 : 'https://planetex-app.herokuapp.com'
             }
           >
-            <Logo src={logoIcon} />
-            {/* {isMobile ? <MobileLogo /> : <Logo src={logoIcon} />} */}
+            {isMobile ? (
+              <MobileLogo />
+            ) : (
+              <Logo
+                src={window.innerWidth > 428 ? logoIcon : logoIconMobile}
+                alt="Planetex"
+              />
+            )}
           </LogoLink>
           <Navigation>
             <Links>

@@ -23,12 +23,15 @@ const getTokens = async (
     const tokenURI = await contract.methods.tokenURI(ids[count]).call();
     const response = await getNFTInfo(tokenURI);
 
+    vars.process = true;
+
     nftInfoArray.unshift(response.data);
 
     if (
       injected._eventsCount === 0 ||
       vars.acc !== account ||
-      vars.net !== chainId
+      vars.net !== chainId ||
+      window.location.pathname !== '/nft-sale'
     ) {
       setCollection([]);
       setTokens(null);
@@ -40,7 +43,10 @@ const getTokens = async (
 
     count += 1;
 
-    if (!ids[count]) return;
+    if (!ids[count]) {
+      vars.process = false;
+      return;
+    }
 
     getURI();
   };

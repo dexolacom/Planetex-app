@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   margin: 0 0 60px 0;
 
   @media screen and (max-width: 880px) {
-    margin: 0 0 80px 0;
+    margin: 0 0 40px 0;
   }
 
   @media screen and (max-width: 576px) {
@@ -16,7 +16,6 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  // gap: 25px;
   height: 120px;
 
   @media screen and (max-width: 880px) {
@@ -40,6 +39,10 @@ export const MobileContainer = styled.div`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 880px) {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h3`
@@ -69,6 +72,7 @@ export const Text = styled.p`
   @media screen and (max-width: 880px) {
     font-size: 16px;
     line-height: 19px;
+    max-width: 600px;
   }
 
   @media screen and (max-width: 576px) {
@@ -77,18 +81,31 @@ export const Text = styled.p`
   }
 `;
 
-export const Img = styled.img`
-  margin-top: -25px;
-  padding-right: 30px;
-  width: 130px;
+export const Thumb = styled.div`
+  width: 165px;
 
   @media screen and (max-width: 880px) {
-    margin-top: -40px;
-    width: 120px;
+    width: 145px;
+  }
+
+  @media screen and (max-width: 576px) {
+    padding-left: ${(props) => (props.title === 'Pre-Sale' ? '10px' : '0')};
+    width: 150px;
+  }
+`;
+
+export const Img = styled.img`
+  margin-top: -10px;
+  height: ${(props) => (props.title === 'Pre-Sale' ? '122px' : '105px')};
+
+  @media screen and (max-width: 880px) {
+    margin-top: -15px;
+    margin-top: ${(props) => (props.title === 'Pre-Sale' ? '-15px' : '0')};
+    height: ${(props) => (props.title === 'Pre-Sale' ? '110px' : '80px')};
   }
 
   @media screen and (max-width: 576px) {
     margin-top: 0px;
-    width: 123px;
+    height: ${(props) => (props.title === 'Pre-Sale' ? '115px' : '110px;')};
   }
 `;

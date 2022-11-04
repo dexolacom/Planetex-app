@@ -5,6 +5,7 @@ import {
   TextContainer,
   Title,
   Text,
+  Thumb,
   Img,
   MobileContent,
   MobileContainer,
@@ -21,13 +22,17 @@ const HeroSection = ({ title, text, img }: HeroProps) => {
         <MobileContent>
           <Title>{title}</Title>
           <MobileContainer>
-            <Img src={img} />
+            <Thumb title={title}>
+              <Img src={img} title={title} />
+            </Thumb>
             <Text>{text}</Text>
           </MobileContainer>
         </MobileContent>
       ) : (
         <Content>
-          <Img src={img} />
+          <Thumb>
+            <Img src={img} title={title} />
+          </Thumb>
           <TextContainer>
             <Title>{title}</Title>
             <Text>{text}</Text>

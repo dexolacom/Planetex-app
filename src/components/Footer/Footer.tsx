@@ -16,6 +16,7 @@ import {
 import { FooterContainer } from './styles';
 import BackToTopButton from '../BackToTopButton/BackToTopButton';
 import logoIcon from '../../assets/icons/logo.png';
+import vars from '../SaleSection/MyNFTContent/vars';
 
 const Footer = () => {
   const { chainId } = useWeb3React();
@@ -30,12 +31,12 @@ const Footer = () => {
             <LogoLink
               target="_blank"
               href={
-                chainId === 1 || chainId === 56
+                chainId === 1 || chainId === 56 || chainId === undefined
                   ? 'https://token.planetex.io/'
                   : 'https://planetex-app.herokuapp.com'
               }
             >
-              <Logo src={logoIcon} />
+              <Logo src={logoIcon} alt="Planetex" />
             </LogoLink>
             <Navigation>
               <Links>
@@ -49,7 +50,7 @@ const Footer = () => {
         </Wrapper>
         {/* === Attention! Using Header styles === */}
       </FooterContainer>
-      <BackToTopButton />
+      {vars.process === false && <BackToTopButton />}
     </>
   );
 };

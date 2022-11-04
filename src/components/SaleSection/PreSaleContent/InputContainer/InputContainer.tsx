@@ -21,15 +21,13 @@ const InputContainer = ({
   const { account, chainId } = useWeb3React()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = (e.target.value).replace(/^0\d{1}$/, '');
+    const value = (e.target.value).replace(/^0\d{1}$/, '').replace(/,/g, '.');
     setIsApproveWarning(false)
-
     if (value.match(/^[0-9]*[.,]?[0-9]*$/)) {
       if (+value >= 10 || +value === 0) {
         setIsInputAmountError(false)
         return setTokenAmount(value);
       }
-
       setIsInputAmountError(true)
       return setTokenAmount(value);
     }
@@ -51,9 +49,9 @@ const InputContainer = ({
           value={tokenAmount}
           onChange={(e) => handleInputChange(e)}
           placeholder={'0.0'}
-          inputMode="decimal"
+          inputMode='decimal'
           // @ts-ignore
-          maxLength="11"
+          maxLength='11'
         />
         {/*@ts-ignore*/}
         <InputInfo color={!account ? '#762ACE' : '#5e626c'} border={!account ? '2px solid #762ACE' : '2px solid #5e626c'}>

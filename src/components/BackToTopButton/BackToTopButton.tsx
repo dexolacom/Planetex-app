@@ -15,15 +15,17 @@ const BackToTopButton = () => {
   });
 
   return (
-    <BackToTopContainer>
-      <BackToTopBtn
-        onClick={() =>
-          setPosition({ ...position, position: { top: 0, left: 0 } })
-        }
-      >
-        <BackToTopImg src={ArrowToTop} />
-      </BackToTopBtn>
-    </BackToTopContainer>
+    <>
+      <BackToTopContainer>
+        <BackToTopBtn
+          onClick={() =>
+            setPosition({ ...position, position: { top: 0, left: 0 } })
+          }
+        >
+          <BackToTopImg src={ArrowToTop} alt={'arrow top'} />
+        </BackToTopBtn>
+      </BackToTopContainer>
+    </>
   );
 };
 
