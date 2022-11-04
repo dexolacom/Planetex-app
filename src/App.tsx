@@ -1,18 +1,21 @@
 // @ts-nocheck
 /* eslint-disable jsx-quotes */
 /* eslint-disable max-lines-per-function */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { useWeb3React } from '@web3-react/core';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useResolvedPath } from 'react-router-dom';
 import Header from './components/Header/Header';
-import PreSalePage from './pages/PreSalePage/PreSalePage';
-import NFTSalePage from './pages/NFTSalePage/NFTSalePage';
 import { Line, Content } from './theme';
 import Footer from './components/Footer/Footer';
 import BurgerMenu from './components/Header/BurgerMenu/BurgerMenu';
-import MyNFTContent from './components/SaleSection/MyNFTContent/MyNFTContent';
 import SaleNFTContext from './components/SaleSection/SaleNFTContext';
 import { getPlanetexTokenContract } from './utils/contracts';
+
+const PreSalePage = lazy(() => import('./pages/PreSalePage/PreSalePage'));
+const NFTSalePage = lazy(() => import('./pages/NFTSalePage/NFTSalePage'));
+const MyNFTContent = lazy(
+  () => import('./components/SaleSection/MyNFTContent/MyNFTContent'),
+);
 
 function App() {
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
@@ -23,6 +26,8 @@ function App() {
   const { chainId, account } = useWeb3React();
 
   const NFTContract = chainId && getPlanetexTokenContract(chainId);
+
+  const { pathname } = useResolvedPath();
 
   useEffect(() => {
     account === undefined && setIds_(null);
@@ -51,11 +56,29 @@ function App() {
         <Content>
           <Routes>
             <Route path="/" element={<Navigate replace to="/presale" />} />
-            <Route path="/presale" element={<PreSalePage />} />
-            <Route path="/nft-sale" element={<NFTSalePage />} />
+            <Route
+              path="/presale"
+              element={
+                <Suspense>
+                  <PreSalePage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/nft-sale"
+              element={
+                <Suspense>
+                  <NFTSalePage />
+                </Suspense>
+              }
+            />
           </Routes>
         </Content>
-        {window.location.pathname === '/nft-sale' && <MyNFTContent />}
+        {ids_?.length > 0 && pathname === '/nft-sale' && (
+          <Suspense>
+            <MyNFTContent />
+          </Suspense>
+        )}
       </SaleNFTContext.Provider>
       <Line />
       <Footer />

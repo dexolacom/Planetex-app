@@ -27,11 +27,15 @@ const getTokens = async (
 
     nftInfoArray.unshift(response.data);
 
+    console.log(' --> pathname 1', window.location.pathname);
+
     if (
       injected._eventsCount === 0 ||
       vars.acc !== account ||
-      vars.net !== chainId
+      vars.net !== chainId ||
+      window.location.pathname !== '/nft-sale'
     ) {
+      console.log(' --> pathname 2', window.location.pathname);
       setCollection([]);
       setTokens(null);
       return;

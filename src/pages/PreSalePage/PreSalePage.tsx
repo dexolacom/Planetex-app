@@ -12,42 +12,50 @@ import { changeNetwork } from '../../utils/walletUtils';
 import { TransactionContext } from '../../contexts/transactionContext';
 
 const PreSalePage = () => {
-  const { chainId, account } = useWeb3React()
-  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false)
-  const [isTransSuccessModal, setIsTransSuccessModal] = useState(false)
+  const { chainId, account } = useWeb3React();
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+  const [isTransSuccessModal, setIsTransSuccessModal] = useState(false);
   const { presale } = heroInfo;
 
   const handleNetworkSwitch = async (networkName: string) => {
     if (!localStorage.getItem('provider')) {
-      return setIsWalletModalOpen(true)
+      return setIsWalletModalOpen(true);
     }
     await changeNetwork(networkName);
   };
 
   return (
     <>
-      <TransactionContext.Provider value={{isTransSuccessModal, setIsTransSuccessModal}}>
+      <TransactionContext.Provider
+        value={{ isTransSuccessModal, setIsTransSuccessModal }}
+      >
         <HeroSection
           title={presale?.title}
           text={presale?.text}
           img={presale?.img}
         />
-        {account && <UserBalance/>}
+        {account && <UserBalance />}
         <ButtonsContainer>
-          <OutlineButton isActive={chainId === 5 || chainId === 1} onClick={() => handleNetworkSwitch('eth')}>
+          <OutlineButton
+            isActive={chainId === 5 || chainId === 1}
+            onClick={() => handleNetworkSwitch('eth')}
+          >
             Ethereum Network
           </OutlineButton>
-          <OutlineButton isActive={chainId === 97 || chainId === 56} onClick={() => handleNetworkSwitch('bsc')}>
+          <OutlineButton
+            isActive={chainId === 97 || chainId === 56}
+            onClick={() => handleNetworkSwitch('bsc')}
+          >
             BSC Network
           </OutlineButton>
         </ButtonsContainer>
         <SaleSection title={presale?.title} />
-        {isWalletModalOpen &&
-        <ModalBackdrop setIsModalOpen={setIsWalletModalOpen}>
-          {/*@ts-ignore*/}
-          <ConnectWalletModal setIsModalOpen={setIsWalletModalOpen}/>
-        </ModalBackdrop>
-        }
+        {isWalletModalOpen && (
+          <ModalBackdrop setIsModalOpen={setIsWalletModalOpen}>
+            {/*@ts-ignore*/}
+            <ConnectWalletModal setIsModalOpen={setIsWalletModalOpen} />
+          </ModalBackdrop>
+        )}
       </TransactionContext.Provider>
     </>
   );

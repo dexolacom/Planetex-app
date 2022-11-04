@@ -1,22 +1,12 @@
-import { Suspense, lazy } from 'react';
 import { SaleSectionProps } from '../../constants/types';
-
-const PreSaleContent = lazy(() => import('./PreSaleContent/PreSaleContent'));
-const NFTSaleContent = lazy(() => import('./MintNFTContent/NftSaleContent'));
+import PreSaleContent from './PreSaleContent/PreSaleContent';
+import NFTSaleContent from './MintNFTContent/NftSaleContent';
 
 const SaleSection = ({ title }: SaleSectionProps) => {
   return (
     <div>
-      {title === 'Pre-Sale' && (
-        <Suspense>
-          <PreSaleContent />
-        </Suspense>
-      )}
-      {title === 'NFT-Sale' && (
-        <Suspense>
-          <NFTSaleContent />
-        </Suspense>
-      )}
+      {title === 'Pre-Sale' && <PreSaleContent />}
+      {title === 'NFT-Sale' && <NFTSaleContent />}
     </div>
   );
 };
