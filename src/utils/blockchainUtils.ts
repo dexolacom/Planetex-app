@@ -171,7 +171,8 @@ export const getProviders = (chainId: number | undefined) => {
     5: 'https://eth-goerli.nodereal.io/v1/8a4432e42df94dcca2814fde8aea2a2e',
     97: 'https://bsc-testnet.nodereal.io/v1/e9a36765eb8a40b9bd12e680a1fd2bc5',
     56: 'https://bsc-dataseed1.binance.org',
-    1: 'https://api.mycryptoapi.com/eth',
+    // 1: 'https://api.mycryptoapi.com/eth',
+    1: 'https://eth-mainnet.public.blastapi.io'
   };
   return (
     providers[chainId as keyof typeof providers] ??
