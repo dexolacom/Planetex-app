@@ -37,9 +37,6 @@ export const buyToken = async (
         });
     }
 
-    console.log('account -->', account);
-    console.log('formattedAmount -->', formattedAmount);
-
     return await contract.methods
       .buyForEth(1)
       .send({ from: account, value: formattedAmount })
