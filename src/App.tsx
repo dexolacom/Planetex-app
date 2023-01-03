@@ -15,18 +15,17 @@ function App() {
     <>
       <Header isBurgerMenu={isBurgerMenu} setIsBurgerMenu={setIsBurgerMenu} />
       {isBurgerMenu && <BurgerMenu />}
-      {/* <Content> */}
       <Routes>
         <Route
           path="/"
           element={
             <Content>
-              <Navigate replace to="/presale" />
+              <Navigate replace to="/main-sale" />
             </Content>
           }
         />
         <Route
-          path="/presale"
+          path="/main-sale"
           element={
             <Content>
               <PreSalePage />
@@ -35,7 +34,6 @@ function App() {
         />
         <Route path="/nft-sale" element={<NFTSalePage />} />
       </Routes>
-      {/* </Content> */}
       <Line />
       <Footer />
     </>

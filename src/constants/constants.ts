@@ -9,7 +9,7 @@ export const maxApproveAmount =
 
 export const heroInfo = {
   presale: {
-    title: 'Pre-Sale',
+    title: 'Main Sale',
     text: 'Connect your wallet in a couple of clicks and choose the amount to invest in Planetex Token.',
     img: presale,
   },

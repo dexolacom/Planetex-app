@@ -14,16 +14,18 @@ export const buyToken = async (
   setIsTransLoading: (b: boolean) => void,
 ) => {
   const contract = await getTokenSaleContract(chainId);
-  const isRoundStarted = await contract.methods.isRoundStared(0).call();
+  const isRoundStarted = await contract.methods.isRoundStared(1).call();
 
   if (!isRoundStarted) return console.log('Round not started');
 
-  const formattedAmount = (+tokenAmount * getDecimals(tokenName)).toLocaleString('fullwide', { useGrouping: false });
+  const formattedAmount = (
+    +tokenAmount * getDecimals(tokenName)
+  ).toLocaleString('fullwide', { useGrouping: false });
   setIsTransLoading(true);
   try {
     if (tokenName === 'BUSD' || tokenName === 'USDT') {
       return await contract.methods
-        .buyForErc20(0, formattedAmount)
+        .buyForErc20(1, formattedAmount)
         .send({ from: account })
         .on('receipt', function (receipt: any) {
           setIsTransSuccessModal(true);
@@ -35,8 +37,11 @@ export const buyToken = async (
         });
     }
 
+    console.log('account -->', account);
+    console.log('formattedAmount -->', formattedAmount);
+
     return await contract.methods
-      .buyForEth(0)
+      .buyForEth(1)
       .send({ from: account, value: formattedAmount })
       .on('receipt', function (receipt: any) {
         setIsTransSuccessModal(true);
