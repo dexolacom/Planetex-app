@@ -77,9 +77,9 @@ export const Text = styled.p`
   }
 `;
 
-export const Img = styled.img`
+export const Img = styled.img<{isNFT?: boolean}>`
   margin-top: -25px;
-  padding-right: 30px;
+  padding-right: ${({isNFT}) => isNFT ? '0' : '30px'};
   width: 130px;
 
   @media screen and (max-width: 880px) {

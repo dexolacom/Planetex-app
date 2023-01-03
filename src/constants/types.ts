@@ -3,6 +3,7 @@ export interface HeroProps {
   text: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   img: any;
+  isNFT?: boolean;
 }
 
 export interface NFTSaleProps {

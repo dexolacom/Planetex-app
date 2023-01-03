@@ -3,6 +3,7 @@ import { useState } from 'react';
 import SaleNFTContext from '../SaleNFTContext';
 import MyNFTContent from '../MyNFTContent/MyNFTContent';
 import NFTSaleContent from './NftSaleContent';
+import { Content } from '../../../theme';
 
 const MintNFTSection = () => {
   const [collection, setCollection] = useState([]);
@@ -17,7 +18,9 @@ const MintNFTSection = () => {
         setTokens,
       }}
     >
-      <NFTSaleContent />
+      <Content >
+        <NFTSaleContent />
+      </Content>
       <MyNFTContent />
     </SaleNFTContext.Provider>
   );

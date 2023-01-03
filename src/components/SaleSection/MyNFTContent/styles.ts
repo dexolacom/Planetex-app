@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { MyNFTProps } from '../../../constants/types';
 
 export const NFTCollectionWrapper = styled.div<MyNFTProps>`
+  margin: 60px 0 125px 150px;
+  max-width: 1249px;
   padding-bottom: ${(props) => props.paddingBottom === true && '145px'};
 
   @media screen and (max-width: 880px) {
@@ -12,6 +14,7 @@ export const NFTCollectionWrapper = styled.div<MyNFTProps>`
 
   @media screen and (max-width: 576px) {
     padding-bottom: ${(props) => props.paddingBottom === true && '45px'};
+    margin: 0;
   }
 `;
 

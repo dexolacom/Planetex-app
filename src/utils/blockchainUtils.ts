@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 /* eslint-disable max-lines-per-function */
 import buyTokenAbi from '../constants/abis/saleContractAbi.json';
 import {
@@ -124,33 +126,47 @@ export const convertToUSD = async (
   const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', {
     useGrouping: false,
   });
-  return await contract.methods.convertToStable(formattedAmount, 0).call();
+  return await contract.methods.convertToStable(formattedAmount, 1).call();
 };
 
 export const convertToPltx = async (
   chainId: number | undefined,
   tokenAmount: number | string,
-  tokenName: string
+  tokenName: string,
 ) => {
   const contract = await getTokenSaleContract(chainId);
 
   if (tokenName === 'USDT' || tokenName === 'BUSD') {
     if (chainId === 56 || chainId === 97) {
-      const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', { useGrouping: false});
-      const res = await contract.methods.convertUsdtToPltx(0, formattedAmount).call();
-      return (+res / 10 ** 18).toFixed()
+      const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString(
+        'fullwide',
+        { useGrouping: false },
+      );
+      const res = await contract.methods
+        .convertUsdtToPltx(1, formattedAmount)
+        .call();
+      return (+res / 10 ** 18).toFixed();
     }
 
     if (chainId === 1 || chainId === 5) {
-      const formattedAmount = (+tokenAmount * 10 ** 6).toLocaleString('fullwide', { useGrouping: false});
-      const res = await contract.methods.convertUsdtToPltx(0, formattedAmount).call();
-      return (+res / 10 ** 18).toFixed()
+      const formattedAmount = (+tokenAmount * 10 ** 6).toLocaleString(
+        'fullwide',
+        { useGrouping: false },
+      );
+      const res = await contract.methods
+        .convertUsdtToPltx(1, formattedAmount)
+        .call();
+      return (+res / 10 ** 18).toFixed();
     }
   }
 
-  const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', { useGrouping: false});
-  const res = await contract.methods.convertToStable(formattedAmount, 0).call();
-  return (+(res?.planetexAmount) / 10 ** 18).toFixed()
+  const formattedAmount = (+tokenAmount * 10 ** 18).toLocaleString('fullwide', {
+    useGrouping: false,
+  });
+  const res =
+    formattedAmount !== '0' &&
+    (await contract.methods.convertToStable(formattedAmount, 1).call());
+  return (+res?.planetexAmount / 10 ** 18).toFixed();
 };
 
 // export const getUserAvailableAmount = async (
@@ -172,7 +188,7 @@ export const getProviders = (chainId: number | undefined) => {
     97: 'https://bsc-testnet.nodereal.io/v1/e9a36765eb8a40b9bd12e680a1fd2bc5',
     56: 'https://bsc-dataseed1.binance.org',
     // 1: 'https://api.mycryptoapi.com/eth',
-    1: 'https://eth-mainnet.public.blastapi.io'
+    1: 'https://eth-mainnet.public.blastapi.io',
   };
   return (
     providers[chainId as keyof typeof providers] ??
@@ -190,5 +206,5 @@ export const getUserBalance = async (
     buyTokenAbi as AbiItem[],
     getTokenSaleContractAddress(chainId),
   );
-  return await contract.methods.userBalance(account, 0).call();
+  return await contract.methods.userBalance(account, 1).call();
 };

@@ -5,7 +5,6 @@
 import { useEffect, useState, useContext } from 'react';
 import useCheckIsMobile from '../../../hooks/useCheckIsMobile';
 import SaleNFTContext from '../SaleNFTContext';
-import { FullScreenTheme } from '../../../theme';
 import _NFTSaleGroup from '../../../assets/images/_NFTSaleGroup.png';
 import {
   Wrapper,
@@ -138,11 +137,8 @@ const NFTSaleContent = () => {
     }, 1000);
   };
 
-  console.log('isMobile', isMobile);
-
   return (
     <>
-      <FullScreenTheme>
         <Wrapper>
           <Content className="Content" mobBg={isMobile}>
             <HeroGroupImg src={_NFTSaleGroup} alt="nft for sale" />
@@ -184,7 +180,6 @@ const NFTSaleContent = () => {
             </ActionContainer>
           </Content>
         </Wrapper>
-      </FullScreenTheme>
 
       {isTransErrorModal && (
         <ModalBackdrop setIsModalOpen={setIsTransErrorModal}>
