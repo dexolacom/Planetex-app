@@ -13,9 +13,9 @@ const ConvertedBalance = ({ convertedToPltx }: ConvertedBalanceProps) => {
     >
       {
         // @ts-ignore
-        isNaN(convertedToPltx) ? '0 ' : convertedToPltx
+        isNaN(convertedToPltx) ? '0' : convertedToPltx
       }
-      PLTEX
+      {' PLTEX'}
     </Wrapper>
   );
 };
