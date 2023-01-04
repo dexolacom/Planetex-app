@@ -1,3 +1,5 @@
+/* eslint-disable jsx-quotes */
+/* eslint-disable max-len */
 /* eslint-disable indent */
 /* eslint-disable max-lines-per-function */
 import React, { useEffect, useState } from 'react';
@@ -16,7 +18,8 @@ import {
 import { useWeb3React } from '@web3-react/core';
 import {
   checkAllowance,
-  checkApprove, convertToPltx,
+  checkApprove,
+  convertToPltx,
   convertToUSD,
   formatToHuman,
 } from '../../../utils/blockchainUtils';
@@ -31,7 +34,6 @@ import {
 } from '../../../utils/contracts';
 import { useTransactionContext } from '../../../contexts/transactionContext';
 
-
 const PreSaleContent = () => {
   const { chainId, account } = useWeb3React();
   const { isTransSuccessModal, setIsTransSuccessModal } =
@@ -44,7 +46,7 @@ const PreSaleContent = () => {
   const [isApproveLoading, setIsApproveLoading] = useState(false);
   const [isInputAmountError, setIsInputAmountError] = useState(false);
   const [convertedToUSD, setConvertedToUSD] = useState('');
-  const [convertedToPltx, setConvertedToPltx] = useState('')
+  const [convertedToPltx, setConvertedToPltx] = useState('');
   const [isWalletWarning, setIsWalletWarning] = useState(false);
   const [isApproveWarning, setIsApproveWarning] = useState(false);
   const [allowance, setAllowance] = useState('');
@@ -66,7 +68,9 @@ const PreSaleContent = () => {
       );
     }
     // @ts-ignore
-    convertToPltx(chainId, tokenAmount, tokenName).then(res => setConvertedToPltx(res))
+    convertToPltx(chainId, tokenAmount, tokenName).then((res) =>
+      setConvertedToPltx(res),
+    );
   }, [debouncedValue]);
 
   useEffect(() => {
@@ -86,8 +90,8 @@ const PreSaleContent = () => {
 
   useEffect(() => {
     setConvertedToUSD('');
-    setConvertedToPltx('')
-    setTokenAmount('')
+    setConvertedToPltx('');
+    setTokenAmount('');
   }, [tokenName]);
 
   useEffect(() => {
@@ -99,11 +103,13 @@ const PreSaleContent = () => {
       <Wrapper>
         <Content>
           <TitleContainer>
-            <Title>Pre-Sale</Title>
-            <Tag>Minimum investment 10$</Tag>
+            <Title>Main Sale</Title>
+            <Tag>Minimum investment 25$</Tag>
           </TitleContainer>
           <Text>
-            After the purchase, the tokens will be in the cliff for 4 months and vesting for 17 months. Vesting has a linear quarterly unlock.
+            After the purchase, 40 percent of the tokens will be unlocked and
+            the rest of the tokens will be in vesting. Vesting has a linear
+            quarterly unlock.
           </Text>
           <InputContainer
             tokenAmount={tokenAmount}
@@ -120,7 +126,7 @@ const PreSaleContent = () => {
             setIsApproveWarning={setIsApproveWarning}
           />
           {isInputAmountError && (
-            <InputError>Please, enter an amount more than 10$</InputError>
+            <InputError>Please, enter an amount more than 25$</InputError>
           )}
           {isWalletWarning && (
             <InputWarning>

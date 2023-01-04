@@ -7,7 +7,7 @@ const MintNFTSection = lazy(() => import('./MintNFTContent/MintNFTSection'));
 const SaleSection = ({ title }: SaleSectionProps) => {
   return (
     <div>
-      {title === 'Pre-Sale' && <PreSaleContent />}
+      {title === 'Main Sale' && <PreSaleContent />}
       {title === 'NFT-Sale' && (
         <Suspense>
           <MintNFTSection />

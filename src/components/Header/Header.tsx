@@ -1,3 +1,4 @@
+/* eslint-disable jsx-quotes */
 /* eslint-disable max-lines-per-function */
 import React, { useEffect, useState } from 'react';
 import {
@@ -54,13 +55,15 @@ const Header = ({ isBurgerMenu, setIsBurgerMenu }: HeaderProps) => {
                 : 'https://planetex-app.herokuapp.com'
             }
           >
-            <Logo src={window.innerWidth > 428 ? logoIcon : logoIconMobile} alt="Planetex" />
+            <Logo
+              src={window.innerWidth > 428 ? logoIcon : logoIconMobile}
+              alt="Planetex"
+            />
           </LogoLink>
           <Navigation>
             <Links>
-              <RouterLink to="/presale">Pre-Sale</RouterLink>
+              <RouterLink to="/main-sale">Main Sale</RouterLink>
               <RouterLink to="/nft-sale">NFT Sale</RouterLink>
-              <Link href="#">Main Sale</Link>
               <Link href="#">Private Sale</Link>
             </Links>
             {account ? (
