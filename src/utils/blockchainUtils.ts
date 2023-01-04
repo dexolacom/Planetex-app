@@ -206,5 +206,10 @@ export const getUserBalance = async (
     buyTokenAbi as AbiItem[],
     getTokenSaleContractAddress(chainId),
   );
-  return await contract.methods.userBalance(account, 1).call();
+  const balance_0 = await contract.methods.userBalance(account, 0).call();
+  const balance_1 = await contract.methods.userBalance(account, 1).call();
+
+  const balances = (BigInt(balance_0) + BigInt(balance_1)).toString();
+  return (+balances / 10 ** 18).toFixed();
+  // return String(Number(+balance_0) + Number(+balance_1));
 };

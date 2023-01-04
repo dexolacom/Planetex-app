@@ -12,15 +12,17 @@ const UserBalance = () => {
 
   useEffect(() => {
     if (account) {
-      // @ts-ignore3
-      getUserBalanceSum(account).then((res) => setUserBalance(res));
+      getUserBalanceSum(account).then((res) => {
+        setUserBalance(res);
+      });
     }
   }, []);
 
   useEffect(() => {
     if (account) {
-      // @ts-ignore3
-      getUserBalanceSum(account).then((res) => setUserBalance(res));
+      getUserBalanceSum(account).then((res) => {
+        setUserBalance(res);
+      });
     }
   }, [isTransSuccessModal]);
 

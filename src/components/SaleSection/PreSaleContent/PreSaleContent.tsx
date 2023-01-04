@@ -104,7 +104,7 @@ const PreSaleContent = () => {
         <Content>
           <TitleContainer>
             <Title>Main Sale</Title>
-            <Tag>Minimum investment 10$</Tag>
+            <Tag>Minimum investment 25$</Tag>
           </TitleContainer>
           <Text>
             After the purchase, 40 percent of the tokens will be unlocked and
@@ -126,7 +126,7 @@ const PreSaleContent = () => {
             setIsApproveWarning={setIsApproveWarning}
           />
           {isInputAmountError && (
-            <InputError>Please, enter an amount more than 10$</InputError>
+            <InputError>Please, enter an amount more than 25$</InputError>
           )}
           {isWalletWarning && (
             <InputWarning>
